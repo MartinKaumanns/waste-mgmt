@@ -4,7 +4,7 @@ const { Router } = require('express');
 
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
-const fileUploader = require('./../cloudinary.config.js');
+const fileUploader = require('../cloudinary.config.js');
 
 const router = new Router();
 
