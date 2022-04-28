@@ -1,9 +1,39 @@
-<form action="/authentication/sign-up" method="POST">
+<form
+  action="/authentication/sign-up"
+  method="POST"
+  enctype="multipart/form-data"
+>
   <label for="input-name">Name</label>
   <input type="text" id="input-name" name="name" placeholder="Your Name" />
   <label for="input-email">Email</label>
   <input type="email" id="input-email" name="email" placeholder="Your Email" />
   <label for="input-password">Password</label>
-  <input type="password" name="password" id="input-password" placeholder="A Strong Password" />
+  <input
+    type="password"
+    name="password"
+    id="input-password"
+    placeholder="A Strong Password"
+  />
+  <div>
+    <label for="">Image:
+      <input type="file" name="picture" id="" />
+    </label>
+  </div>
+  {{! image }}
+  {{! description }}
+  {{! genre }}
+  <label for="input-genre">Genre:
+    <select name="genre">
+      <option value="">Choose a genre you are working in</option>
+      <option value="Installation">Installation</option>
+      <option value="Painting">Painting</option>
+      <option value="Drawing">Drawing</option>
+      <option value="Printing">Printing</option>
+      <option value="Media">Media</option>
+      <option value="Photography">Photography</option>
+      <option value="Ceramics">Ceramics</option>
+      <option value="Textile">Textile</option>
+    </select></label>
+
   <button>Sign Up</button>
 </form>

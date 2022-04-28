@@ -4,6 +4,7 @@ const { Router } = require('express');
 
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
+const fileUploader = require('./../cloudinary.config.js');
 
 const router = new Router();
 
@@ -11,15 +12,18 @@ router.get('/sign-up', (req, res, next) => {
   res.render('sign-up');
 });
 
-router.post('/sign-up', (req, res, next) => {
-  const { name, email, password } = req.body;
+router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
+  const { name, email, password, picture, genre } = req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
       return User.create({
         name,
         email,
+        picture: req.file.path,
+        genre,
         passwordHashAndSalt: hash
+        /* April 28: New user specifications */
       });
     })
     .then((user) => {

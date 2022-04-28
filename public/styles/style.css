@@ -1,3 +1,8 @@
+/* font-family: 'Inter', sans-serif; */
+* {
+  font-family: 'Inter', sans-serif;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -49,6 +54,12 @@ h2:not(:last-child),
 h3:not(:last-child),
 p:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 6em;
+  font-weight: 400;
+  line-height: 0.9em;
 }
 
 img {
