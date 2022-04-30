@@ -18,6 +18,11 @@
     <nav>
       <a href="/">Home</a>
       {{#if user}}
+        <a href="/offer-create"></a>
+        <form action="/offer/create" method="POST">
+          <button>Create offer</button>
+        </form>
+
         <a href="/private">{{user.name}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>

@@ -13,14 +13,19 @@ router.get('/sign-up', (req, res, next) => {
 });
 
 router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
-  const { name, email, password, picture, genres, location } = req.body;
+  const { name, email, password, genres, location } = req.body;
+  let picture;
+  if (req.file) {
+    picture = req.file.path;
+  }
+
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
       return User.create({
         name,
         email,
-        picture: req.file.path,
+        picture,
         genres,
         location,
         passwordHashAndSalt: hash
