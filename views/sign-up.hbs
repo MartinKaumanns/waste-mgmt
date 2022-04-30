@@ -22,8 +22,21 @@
   {{! image }}
   {{! description }}
   {{! genre }}
-  <label for="input-genre">Genre:
-    <select name="genres">
+  <fieldset>
+    <legend>Choose a genre you are working in</legend>
+    <input type="checkbox" name="genres" value="Installation" />Installation<br
+    />
+    <input type="checkbox" name="genres" value="Painting" />Painting<br />
+    <input type="checkbox" name="genres" value="Drawing" />Drawing<br />
+    <input type="checkbox" name="genres" value="Printing" />Printing<br />
+    <input type="checkbox" name="genres" value="Media" />Media<br />
+    <input type="checkbox" name="genres" value="Photography" />Photography<br />
+    <input type="checkbox" name="genres" value="Ceramics" />Ceramics<br />
+    <input type="checkbox" name="genres" value="Textile" />Textile<br />
+  </fieldset>
+
+  {{!   <label for="input-genre">Genre:
+    <select name="genres" multiple>
       <option value="">Choose a genre you are working in</option>
       <option value="Installation">Installation</option>
       <option value="Painting">Painting</option>
@@ -33,7 +46,7 @@
       <option value="Photography">Photography</option>
       <option value="Ceramics">Ceramics</option>
       <option value="Textile">Textile</option>
-    </select></label>
+    </select></label> }}
 
   <label for="input-location">Location:
     <select name="location" placeholder="Choose a genre you are working in">

@@ -4,8 +4,8 @@
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
 <br />
-{{#each user.genres}}
-  <span><strong>Genres</strong>: {{this}}</span>
+
+  <span><strong>Genres</strong>: {{#each user.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
 {{/each}}
 <br />
 <span><strong>Location</strong>: {{user.location}}</span>
