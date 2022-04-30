@@ -21,17 +21,49 @@ const schema = new mongoose.Schema(
     picture: {
       type: String
     },
-    genre: {
+    genres: [
+      {
+        type: String,
+        enum: [
+          'Installation',
+          'Painting',
+          'Drawing',
+          'Printing',
+          'Media',
+          'Photography',
+          'Ceramics',
+          'Textile'
+        ]
+      }
+    ],
+    location: {
       type: String,
       enum: [
-        'Installation',
-        'Painting',
-        'Drawing',
-        'Printing',
-        'Media',
-        'Photography',
-        'Ceramics',
-        'Textile'
+        'Friedrichshain',
+        'Kreuzberg',
+        'Neukölln',
+        'Britz',
+        'Treptow',
+        'Köpenick',
+        'Marzahn',
+        'Hellersdorf',
+        'Lichtenberg (Süd)',
+        'Lichtenberg (Nord)',
+        'Prenzlauer Berg',
+        'Pankow',
+        'Heinersdorf',
+        'Weißensee',
+        'Mitte',
+        'Wedding',
+        'Reinickendorf',
+        'Charlottenburg',
+        'Wilmersdorf',
+        'Tempelhof',
+        'Schöneberg',
+        'Steglitz',
+        'Zehlendorf',
+        'Spandau',
+        'Schöneweide'
       ]
     }
   },

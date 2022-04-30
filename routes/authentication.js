@@ -13,7 +13,7 @@ router.get('/sign-up', (req, res, next) => {
 });
 
 router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
-  const { name, email, password, picture, genre } = req.body;
+  const { name, email, password, picture, genres, location } = req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
@@ -21,12 +21,14 @@ router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
         name,
         email,
         picture: req.file.path,
-        genre,
+        genres,
+        location,
         passwordHashAndSalt: hash
         /* April 28: New user specifications */
       });
     })
     .then((user) => {
+      console.log(user);
       req.session.userId = user._id;
       res.redirect('/private');
     })

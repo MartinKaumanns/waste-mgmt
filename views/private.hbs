@@ -4,6 +4,10 @@
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
 <br />
-<span><strong>Genre</strong>: {{user.genre}}</span>
+{{#each user.genres}}
+  <span><strong>Genres</strong>: {{this}}</span>
+{{/each}}
+<br />
+<span><strong>Location</strong>: {{user.location}}</span>
 
 <img src="{{user.picture}}" alt="Profile Picture" />
