@@ -31,7 +31,7 @@ const offerSchema = new mongoose.Schema(
     picture: {
       type: String
     },
-    material: [{
+    materials: [{
       type: String,
       required: true,
       enum: [
@@ -94,6 +94,6 @@ const offerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Offer = mongoose.model('User', offerSchema);
+const Offer = mongoose.model('Offer', offerSchema);
 
 module.exports = Offer;

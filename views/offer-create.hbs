@@ -16,31 +16,31 @@
     </label>
   </div>
 
-  <label for="input-genre">Genre:
-    <select name="genres">
-      <option value="">What can your material be used for?</option>
-      <option value="Installation">Installation</option>
-      <option value="Painting">Painting</option>
-      <option value="Drawing">Drawing</option>
-      <option value="Printing">Printing</option>
-      <option value="Media">Media</option>
-      <option value="Photography">Photography</option>
-      <option value="Ceramics">Ceramics</option>
-      <option value="Textile">Textile</option>
-    </select></label>
+  <div>
+  <label for="input-genre">Genre: <br>
+      <input type="checkbox" name="genres" value="Installation"/>Installation<br>
+      <input type="checkbox" name="genres" value="Painting"/>Painting<br>
+      <input type="checkbox" name="genres" value="Drawing"/>Drawing<br>
+      <input type="checkbox" name="genres" value="Printing"/>Printing<br>
+      <input type="checkbox" name="genres" value="Media"/>Media<br>
+      <input type="checkbox" name="genres" value="Photography"/>Photography<br>
+      <input type="checkbox" name="genres" value="Ceramics"/>Ceramics<br>
+      <input type="checkbox" name="genres" value="Textile"/>Textile<br>
+   </label>
+   </div>
 
-  <label for="input-material">Material Category:
-    <select name="material" label="input-material">
-      <option value="">What kind of material are you offering?</option>
-      <option value="wood">wood</option>
-      <option value="steal">steal</option>
-      <option value="colors">colors</option>
-      <option value="paper">paper</option>
-      <option value="tools">tools</option>
-      <option value="technical-equipment">technical-equipment</option>
-      <option value="machines">machines</option>
-      <option value="other">other</option>
-    </select></label>
+  <div>
+  <label for="input-material">Material Category: </br>
+      <input type="checkbox" name="materials" value="wood"/>wood</br>
+      <input type="checkbox" name="materials" value="steal"/>steal</br>
+      <input type="checkbox" name="materials" value="colors"/>colors</br>
+      <input type="checkbox" name="materials" value="paper"/>paper</br>
+      <input type="checkbox" name="materials" value="tools"/>tools</br>
+      <input type="checkbox" name="materials" value="technical-/equipment"/>brcal-equipment</br>
+      <input type="checkbox" name="materials" value="machines"/>machines</br>
+      <input type="checkbox" name="materials" value="other"/>other</br>
+    </label>
+    </div>
 
   <label for="input-location">Location:
     <select name="location" placeholder="">
@@ -76,7 +76,7 @@
 
     <label for="input-price">Alternative Payments:
     <textarea type="text" id="input-payment" name="payment" placeholder="Alternative Payment" rows="2" cols="50">
-    </textarea></label></label>
+    </textarea></label>
 
   <button>Create Offer</button>
 </form>
