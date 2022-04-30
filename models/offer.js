@@ -50,8 +50,7 @@ const offerSchema = new mongoose.Schema(
       maxlength: 400
     },
     price: {
-      type: Number,
-      required: true,
+      type: Number
     },
     alternativepayment: {
       type: String,
