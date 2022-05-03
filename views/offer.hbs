@@ -3,12 +3,14 @@
 <h1>
   {{offer.title}}
 </h1>
+<a href="/user/{{ offer.creator._id }}">
 <p>{{offer.creator.name}} | {{offer.createdAt}}</p>
+</a>
 
 <span><strong>Genres</strong>: {{#each offer.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
 {{/each}}
 <br />
-<span><strong>Material</strong>: {{#each offer.material}}  {{this}} {{#unless @last}},{{/unless}}</span>
+<span><strong>Material</strong>: {{#each offer.materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
 {{/each}}
 <br />
 <p>{{offer.description}}</p>
@@ -25,4 +27,8 @@
 
 <form action="/offer/{{offer._id}}/edit" >
 <button>Edit</button>
+</form>
+
+<form action="/offer/{{ offer._id}}/delete" method="POST">
+        <button>Deactivate this offer</button>
 </form>

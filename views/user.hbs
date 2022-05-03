@@ -1,0 +1,14 @@
+
+<h1>{{userSingle.name}}'s Profile</h1>
+<p>This page should only be accessible to authenticated users.</p>
+<span><strong>Name</strong>: {{userSingle.name}}</span>
+<br />
+<span><strong>Email</strong>: {{userSingle.email}}</span>
+<br />
+
+  <span><strong>Genres</strong>: {{#each userSingle.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
+{{/each}}
+<br />
+<span><strong>Location</strong>: {{userSingle.location}}</span>
+
+<img src="{{userSingle.picture}}" alt="Profile Picture" />

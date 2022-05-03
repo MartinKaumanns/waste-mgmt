@@ -76,6 +76,7 @@ router.post(
       });
   }
 );
+
 router.post(
   '/:id/edit',
   routeGuard,
@@ -116,4 +117,17 @@ router.post(
       });
   }
 );
+
+router.post('/:id/delete', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Offer.findOneAndUpdate({ _id: id, creator: req.user._id }, { completed: true }, { returnDocument: "after" })
+    .then((updatedDoc) => {
+      console.log(updatedDoc)
+      res.redirect('/'); //should redirect to suggestions in the end
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = router;
