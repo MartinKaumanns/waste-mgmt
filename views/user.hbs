@@ -1,7 +1,7 @@
 
 <h1>{{profile.name}}'s Profile</h1>
 <img src="{{profile.picture}}" alt="Profile Picture" />
-<p>This page should only be accessible to authenticated users.</p>
+
 <span><strong>Name</strong>: {{profile.name}}</span>
 <br />
 <span><strong>Email</strong>: {{profile.email}}</span>
@@ -12,10 +12,20 @@
 <br />
 <span><strong>Location</strong>: {{profile.location}}</span>
 
-<h3>Latest Offers:</h3>
-{{#each userOffers}}
+{{#if userIsOwner}}
+<form action="/user/{{profile._id}}/edit" >
+  <button>Edit my profile</button>
+</form>
 
-{{>offersCard}}
+<form action="/user/{{ profile._id}}/delete" method="POST">
+  <button>Delete my profile</button>
+</form>
+{{/if}}
+
+<h3>Latest Offers:</h3>
+
+{{#each userOffers}}
+  {{>offersCard}}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
 

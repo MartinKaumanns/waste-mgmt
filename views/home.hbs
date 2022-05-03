@@ -6,3 +6,12 @@
 />
 
 <p>Welcome to {{title}} To have a look at the offerings please sign up first</p>
+
+<h2>Latest offerings</h2>
+
+{{#each offers}}
+  {{>offersCard}}
+{{#unless @last}}<br />{{/unless}}
+{{/each}}
+
+<a href="/offer/offer-suggestions">See all Offerings</a>
