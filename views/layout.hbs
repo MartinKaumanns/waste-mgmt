@@ -20,10 +20,14 @@
       {{#if user}}
         <a href="/offer-create"></a>
         <form action="/offer/create">
-          <button>Create offer</button>
+          <button>New Offer</button>
         </form>
 
-        <a href="/private">{{user.name}}'s Profile</a>
+        <a href="/private"></a>
+        <form action="/private">
+          <button>{{user.name}}'s Profile</button>
+        </form>
+
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>

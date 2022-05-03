@@ -7,44 +7,48 @@ const offerSchema = new mongoose.Schema(
     title: {
       type: String,
       trim: true,
-      required: true,
+      required: true
     },
     creator: {
       type: mongoose.Types.ObjectId,
       required: true,
       ref: 'User'
     },
-    genres: [{
-      type: String,
-      required: true,
-      enum: [
-        'Installation',
-        'Painting',
-        'Drawing',
-        'Printing',
-        'Media',
-        'Photography',
-        'Ceramics',
-        'Textile'
-      ]
-    }],
+    genres: [
+      {
+        type: String,
+        required: true,
+        enum: [
+          'Installation',
+          'Painting',
+          'Drawing',
+          'Printing',
+          'Media',
+          'Photography',
+          'Ceramics',
+          'Textile'
+        ]
+      }
+    ],
     picture: {
       type: String
     },
-    materials: [{
-      type: String,
-      required: true,
-      enum: [
-        'wood',
-        'steal',
-        'colors',
-        'paper',
-        'tools',
-        'technical-equipment',
-        'machines',
-        'other'
-      ]
-    }],
+    materials: [
+      {
+        type: String,
+        required: true,
+        enum: [
+          'wood',
+          'steal',
+          'colors',
+          'paper',
+          'tools',
+          'equipment',
+          'machines',
+          'other'
+        ]
+      }
+    ],
     description: {
       type: String,
       maxlength: 400
@@ -54,7 +58,7 @@ const offerSchema = new mongoose.Schema(
     },
     alternativepayment: {
       type: String,
-      maxlength: 100
+      maxlength: 400
     },
     location: {
       type: String,

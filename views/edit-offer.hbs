@@ -1,13 +1,13 @@
 <form
-  action="/offer/create"
+  action="/offer/{{offer._id}}/edit"
   method="POST"
   enctype="multipart/form-data"
 >
   <label for="input-title">Title</label>
-  <input type="text" id="input-title" name="title" placeholder="Your Title" />
+  <input type="text" id="input-title" name="title" placeholder="Your Title" value="{{offer.title}}"/>
 
  <label for="description-input">Description:
-    <textarea id="description-input" name="description" rows="4" cols="50">   
+    <textarea id="description-input" name="description" rows="4" cols="50">{{offer.description}}   
     </textarea></label>
 
   <div>
@@ -78,5 +78,5 @@
     <textarea type="text" id="input-payment" name="payment" placeholder="Alternative Payment" rows="2" cols="50">
     </textarea></label>
 
-  <button>Create Offer</button>
+  <button>Update Offer</button>
 </form>
