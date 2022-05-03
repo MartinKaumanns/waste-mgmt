@@ -1,0 +1,70 @@
+<form
+  action="/authentication/sign-up"
+  method="POST"
+  enctype="multipart/form-data"
+>
+  <label for="input-name">Name</label>
+  <input type="text" id="input-name" name="name" placeholder="Your Name" value="{{user.name}}"/>
+  <label for="input-email">Email</label>
+  <input type="email" id="input-email" name="email" placeholder="Your Email" value="{{user.email}}"/>
+ {{!--  <label for="input-password">Password</label>
+  <input
+    type="password"
+    name="password"
+    id="input-password"
+    placeholder="A Strong Password"
+  />
+  <div> --}}
+    <label for="">Image:
+      <input type="file" name="picture" id="" />
+    </label>
+  </div>
+  {{! image }}
+  {{! description }}
+  {{! genre }}
+  <div>
+
+    <label for="genres">Genre:</label><br />
+    <input type="checkbox" name="genres" value="Installation" />Installation<br
+    />
+    <input type="checkbox" name="genres" value="Installation" {{#if user.installation}}checked{{/if}}/>Painting<br />
+    <input type="checkbox" name="genres" value="Painting" {{#if user.painting}}checked{{/if}}/>Painting<br />
+    <input type="checkbox" name="genres" value="Drawing" {{#if user.drawing}}checked{{/if}}/>Drawing<br />
+    <input type="checkbox" name="genres" value="Printing" {{#if user.printing}}checked{{/if}}/>Printing<br />
+    <input type="checkbox" name="genres" value="Media" {{#if user.media}}checked{{/if}}/>Media<br />
+    <input type="checkbox" name="genres" value="Photography" {{#if user.photo}}checked{{/if}}/>Photography<br />
+    <input type="checkbox" name="genres" value="Ceramics" {{#if user.ceramics}}checked{{/if}}/>Ceramics<br />
+    <input type="checkbox" name="genres" value="Textile" {{#if user.textile}}checked{{/if}}/>Textile<br />
+  </div>
+
+  <label for="input-location">Location:
+    <select name="location" value="Choose a genre you are working in">
+      <option value="Friedrichshain"{{#if user.Friedrichshain}}selected{{/if}}>Friedrichshain</option>
+      <option value="Kreuzberg"{{#if user.Kreuzberg}}selected{{/if}}>Kreuzberg</option>
+      <option value="Neukölln" {{#if user.Neukoelln}}selected{{/if}}>Neukölln</option>
+      <option value="Britz"{{#if user.Britz}}selected{{/if}}>Britz</option>
+      <option value="Treptow"{{#if user.Treptow}}selected{{/if}}>Treptow</option>
+      <option value="Köpenick"{{#if user.Koepenick}}selected{{/if}}>Köpenick</option>
+      <option value="Marzahn"{{#if user.Marzahn}}selected{{/if}}>Marzahn</option>
+      <option value="Hellersdorf"{{#if user.Hellersdorf}}selected{{/if}}>Hellersdorf</option>
+      <option value="Lichtenberg (Süd)"{{#if user.Ls}}selected{{/if}}>Lichtenberg (Süd)</option>
+      <option value="Lichtenberg (Nord)"{{#if user.Ln}}selected{{/if}}>Lichtenberg (Nord)</option>
+      <option value="Prenzlauer Berg"{{#if user.Pberg}}selected{{/if}}>Prenzlauer Berg</option>
+      <option value="Pankow"{{#if user.Pankow}}selected{{/if}}>Pankow</option>
+      <option value="Heinersdorf"{{#if user.Heinersdorf}}selected{{/if}}>Heinersdorf</option>
+      <option value="Weißensee"{{#if user.Weissensee}}selected{{/if}}>Weißensee</option>
+      <option value="Mitte"{{#if user.Mitte}}selected{{/if}}>Mitte</option>
+      <option value="Wedding"{{#if user.Wedding}}selected{{/if}}>Wedding</option>
+      <option value="Reinickendorf"{{#if user.Reinickendorf}}selected{{/if}}>Reinickendorf</option>
+      <option value="Charlottenburg"{{#if user.Charlottenburg}}selected{{/if}}>Charlottenburg</option>
+      <option value="Wilmersdorf"{{#if user.Wilmersdorf}}selected{{/if}}>Wilmersdorf</option>
+      <option value="Tempelhof"{{#if user.Tempelhof}}selected{{/if}}>Tempelhof</option>
+      <option value="Schöneberg"{{#if user.Schoeneberg}}selected{{/if}}>Schöneberg</option>
+      <option value="Steglitz"{{#if user.Steglitz}}selected{{/if}}>Steglitz</option>
+      <option value="Zehlendorf"{{#if user.Zehlendorf}}selected{{/if}}>Zehlendorf</option>
+      <option value="Spandau"{{#if user.Spandau}}selected{{/if}}>Spandau</option>
+      <option value="Schöneweide"{{#if user.Schoeneweide}}selected{{/if}}>Schöneweide</option>
+    </select></label>
+
+  <button>Update Profile</button>
+</form>
