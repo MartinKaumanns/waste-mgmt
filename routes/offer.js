@@ -14,9 +14,33 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/offer-suggestions', (req, res, next) => {
-  Offer.find().then((offers) => {
-    res.render('offer-suggestions', { offers });
-  });
+  let limit = 30;
+  // if(req.user) {
+  //   let offerOfMyGenre = [];
+  //   let genresArray = req.user.genres;
+  //   for (let i=0 ; i< genresArray.length; i++) {
+  //     //console.log(genresArray[i])
+  //     Offer.find({ genres: genresArray[i] }).sort({ createdAt : -1})
+  //     .then((genreOffers) => {
+  //       offerOfMyGenre = offerOfMyGenre.concat(genreOffers)
+  //     })
+  //     .then(()=>{
+  //       limit = limit - offerOfMyGenre.length
+  //       console.log('Limit = ' + limit)
+  //       console.log(offerOfMyGenre)
+  //       return Offer.find().sort({ createdAt : -1}).limit(limit)
+  //     .then((offersRest) => {
+  //       let allOffers = offersOfMyGenre.concat(offersRest)
+  //       res.render('offer-suggestions', { allOffers });
+  //     });
+  //     })
+  //   }
+  // } else {
+    Offer.find().sort({ createdAt : -1}).limit(limit)
+      .then((offers) => {
+        res.render('offer-suggestions', { offers });
+    })
+  // }
 });
 
 router.get('/:id', (req, res, next) => {

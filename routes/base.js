@@ -6,7 +6,8 @@ const routeGuard = require('./../middleware/route-guard');
 const Offer = require('./../models/offer');
 
 router.get('/', (req, res, next) => {
-  Offer.find().limit(3).then((offers) => {
+  Offer.find().sort({ createdAt : -1}).limit(3)
+  .then((offers) => {
     res.render('home', { offers, title: 'waste mgmt' });
   })
   .catch((error) => {
