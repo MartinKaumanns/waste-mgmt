@@ -5,11 +5,18 @@ const routeGuard = require('../middleware/route-guard');
 const bcryptjs = require('bcryptjs');
 const Offer = require('./../models/offer');
 const fileUploader = require('../cloudinary.config.js');
+const { render } = require('../app');
 
 const router = new Router();
 
 router.get('/create', (req, res) => {
   res.render('offer-create');
+});
+
+router.get('/offer-suggestions', (req, res, next) => {
+  Offer.find().then((offers) => {
+    res.render('offer-suggestions', { offers });
+  });
 });
 
 router.get('/:id', (req, res, next) => {
@@ -25,7 +32,6 @@ router.get('/:id', (req, res, next) => {
       next(error);
     });
 });
-///IN PROGRESS
 
 router.get('/:id/edit', (req, res, next) => {
   const { id } = req.params;
@@ -122,9 +128,13 @@ router.post(
 
 router.post('/:id/delete', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Offer.findOneAndUpdate({ _id: id, creator: req.user._id }, { completed: true }, { returnDocument: "after" })
+  Offer.findOneAndUpdate(
+    { _id: id, creator: req.user._id },
+    { completed: true },
+    { returnDocument: 'after' }
+  )
     .then((updatedDoc) => {
-      console.log(updatedDoc)
+      console.log(updatedDoc);
       res.redirect('/'); //should redirect to suggestions in the end
     })
     .catch((error) => {
