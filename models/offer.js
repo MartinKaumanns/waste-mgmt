@@ -39,7 +39,7 @@ const offerSchema = new mongoose.Schema(
         required: true,
         enum: [
           'wood',
-          'steal',
+          'steel',
           'colors',
           'paper',
           'tools',

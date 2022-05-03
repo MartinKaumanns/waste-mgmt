@@ -18,27 +18,27 @@
 
   <div>
   <label for="input-genre">Genre: <br>
-      <input type="checkbox" name="genres" value="Installation"/>Installation<br>
-      <input type="checkbox" name="genres" value="Painting"/>Painting<br>
-      <input type="checkbox" name="genres" value="Drawing"/>Drawing<br>
-      <input type="checkbox" name="genres" value="Printing"/>Printing<br>
-      <input type="checkbox" name="genres" value="Media"/>Media<br>
-      <input type="checkbox" name="genres" value="Photography"/>Photography<br>
-      <input type="checkbox" name="genres" value="Ceramics"/>Ceramics<br>
-      <input type="checkbox" name="genres" value="Textile"/>Textile<br>
+      <input type="checkbox" name="genres" value="Installation"{{#if offer.installation}}checked {{/if}}/>Installation<br>
+      <input type="checkbox" name="genres" value="Painting"{{#if offer.painting}}checked {{/if}} />Painting<br>
+      <input type="checkbox" name="genres" value="Drawing"{{#if offer.drawing}}checked {{/if}}/>Drawing<br>
+      <input type="checkbox" name="genres" value="Printing"{{#if offer.printing}}checked {{/if}}/>Printing<br>
+      <input type="checkbox" name="genres" value="Media"{{#if offer.media}}checked {{/if}}/>Media<br>
+      <input type="checkbox" name="genres" value="Photography"{{#if offer.photo}}checked {{/if}}/>Photography<br>
+      <input type="checkbox" name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/>Ceramics<br>
+      <input type="checkbox" name="genres" value="Textile"{{#if offere.textile}}checked {{/if}}/>Textile<br>
    </label>
    </div>
 
   <div>
   <label for="input-material">Material Category: </br>
-      <input type="checkbox" name="materials" value="wood"/>wood</br>
-      <input type="checkbox" name="materials" value="steal"/>steal</br>
-      <input type="checkbox" name="materials" value="colors"/>colors</br>
-      <input type="checkbox" name="materials" value="paper"/>paper</br>
-      <input type="checkbox" name="materials" value="tools"/>tools</br>
-      <input type="checkbox" name="materials" value="equipment"/>technical-equipment</br>
-      <input type="checkbox" name="materials" value="machines"/>machines</br>
-      <input type="checkbox" name="materials" value="other"/>other</br>
+      <input type="checkbox" name="materials" value="wood"{{#if offer.wood}}checked {{/if}} />wood</br>
+      <input type="checkbox" name="materials" value="steel" {{#if offer.steel}} checked {{/if}}/>steal</br>
+      <input type="checkbox" name="materials" value="colors"{{#if offer.colors}}checked {{/if}}/>colors</br>
+      <input type="checkbox" name="materials" value="paper"{{#if offer.paper}}checked {{/if}}/>paper</br>
+      <input type="checkbox" name="materials" value="tools"{{#if offer.tools}}checked {{/if}}/>tools</br>
+      <input type="checkbox" name="materials" value="equipment"{{#if offer.equipment}}checked {{/if}}/>technical-equipment</br>
+      <input type="checkbox" name="materials" value="machines"{{#if offer.machines}}checked {{/if}}/>machines</br>
+      <input type="checkbox" name="materials" value="other"{{#if offer.other}}checked {{/if}}/>other</br>
     </label>
     </div>
 

@@ -37,9 +37,60 @@ router.get('/:id/edit', (req, res, next) => {
   const { id } = req.params;
   Offer.findOne({ _id: id, creator: req.user._id })
     .then((offer) => {
+      console.log(offer.genres.includes('Painting'));
       if (!offer) {
         throw new Error('OFFER_NOT_FOUND');
       } else {
+        if (offer.genres.includes('Installation')) {
+          offer.installation = true;
+        }
+        if (offer.genres.includes('Painting')) {
+          offer.painting = true;
+        }
+        if (offer.genres.includes('Drawing')) {
+          offer.drawing = true;
+        }
+        if (offer.genres.includes('Printing')) {
+          offer.printing = true;
+        }
+        if (offer.genres.includes('Media')) {
+          offer.media = true;
+        }
+        if (offer.genres.includes('Photography')) {
+          offer.photo = true;
+        }
+        if (offer.genres.includes('Ceramics')) {
+          offer.ceramics = true;
+        }
+        if (offer.genres.includes('Textile')) {
+          offer.textile = true;
+        }
+
+        if (offer.materials.includes('wood')) {
+          offer.wood = true;
+        }
+        if (offer.materials.includes('steel')) {
+          offer.steel = true;
+        }
+        if (offer.materials.includes('colors')) {
+          offer.colors = true;
+        }
+        if (offer.materials.includes('paper')) {
+          offer.paper = true;
+        }
+        if (offer.materials.includes('tools')) {
+          offer.tools = true;
+        }
+        if (offer.materials.includes('equipment')) {
+          offer.equipment = true;
+        }
+        if (offer.materials.includes('machines')) {
+          offer.machines = true;
+        }
+        if (offer.materials.includes('other')) {
+          offer.other = true;
+        }
+
         res.render('edit-offer', { offer });
       }
     })
