@@ -25,6 +25,7 @@
 <h3>{{offer.alternativepayment}}</h3>
 {{/if}}
 
+{{#if userIsOwner}}
 <form action="/offer/{{offer._id}}/edit" >
 <button>Edit</button>
 </form>
@@ -32,3 +33,4 @@
 <form action="/offer/{{ offer._id}}/delete" method="POST">
         <button>Deactivate this offer</button>
 </form>
+{{/if}}

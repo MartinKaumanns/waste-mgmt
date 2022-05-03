@@ -17,7 +17,9 @@ router.get('/:id', (req, res, next) => {
   Offer.findById(id)
     .populate('creator')
     .then((offer) => {
-      res.render('offer', { offer });
+      let userIsOwner =
+        req.user && String(req.user._id) === String(offer.creator._id);
+      res.render('offer', { offer, userIsOwner });
     })
     .catch((error) => {
       next(error);
