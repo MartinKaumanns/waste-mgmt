@@ -14,6 +14,7 @@ const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
 const offerRouter = require('./routes/offer');
 const userRouter = require('./routes/user');
+
 // const { hasSubscribers } = require('diagnostics_channel');
 const hbs = require('hbs');
 
