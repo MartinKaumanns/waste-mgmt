@@ -1,6 +1,20 @@
 {{> megamenu}}{{> megasearch}}
 
-<h1>Hello</h1>
+<span>Sort by</span>
+<form action="/offer/offer-sorted-price">
+    <button>Price</button>
+</form>
+<form action="/offer/offer-sorted-descending-price">
+    <button>Price descending</button>
+</form>
+<form action="/offer/offer-sorted-date">
+    <button>Date: Latest First
+    </button>
+</form>
+<form action="/offer/offer-sorted-oldest-date">
+    <button>Date: Oldest First
+    </button>
+</form>
 
 {{#each filteredOffers}}
 {{> offersCard }}
