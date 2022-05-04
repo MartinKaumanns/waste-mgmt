@@ -1,5 +1,5 @@
 <form
-  action="/authentication/sign-up"
+{{!--   action="/authentication/sign-up" --}}
   method="POST"
   enctype="multipart/form-data"
 >
@@ -15,6 +15,9 @@
     placeholder="A Strong Password"
   />
   <div> --}}
+    {{#if user.picture}}
+    <img src="{{user.picture}}" alt="Existing picture">
+    {{/if}}
     <label for="">Image:
       <input type="file" name="picture" id="" />
     </label>
@@ -25,9 +28,7 @@
   <div>
 
     <label for="genres">Genre:</label><br />
-    <input type="checkbox" name="genres" value="Installation" />Installation<br
-    />
-    <input type="checkbox" name="genres" value="Installation" {{#if user.installation}}checked{{/if}}/>Painting<br />
+    <input type="checkbox" name="genres" value="Installation" {{#if user.installation}}checked{{/if}}/>Installation<br />
     <input type="checkbox" name="genres" value="Painting" {{#if user.painting}}checked{{/if}}/>Painting<br />
     <input type="checkbox" name="genres" value="Drawing" {{#if user.drawing}}checked{{/if}}/>Drawing<br />
     <input type="checkbox" name="genres" value="Printing" {{#if user.printing}}checked{{/if}}/>Printing<br />

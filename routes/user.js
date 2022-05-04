@@ -116,7 +116,7 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
 });
 
 // edit profile POST
-/* router.post(
+router.post(
   '/:id/edit',
   routeGuard,
   fileUploader.single('picture'),
@@ -124,21 +124,22 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
     console.log(req.params);
     const { id } = req.params;
     const { name, email, genres, location } = req.body;
-    User.findByIdAndUpdate(id, {
-      name,
-      email,
-      picture: req.file.path,
-      genres,
-      location
-    })
+    let picture;
+    if (req.file) {
+      picture = req.file.path;
+    }
+    User.findByIdAndUpdate(
+      { _id: id, creator: req.user._id },
+      { name, email, genres, location, picture }
+    )
+
       .then(() => {
-        console.log('Hello');
         res.redirect(`/user/${id}`);
       })
       .catch((error) => {
         next(error);
       });
   }
-); */
+);
 
 module.exports = router;
