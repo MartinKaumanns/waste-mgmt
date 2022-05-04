@@ -45,18 +45,69 @@ router.get('/offer-suggestions', (req, res, next) => {
   // }
 });
 
+router.get('/offer-search', (req, res, next) => {
+  const searchTerm = req.query.searchfield;
+  Offer.find({
+    $or: [
+      { title: { $regex: searchTerm } },
+      { description: { $regex: searchTerm } },
+      { genres: { $regex: searchTerm } },
+      { materials: { $regex: searchTerm } }
+    ]
+  }).then((filteredOffers) => {
+    console.log(filteredOffers);
+    res.render('offer-filtered', { filteredOffers });
+  });
+});
+/// Search function
+// $or : [{"title":{$regex:"ood"}}, {"materials": {$regex:"ood"}}]}
+
 router.get('/offer-filtered', (req, res, next) => {
   console.log('querygenres', req.query.genres);
-
-  Offer.find({
-    genres: { $in: req.query.genres }
-    //materials: { $in: req.query.materials }
-  })
-    .sort({ createdAt: -1 })
-    .then((filteredOffers) => {
-      console.log('offer', filteredOffers);
-      res.render('offer-filtered', { filteredOffers });
-    });
+  let limit = 30;
+  if (!req.query.genres && !req.query.materials) {
+    console.log('äaäaäa');
+    Offer.find()
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        console.log('offer', filteredOffers);
+        res.render('offer-filtered', { filteredOffers });
+      });
+  } else if (!req.query.genres) {
+    Offer.find({
+      materials: { $in: req.query.materials }
+    })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        console.log('offer', filteredOffers);
+        res.render('offer-filtered', { filteredOffers });
+      });
+  } else if (!req.query.materials) {
+    Offer.find({
+      genres: { $in: req.query.genres }
+    })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        console.log('offer', filteredOffers);
+        res.render('offer-filtered', { filteredOffers });
+      });
+  } else {
+    Offer.find({
+      $and: [
+        { genres: { $in: req.query.genres } },
+        { materials: { $in: req.query.materials } }
+      ]
+    })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        console.log('offer', filteredOffers);
+        res.render('offer-filtered', { filteredOffers });
+      });
+  }
 });
 
 router.get('/:id', (req, res, next) => {

@@ -1,3 +1,8 @@
-{{> megamenu}}
+{{> megamenu}}{{> megasearch}}
 
 <h1>Hello</h1>
+
+{{#each filteredOffers}}
+{{> offersCard }}
+{{#unless @last}}<br />{{/unless}}
+{{/each}}
