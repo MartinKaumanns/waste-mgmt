@@ -36,11 +36,27 @@ router.get('/offer-suggestions', (req, res, next) => {
   //     })
   //   }
   // } else {
-    Offer.find().sort({ createdAt : -1}).limit(limit)
-      .then((offers) => {
-        res.render('offer-suggestions', { offers });
-    })
+  Offer.find()
+    .sort({ createdAt: -1 })
+    .limit(limit) // filter own offers out
+    .then((offers) => {
+      res.render('offer-suggestions', { offers });
+    });
   // }
+});
+
+router.get('/offer-filtered', (req, res, next) => {
+  console.log('querygenres', req.query.genres);
+
+  Offer.find({
+    genres: { $in: req.query.genres }
+    //materials: { $in: req.query.materials }
+  })
+    .sort({ createdAt: -1 })
+    .then((filteredOffers) => {
+      console.log('offer', filteredOffers);
+      res.render('offer-filtered', { filteredOffers });
+    });
 });
 
 router.get('/:id', (req, res, next) => {
