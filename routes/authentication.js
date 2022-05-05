@@ -35,7 +35,7 @@ router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
     .then((user) => {
       console.log(user);
       req.session.userId = user._id;
-      res.redirect(`/user/${user._id}`);
+      res.redirect('./../offer/offer-suggestions');
     })
     .catch((error) => {
       next(error);
@@ -61,7 +61,7 @@ router.post('/sign-in', (req, res, next) => {
     .then((result) => {
       if (result) {
         req.session.userId = user._id;
-        res.redirect(`/user/${user._id}`);
+        res.redirect('./../offer/offer-suggestions');
       } else {
         return Promise.reject(new Error('Wrong password.'));
       }

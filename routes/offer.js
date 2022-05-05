@@ -18,34 +18,44 @@ router.get('/create', (req, res) => {
 
 router.get('/offer-suggestions', (req, res, next) => {
   let limit = 30;
-  // if(req.user) {
-  //   let offerOfMyGenre = [];
-  //   let genresArray = req.user.genres;
-  //   for (let i=0 ; i< genresArray.length; i++) {
-  //     //console.log(genresArray[i])
-  //     Offer.find({ genres: genresArray[i] }).sort({ createdAt : -1})
-  //     .then((genreOffers) => {
-  //       offerOfMyGenre = offerOfMyGenre.concat(genreOffers)
-  //     })
-  //     .then(()=>{
-  //       limit = limit - offerOfMyGenre.length
-  //       console.log('Limit = ' + limit)
-  //       console.log(offerOfMyGenre)
-  //       return Offer.find().sort({ createdAt : -1}).limit(limit)
-  //     .then((offersRest) => {
-  //       let allOffers = offersOfMyGenre.concat(offersRest)
-  //       res.render('offer-suggestions', { allOffers });
-  //     });
-  //     })
-  //   }
-  // } else {
+  // checks if user is logged in
+  if(req.user) {
+    // searchs for all offers which contain the user's genre category
+    let genresArray = req.user.genres; 
+    Offer.find({ genres: { $in : req.user.genres }}).sort({ createdAt : -1}).limit(limit)
+    .then((offers) => {
+      console.log('Länge eigener genre offerings: ', offers.length)
+      // checks if results are already 30(limit) 
+      if (offers.length < limit) {
+        // finds latest offers that do not contain the user's genre and concats the list of results
+        // should filter out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
+        Offer.find({genres : { $nin : req.user.genres }}).sort({ createdAt : -1}).limit(limit - offers.length)
+        .then((restOffers)=> {
+          offers = offers.concat(restOffers)
+          console.log('Länge aller offerings: ', offers.length)
+          console.log(offers[0].creator, req.user._id)
+          res.render('offer-suggestions', { offers });
+        })
+        .catch(error => {
+          next(error)
+        })
+      } else {
+        res.render('offer-suggestions', { offers });
+      }
+    })
+    .catch((error)=> {
+      next(error)
+    })
+  } else {
+  // if user is not logged in find the 30(limit) latest offers
+  // should filter out own offers
   Offer.find()
     .sort({ createdAt: -1 })
-    .limit(limit) // filter own offers out
+    .limit(limit) 
     .then((offers) => {
       res.render('offer-suggestions', { offers });
     });
-  // }
+  }
 });
 
 router.get('/offer-search', (req, res, next) => {
@@ -148,54 +158,8 @@ router.get('/offer-sorted-oldest-date', (req, res, next) => {
 
 router.get('/offer-filtered', (req, res, next) => {
   let limit = 30;
-  // if (!req.query.genres && !req.query.materials) {
-  //   Offer.find()
-  //     .sort({ createdAt: -1 })
-  //     .limit(limit)
-  //     .then((filteredOffers) => {
-  //       console.log('offer', filteredOffers);
-  //       res.render('offer-filtered', { filteredOffers });
-  //     });
-  // } else if (!req.query.genres) {
-  //   query.materialsSearch = req.query.materials
-  //   Offer.find({
-  //     materials: { $in: req.query.materials }
-  //   })
-  //     .sort({ createdAt: -1 })
-  //     .limit(limit)
-  //     .then((filteredOffers) => {
-  //       console.log('offer', filteredOffers);
-  //       res.render('offer-filtered', { filteredOffers });
-  //     });
-  // } else if (!req.query.materials) {
-  //   query.genresSearch = req.query.genres
-  //   Offer.find({
-  //     genres: { $in: req.query.genres }
-  //   })
-  //     .sort({ createdAt: -1 })
-  //     .limit(limit)
-  //     .then((filteredOffers) => {
-  //       console.log('offer', filteredOffers);
-  //       res.render('offer-filtered', { filteredOffers });
-  //     });
-  // } else {
-  //   query.genresSearch = req.query.genres
-  //   query.materialsSearch = req.query.materials
-  //   Offer.find({
-  //     $and: [
-  //       { genres: { $in: req.query.genres } },
-  //       { materials: { $in: req.query.materials } }
-  //     ]
-  //   })
-  //     .sort({ createdAt: -1 })
-  //     .limit(limit)
-  //     .then((filteredOffers) => {
-  //       console.log(query)
-  //       console.log('offer', filteredOffers);
-  //       res.render('offer-filtered', { filteredOffers, query });
-  //     });
-  // }
   searchObj = {};
+
   if (!req.query.genres && !req.query.materials) {
     queryObj = {}
   } else if (!req.query.genres) {
@@ -385,7 +349,7 @@ router.post('/:id/delete', routeGuard, (req, res, next) => {
   )
     .then((updatedDoc) => {
       console.log(updatedDoc);
-      res.redirect('/'); //should redirect to suggestions in the end
+      res.redirect('offer/offer-suggestions'); 
     })
     .catch((error) => {
       next(error);
