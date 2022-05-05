@@ -61,7 +61,8 @@ router.get('/offer-suggestions', (req, res, next) => {
 router.get('/offer-search', (req, res, next) => {
   const limit = 30;
   const searchTerm = req.query.searchfield;
-  queryObj = {};
+  queryObj = {}; // empties queryObj
+  // writes searchObj with search "term"
   searchObj = {
     $or: [
       { title: { $regex: searchTerm } },
@@ -70,6 +71,7 @@ router.get('/offer-search', (req, res, next) => {
       { materials: { $regex: searchTerm } }
     ]
   };
+  // performs query with searchObj
   Offer.find(searchObj)
   .sort({ createdAt: -1 })
   .limit(limit)
@@ -80,7 +82,10 @@ router.get('/offer-search', (req, res, next) => {
 
 router.get('/offer-sorted-price', (req, res, next) => {
   const limit = 30;
+  // checks if a category query (queryObj) or a search with an input (searchObj) was performed before
+  // checks if searchObj is NOT empty (--> there was a search before)
   if(!(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)) {
+    // fetches all documents with former searchObj and sort by price (lowest first)
     Offer.find(searchObj)
   .sort({ price: 1 })
   .limit(limit)
@@ -88,7 +93,9 @@ router.get('/offer-sorted-price', (req, res, next) => {
     res.render('offer-filtered', { filteredOffers, searchObj });
   });
   } else {
+    // if there was no query before OR a category query
     Offer.find(queryObj)
+     // fetches all documents with former queryObj and sort by price (lowest first)
     .sort({ price: 1 })
     .limit(limit)
     .then((filteredOffers) => {
