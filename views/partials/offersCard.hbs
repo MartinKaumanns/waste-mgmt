@@ -1,5 +1,13 @@
-<div>{{ title }}
-    <p>{{ price }}</p>
-    <p>{{ createdAt }}</p>
-    <p>{{ genres }}</p>
+<div>
+    <h1> {{title}}</h1>
+    <a href="/user/{{ creator._id }}"><p>{{creator.name}} | {{createdAt}}</p></a>
+    <span><strong>Genres</strong>: 
+        {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
+        {{/each}}
+        <br />
+    <span><strong>Material</strong>: 
+        {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
+        {{/each}}
+        <br />
+    <a href="/offer/{{ _id }}">See Details</a>
 </div>
