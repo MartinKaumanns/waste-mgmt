@@ -25,6 +25,10 @@
 <h3>{{offer.alternativepayment}}</h3>
 {{/if}}
 
+<form action="/offer/{{ offer._id}}/offer-email">
+  <button>Send Email</button>
+</form>
+
 {{#if userIsOwner}}
 <form action="/offer/{{offer._id}}/edit" >
   <button>Edit</button>

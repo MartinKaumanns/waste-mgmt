@@ -7,6 +7,17 @@ const Offer = require('./../models/offer');
 const fileUploader = require('../cloudinary.config.js');
 const { render } = require('../app');
 
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+    user: process.env.EMAIL_SENDER,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
+
 const router = new Router();
 
 let queryObj;
@@ -200,6 +211,13 @@ router.get('/offer-filtered', (req, res, next) => {
     });
 });
 
+router.get('/:id/offer-email', (req, res, next) => {
+  //console.log(req.params);
+  const offerId = req.params;
+
+  res.render('offer-email', { offerId });
+});
+
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Offer.findById(id)
@@ -316,6 +334,31 @@ router.post(
       });
   }
 );
+
+router.post('/:id/offer-email', (req, res, next) => {
+  // console.log(req.params.id);
+  const offerId = req.params.id;
+  Offer.findById(offerId)
+    .populate('creator')
+    .then((offer) => {
+      //console.log(offer.creator.email)
+      transporter
+        .sendMail({
+          from: `"User01" ${process.env.EMAIL}`,
+          to: offer.creator.email,
+          subject: 'waste-mgmt offer',
+          text: req.body.text,
+          html: `Hi ${req.user.name} is interested in ${offer.title} <br> ${req.body.text}`
+        })
+        .then(() => {
+          console.log({ offerId });
+          res.render('email-feedback', { offerId });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+});
 
 router.post(
   '/:id/edit',

@@ -14,6 +14,7 @@ const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
 const offerRouter = require('./routes/offer');
 const userRouter = require('./routes/user');
+const mailerRouter = require('./routes/mailer');
 
 // const { hasSubscribers } = require('diagnostics_channel');
 const hbs = require('hbs');
@@ -61,6 +62,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/offer', offerRouter);
 app.use('/user', userRouter);
+app.use('/user', mailerRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
