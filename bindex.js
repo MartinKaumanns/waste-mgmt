@@ -1,20 +1,24 @@
 //Email Service
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 587,
   auth: {
-    user: 'bridie.langosh68@ethereal.email',
-    pass: 'X5wHhr88uRx3X9H3Z8'
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
   }
 });
 
 transporter
   .sendMail({
-    to: 'wadad94771@chokxus.com',
+    from: `"User01" ${process.env.EMAIL}`,
+    to: 'wadad94771@chokxus.com', // User email of offerer
     subject: 'Offer',
-    text: 'This is a test email'
+    text: 'This is a test email',
+    html: '<head><style>a:{color: red;}</style></head><body>This is a <a href="https://google.com">test</a>email<body> '
   })
   .then(() => {
     console.log('The email was sent successfully');
@@ -22,10 +26,3 @@ transporter
   .catch((error) => {
     console.log(error);
   });
-
-/* 
-Name	    Bridie Langosh
-Username	bridie.langosh68@ethereal.email (also works as a real inbound email address)
-Password	X5wHhr88uRx3X9H3Z8 
-
-*/

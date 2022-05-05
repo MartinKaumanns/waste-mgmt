@@ -19,42 +19,46 @@ router.get('/create', (req, res) => {
 router.get('/offer-suggestions', (req, res, next) => {
   let limit = 30;
   // checks if user is logged in
-  if(req.user) {
+  if (req.user) {
     // searchs for all offers which contain the user's genre category
-    let genresArray = req.user.genres; 
-    Offer.find({ genres: { $in : req.user.genres }}).sort({ createdAt : -1}).limit(limit)
-    .then((offers) => {
-      console.log('Länge eigener genre offerings: ', offers.length)
-      // checks if results are already 30(limit) 
-      if (offers.length < limit) {
-        // finds latest offers that do not contain the user's genre and concats the list of results
-        // should filter out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
-        Offer.find({genres : { $nin : req.user.genres }}).sort({ createdAt : -1}).limit(limit - offers.length)
-        .then((restOffers)=> {
-          offers = offers.concat(restOffers)
-          console.log('Länge aller offerings: ', offers.length)
-          console.log(offers[0].creator, req.user._id)
+    let genresArray = req.user.genres;
+    Offer.find({ genres: { $in: req.user.genres } })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((offers) => {
+        console.log('Länge eigener genre offerings: ', offers.length);
+        // checks if results are already 30(limit)
+        if (offers.length < limit) {
+          // finds latest offers that do not contain the user's genre and concats the list of results
+          // should filter out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
+          Offer.find({ genres: { $nin: req.user.genres } })
+            .sort({ createdAt: -1 })
+            .limit(limit - offers.length)
+            .then((restOffers) => {
+              offers = offers.concat(restOffers);
+              console.log('Länge aller offerings: ', offers.length);
+              console.log(offers[0].creator, req.user._id);
+              res.render('offer-suggestions', { offers });
+            })
+            .catch((error) => {
+              next(error);
+            });
+        } else {
           res.render('offer-suggestions', { offers });
-        })
-        .catch(error => {
-          next(error)
-        })
-      } else {
-        res.render('offer-suggestions', { offers });
-      }
-    })
-    .catch((error)=> {
-      next(error)
-    })
+        }
+      })
+      .catch((error) => {
+        next(error);
+      });
   } else {
-  // if user is not logged in find the 30(limit) latest offers
-  // should filter out own offers
-  Offer.find()
-    .sort({ createdAt: -1 })
-    .limit(limit) 
-    .then((offers) => {
-      res.render('offer-suggestions', { offers });
-    });
+    // if user is not logged in find the 30(limit) latest offers
+    // should filter out own offers
+    Offer.find()
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((offers) => {
+        res.render('offer-suggestions', { offers });
+      });
   }
 });
 
@@ -73,120 +77,127 @@ router.get('/offer-search', (req, res, next) => {
   };
   // performs query with searchObj
   Offer.find(searchObj)
-  .sort({ createdAt: -1 })
-  .limit(limit)
-  .then((filteredOffers) => {
-    res.render('offer-filtered', { filteredOffers, searchObj });
-  });
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .then((filteredOffers) => {
+      res.render('offer-filtered', { filteredOffers, searchObj });
+    });
 });
 
 router.get('/offer-sorted-price', (req, res, next) => {
   const limit = 30;
   // checks if a category query (queryObj) or a search with an input (searchObj) was performed before
   // checks if searchObj is NOT empty (--> there was a search before)
-  if(!(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)) {
+  if (
+    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+  ) {
     // fetches all documents with former searchObj and sort by price (lowest first)
     Offer.find(searchObj)
-  .sort({ price: 1 })
-  .limit(limit)
-  .then((filteredOffers) => {
-    res.render('offer-filtered', { filteredOffers, searchObj });
-  });
+      .sort({ price: 1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, searchObj });
+      });
   } else {
     // if there was no query before OR a category query
     Offer.find(queryObj)
-     // fetches all documents with former queryObj and sort by price (lowest first)
-    .sort({ price: 1 })
-    .limit(limit)
-    .then((filteredOffers) => {
-      res.render('offer-filtered', { filteredOffers, queryObj});
-    })
-  }   
-})
+      // fetches all documents with former queryObj and sort by price (lowest first)
+      .sort({ price: 1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, queryObj });
+      });
+  }
+});
 
 router.get('/offer-sorted-descending-price', (req, res, next) => {
   const limit = 30;
-  if(!(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)) {
+  if (
+    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+  ) {
     Offer.find(searchObj)
-  .sort({ price: -1 })
-  .limit(limit)
-  .then((filteredOffers) => {
-    res.render('offer-filtered', { filteredOffers, searchObj });
-  });
+      .sort({ price: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, searchObj });
+      });
   } else {
     Offer.find(queryObj)
-    .sort({ price: -1 })
-    .limit(limit)
-    .then((filteredOffers) => {
-      res.render('offer-filtered', { filteredOffers, queryObj});
-    })
-  }   
-})
+      .sort({ price: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, queryObj });
+      });
+  }
+});
 
 router.get('/offer-sorted-date', (req, res, next) => {
   const limit = 30;
-  if(!(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)) {
+  if (
+    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+  ) {
     Offer.find(searchObj)
-  .sort({ createdAt: -1 })
-  .limit(limit)
-  .then((filteredOffers) => {
-    res.render('offer-filtered', { filteredOffers, searchObj });
-  });
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, searchObj });
+      });
   } else {
     Offer.find(queryObj)
-    .sort({ createdAt: -1 })
-    .limit(limit)
-    .then((filteredOffers) => {
-      res.render('offer-filtered', { filteredOffers, queryObj});
-    })
-  }   
-})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, queryObj });
+      });
+  }
+});
 
 router.get('/offer-sorted-oldest-date', (req, res, next) => {
   const limit = 30;
-  if(!(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)) {
+  if (
+    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+  ) {
     Offer.find(searchObj)
-  .sort({ createdAt: 1 })
-  .limit(limit)
-  .then((filteredOffers) => {
-    res.render('offer-filtered', { filteredOffers, searchObj });
-  });
+      .sort({ createdAt: 1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, searchObj });
+      });
   } else {
     Offer.find(queryObj)
-    .sort({ createdAt: 1 })
-    .limit(limit)
-    .then((filteredOffers) => {
-      res.render('offer-filtered', { filteredOffers, queryObj});
-    })
-  }   
-})
-
-
+      .sort({ createdAt: 1 })
+      .limit(limit)
+      .then((filteredOffers) => {
+        res.render('offer-filtered', { filteredOffers, queryObj });
+      });
+  }
+});
 
 router.get('/offer-filtered', (req, res, next) => {
   let limit = 30;
   searchObj = {};
 
   if (!req.query.genres && !req.query.materials) {
-    queryObj = {}
+    queryObj = {};
   } else if (!req.query.genres) {
-    queryObj = { materials: { $in: req.query.materials }}
+    queryObj = { materials: { $in: req.query.materials } };
   } else if (!req.query.materials) {
-    queryObj = { genres: { $in: req.query.genres }}
+    queryObj = { genres: { $in: req.query.genres } };
   } else {
     queryObj = {
       $and: [
         { genres: { $in: req.query.genres } },
         { materials: { $in: req.query.materials } }
-      ]}
+      ]
+    };
   }
 
   Offer.find(queryObj)
     .sort({ createdAt: -1 })
     .limit(limit)
     .then((filteredOffers) => {
-      res.render('offer-filtered', { filteredOffers, queryObj});
-    })
+      res.render('offer-filtered', { filteredOffers, queryObj });
+    });
 });
 
 router.get('/:id', (req, res, next) => {
@@ -356,7 +367,7 @@ router.post('/:id/delete', routeGuard, (req, res, next) => {
   )
     .then((updatedDoc) => {
       console.log(updatedDoc);
-      res.redirect('offer/offer-suggestions'); 
+      res.redirect('offer/offer-suggestions');
     })
     .catch((error) => {
       next(error);
