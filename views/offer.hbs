@@ -1,3 +1,5 @@
+<div class="offerCard">
+
 <img src="{{offer.picture}}" alt="photo of object" />
 
 <h1>
@@ -25,10 +27,6 @@
 <h3>{{offer.alternativepayment}}</h3>
 {{/if}}
 
-<form action="/offer/{{ offer._id}}/offer-email">
-  <button>Send Email</button>
-</form>
-
 {{#if userIsOwner}}
 <form action="/offer/{{offer._id}}/edit" >
   <button>Edit</button>
@@ -37,4 +35,10 @@
 <form action="/offer/{{ offer._id}}/delete" method="POST">
   <button>Deactivate this offer</button>
 </form>
+
+{{else}}
+<form action="/offer/{{ offer._id}}/offer-email">
+  <button>Send Email</button>
+</form>
 {{/if}}
+</div>

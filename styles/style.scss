@@ -89,3 +89,11 @@ textarea {
 label {
   margin-bottom: 0.5em;
 }
+
+.offersCard {
+  display: flex;
+  flex-basis: 200px;
+  justify-content: space-between;
+  div {
+  }
+}

@@ -7,11 +7,12 @@
 
 <p>Welcome to {{title}} To have a look at the offerings please sign up first</p>
 
-<h2>Latest offerings</h2>
-
+<h2>Latest offers</h2>
+<div class="offersCard">
 {{#each offers}}
   {{>offersCard}}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
+</div>
 
 <a href="/offer/offer-suggestions">See all Offerings</a>

@@ -248,45 +248,63 @@ router.get('/:id/edit', (req, res, next) => {
         if (offer.genres.includes('Painting')) {
           offer.painting = true;
         }
-        if (offer.genres.includes('Drawing')) {
-          offer.drawing = true;
-        }
-        if (offer.genres.includes('Printing')) {
-          offer.printing = true;
-        }
         if (offer.genres.includes('Media')) {
           offer.media = true;
         }
         if (offer.genres.includes('Photography')) {
-          offer.photo = true;
+          offer.photography = true;
         }
         if (offer.genres.includes('Ceramics')) {
           offer.ceramics = true;
         }
-        if (offer.genres.includes('Textile')) {
-          offer.textile = true;
+        if (offer.genres.includes('Performing Arts')) {
+          offer.performingArts = true;
+        }
+        if (offer.genres.includes('Architecture')) {
+          offer.architecture = true;
+        }
+        if (offer.genres.includes('Graphics')) {
+          offer.graphics = true;
+        }
+        if (offer.genres.includes('Other')) {
+          offer.other = true;
         }
 
         if (offer.materials.includes('wood')) {
           offer.wood = true;
         }
-        if (offer.materials.includes('steel')) {
-          offer.steel = true;
+        if (offer.materials.includes('metal')) {
+          offer.metal = true;
         }
-        if (offer.materials.includes('colors')) {
-          offer.colors = true;
+        if (offer.materials.includes('plastic')) {
+          offer.plastic = true;
         }
-        if (offer.materials.includes('paper')) {
+        if (offer.materials.includes('paper / cardboard')) {
           offer.paper = true;
+        }
+        if (offer.materials.includes('pens / brushes')) {
+          offer.pens = true;
+        }
+        if (offer.materials.includes('paints')) {
+          offer.paints = true;
+        }
+        if (offer.materials.includes('textile')) {
+          offer.textile = true;
+        }
+        if (offer.materials.includes('stone / building materials')) {
+          offer.stone = true;
+        }
+        if (offer.materials.includes('moulding / casting')) {
+          offer.moulding = true;
         }
         if (offer.materials.includes('tools')) {
           offer.tools = true;
         }
-        if (offer.materials.includes('equipment')) {
-          offer.equipment = true;
+        if (offer.materials.includes('technical equipment')) {
+          offer.technicalEquipment = true;
         }
-        if (offer.materials.includes('machines')) {
-          offer.machines = true;
+        if (offer.materials.includes('studio furniture')) {
+          offer.studioFurniture = true;
         }
         if (offer.materials.includes('other')) {
           offer.other = true;

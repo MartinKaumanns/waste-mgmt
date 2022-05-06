@@ -1,5 +1,6 @@
-<div>
-    <h1> {{title}}</h1>
+<div class="offerCard">
+    <img src="{{picture}}" alt="{{title}}">
+    <h3> {{title}}</h3>
     <a href="/user/{{ creator._id }}"><p>{{creator.name}} | {{date createdAt}}</p></a>
     <span><strong>Genres</strong>: 
         {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}</span>

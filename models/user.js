@@ -27,12 +27,13 @@ const schema = new mongoose.Schema(
         enum: [
           'Installation',
           'Painting',
-          'Drawing',
-          'Printing',
           'Media',
           'Photography',
           'Ceramics',
-          'Textile'
+          'Performing Arts',
+          'Architecture',
+          'Graphics',
+          'Other'
         ]
       }
     ],

@@ -40,23 +40,26 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
       if (user.genres.includes('Painting')) {
         user.painting = true;
       }
-      if (user.genres.includes('Drawing')) {
-        user.drawing = true;
-      }
-      if (user.genres.includes('Printing')) {
-        user.printing = true;
-      }
       if (user.genres.includes('Media')) {
         user.media = true;
       }
       if (user.genres.includes('Photography')) {
-        user.photo = true;
+        user.photography = true;
       }
       if (user.genres.includes('Ceramics')) {
         user.ceramics = true;
       }
-      if (user.genres.includes('Textile')) {
-        user.textile = true;
+      if (user.genres.includes('Performing Arts')) {
+        user.performingArts = true;
+      }
+      if (user.genres.includes('Architecture')) {
+        user.architecture = true;
+      }
+      if (user.genres.includes('Graphics')) {
+        user.graphics = true;
+      }
+      if (user.genres.includes('Other')) {
+        user.other = true;
       }
 
       if (user.location.includes('Friedrichshain')) {

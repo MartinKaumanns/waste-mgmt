@@ -21,12 +21,13 @@ const offerSchema = new mongoose.Schema(
         enum: [
           'Installation',
           'Painting',
-          'Drawing',
-          'Printing',
           'Media',
           'Photography',
           'Ceramics',
-          'Textile'
+          'Performing Arts',
+          'Architecture',
+          'Graphics',
+          'Other'
         ]
       }
     ],
@@ -39,12 +40,17 @@ const offerSchema = new mongoose.Schema(
         required: true,
         enum: [
           'wood',
-          'steel',
-          'colors',
-          'paper',
+          'metal',
+          'plastic',
+          'paper / cardboard',
+          'pens / brushes',
+          'paints',
+          'textile',
+          'stone / building materials',
+          'moulding / casting',
           'tools',
-          'equipment',
-          'machines',
+          'technical equipment',
+          'studio furniture',
           'other'
         ]
       }
