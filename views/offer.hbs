@@ -4,7 +4,7 @@
   {{offer.title}}
 </h1>
 <a href="/user/{{ offer.creator._id }}">
-<p>{{offer.creator.name}} | {{offer.createdAt}}</p>
+<p>{{offer.creator.name}} | {{date offer.createdAt}}</p>
 </a>
 
 <span><strong>Genres</strong>: {{#each offer.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>

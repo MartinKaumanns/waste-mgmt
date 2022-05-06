@@ -212,10 +212,12 @@ router.get('/offer-filtered', (req, res, next) => {
 });
 
 router.get('/:id/offer-email', (req, res, next) => {
-  //console.log(req.params);
-  const offerId = req.params;
-
-  res.render('offer-email', { offerId });
+  const offerId = req.params.id;
+  Offer.findById(offerId)
+    .populate('creator')
+    .then((offer) => {
+      res.render('offer-email', { offerId, offer });
+    });
 });
 
 router.get('/:id', (req, res, next) => {
@@ -340,7 +342,8 @@ router.post('/:id/offer-email', (req, res, next) => {
   const offerId = req.params.id;
   Offer.findById(offerId)
     .populate('creator')
-    .then((offer) => {
+    ///EMAIL Client down therefore no redirection to email-feedback
+    /* .then((offer) => {
       //console.log(offer.creator.email)
       transporter
         .sendMail({
@@ -349,15 +352,15 @@ router.post('/:id/offer-email', (req, res, next) => {
           subject: 'waste-mgmt offer',
           text: req.body.text,
           html: `Hi ${req.user.name} is interested in ${offer.title} <br> ${req.body.text}`
-        })
-        .then(() => {
-          console.log({ offerId });
-          res.render('email-feedback', { offerId });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        }) */
+    .then(() => {
+      console.log({ offerId });
+      res.render('email-feedback', { offerId });
+    })
+    .catch((error) => {
+      console.log(error);
     });
+  /* }); */
 });
 
 router.post(

@@ -1,4 +1,8 @@
-<form action="/offer/{{offerId.id}}/offer-email" method="POST">
+<form action="/offer/{{offerId}}/offer-email" method="POST">
+
+  <p>It seems that you are interested in
+   <em>{{offer.title}}</em>. Get in contact with  
+    <em>{{offer.creator.name}}!</em></p2>
 
   <textarea name="text" id="" cols="30" rows="10"></textarea>
   <button>Send</button>

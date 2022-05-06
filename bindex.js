@@ -26,3 +26,30 @@ transporter
   .catch((error) => {
     console.log(error);
   });
+
+/// Profile pic
+//scss
+/*   nav {
+    a,
+    button {
+      align-items: center;
+      display: inline-flex;
+    }
+  
+    img {
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  } */
+// layout.hbs
+{
+  /* <a href="/user/{{user.id}}"><img
+            src="{{user.picture}}"
+            alt="{{user.name}}"
+          />{{user.name}}'s Profile</a>
+        {{!-- <form action="/user/{{ user.id }}">
+          <button></button>
+        </form> --}} */
+}

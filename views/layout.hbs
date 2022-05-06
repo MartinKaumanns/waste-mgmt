@@ -22,10 +22,11 @@
         <form action="/offer/create">
           <button>New Offer</button>
         </form>
-        <a href="/user/{{ user.id }}"></a>
-        <form action="/user/{{ user.id }}">
-          <button>{{user.name}}'s Profile</button>
-        </form>
+
+        <a href="/user/{{user.id}}">{{user.name}}'s Profile</a>
+        {{!-- <form action="/user/{{user.id}}">
+          <button></button>
+        </form> --}}
 
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
