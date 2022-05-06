@@ -32,23 +32,23 @@ router.get('/offer-suggestions', (req, res, next) => {
   // checks if user is logged in
   if (req.user) {
     // searchs for all offers which contain the user's genre category
+    // filters out own offers
     let genresArray = req.user.genres;
-    Offer.find({ genres: { $in: req.user.genres } })
+    Offer.find({$and : [{ genres: { $in: req.user.genres } },{creator : { $ne : {_id: req.user.id}}}]})
       .sort({ createdAt: -1 })
       .limit(limit)
+      .populate('creator')
       .then((offers) => {
-        console.log('Länge eigener genre offerings: ', offers.length);
         // checks if results are already 30(limit)
         if (offers.length < limit) {
           // finds latest offers that do not contain the user's genre and concats the list of results
-          // should filter out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
-          Offer.find({ genres: { $nin: req.user.genres } })
+          // filters out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
+          Offer.find({$and : [{ genres: { $nin: req.user.genres } },{creator : { $ne : {_id: req.user.id}}}]})
             .sort({ createdAt: -1 })
             .limit(limit - offers.length)
+            .populate('creator')
             .then((restOffers) => {
               offers = offers.concat(restOffers);
-              console.log('Länge aller offerings: ', offers.length);
-              console.log(offers[0].creator, req.user._id);
               res.render('offer-suggestions', { offers });
             })
             .catch((error) => {
@@ -67,6 +67,7 @@ router.get('/offer-suggestions', (req, res, next) => {
     Offer.find()
       .sort({ createdAt: -1 })
       .limit(limit)
+      .populate('creator')
       .then((offers) => {
         res.render('offer-suggestions', { offers });
       });
@@ -77,7 +78,21 @@ router.get('/offer-search', (req, res, next) => {
   const limit = 30;
   const searchTerm = req.query.searchfield;
   queryObj = {}; // empties queryObj
-  // writes searchObj with search "term"
+  // writes searchObj with search "term", filters out results of user
+  if(req.user) {
+    searchObj = {
+      $and: [
+        {creator : { $ne : {_id: req.user.id}}}, {
+      $or: [
+        { title: { $regex: searchTerm } },
+        { description: { $regex: searchTerm } },
+        { genres: { $regex: searchTerm } },
+        { materials: { $regex: searchTerm } }
+      ]
+    }
+  ]
+}
+  } else {
   searchObj = {
     $or: [
       { title: { $regex: searchTerm } },
@@ -85,11 +100,13 @@ router.get('/offer-search', (req, res, next) => {
       { genres: { $regex: searchTerm } },
       { materials: { $regex: searchTerm } }
     ]
-  };
+  }
+}
   // performs query with searchObj
   Offer.find(searchObj)
     .sort({ createdAt: -1 })
     .limit(limit)
+    .populate('creator')
     .then((filteredOffers) => {
       res.render('offer-filtered', { filteredOffers, searchObj });
     });
@@ -106,6 +123,7 @@ router.get('/offer-sorted-price', (req, res, next) => {
     Offer.find(searchObj)
       .sort({ price: 1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, searchObj });
       });
@@ -115,6 +133,7 @@ router.get('/offer-sorted-price', (req, res, next) => {
       // fetches all documents with former queryObj and sort by price (lowest first)
       .sort({ price: 1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, queryObj });
       });
@@ -129,6 +148,7 @@ router.get('/offer-sorted-descending-price', (req, res, next) => {
     Offer.find(searchObj)
       .sort({ price: -1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, searchObj });
       });
@@ -150,6 +170,7 @@ router.get('/offer-sorted-date', (req, res, next) => {
     Offer.find(searchObj)
       .sort({ createdAt: -1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, searchObj });
       });
@@ -157,6 +178,7 @@ router.get('/offer-sorted-date', (req, res, next) => {
     Offer.find(queryObj)
       .sort({ createdAt: -1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, queryObj });
       });
@@ -171,6 +193,7 @@ router.get('/offer-sorted-oldest-date', (req, res, next) => {
     Offer.find(searchObj)
       .sort({ createdAt: 1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, searchObj });
       });
@@ -178,6 +201,7 @@ router.get('/offer-sorted-oldest-date', (req, res, next) => {
     Offer.find(queryObj)
       .sort({ createdAt: 1 })
       .limit(limit)
+      .populate('creator')
       .then((filteredOffers) => {
         res.render('offer-filtered', { filteredOffers, queryObj });
       });
@@ -187,6 +211,29 @@ router.get('/offer-sorted-oldest-date', (req, res, next) => {
 router.get('/offer-filtered', (req, res, next) => {
   let limit = 30;
   searchObj = {};
+  //checks if user is loged in, if yes: filters out user's results
+  if(req.user) {
+
+    if (!req.query.genres && !req.query.materials) {
+      queryObj = {creator : { $ne : {_id: req.user.id}}};
+    } else if (!req.query.genres) {
+      queryObj = { $and: [
+        { creator : { $ne : {_id: req.user.id}}}, 
+        { materials: { $in: req.query.materials } }
+      ]}
+    } else if (!req.query.materials) {
+      queryObj = { $and: [
+        { creator : { $ne : {_id: req.user.id }}}, 
+        { genres: { $in: req.query.genres }} 
+      ]}
+    } else {
+      queryObj = { $and: [
+          { creator : { $ne : {_id: req.user.id}}},
+          { genres: { $in: req.query.genres } },
+          { materials: { $in: req.query.materials } }
+        ]};
+    }
+  } else {
 
   if (!req.query.genres && !req.query.materials) {
     queryObj = {};
@@ -202,10 +249,12 @@ router.get('/offer-filtered', (req, res, next) => {
       ]
     };
   }
+}
 
   Offer.find(queryObj)
     .sort({ createdAt: -1 })
     .limit(limit)
+    .populate('creator')
     .then((filteredOffers) => {
       res.render('offer-filtered', { filteredOffers, queryObj });
     });
@@ -234,11 +283,10 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Offer.findOne({ _id: id, creator: req.user._id })
     .then((offer) => {
-      console.log(offer.genres.includes('Painting'));
       if (!offer) {
         throw new Error('OFFER_NOT_FOUND');
       } else {
@@ -355,8 +403,7 @@ router.post(
   }
 );
 
-router.post('/:id/offer-email', (req, res, next) => {
-  // console.log(req.params.id);
+router.post('/:id/offer-email', routeGuard, (req, res, next) => {
   const offerId = req.params.id;
   Offer.findById(offerId)
     .populate('creator')
@@ -372,7 +419,6 @@ router.post('/:id/offer-email', (req, res, next) => {
           html: `Hi ${req.user.name} is interested in ${offer.title} <br> ${req.body.text}`
         }) */
     .then(() => {
-      console.log({ offerId });
       res.render('email-feedback', { offerId });
     })
     .catch((error) => {
@@ -386,7 +432,6 @@ router.post(
   routeGuard,
   fileUploader.single('picture'),
   (req, res, next) => {
-    console.log(req.params);
     const id = req.params.id;
     const {
       title,
@@ -413,7 +458,6 @@ router.post(
       }
     )
       .then(() => {
-        console.log('Hello');
         res.redirect(`/offer/${id}`);
       })
       .catch((error) => {
@@ -430,7 +474,6 @@ router.post('/:id/delete', routeGuard, (req, res, next) => {
     { returnDocument: 'after' }
   )
     .then((updatedDoc) => {
-      console.log(updatedDoc);
       res.redirect('offer/offer-suggestions');
     })
     .catch((error) => {
