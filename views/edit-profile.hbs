@@ -28,16 +28,18 @@
   <div>
 
     <label for="genres">Genre:</label><br />
-      <input type="checkbox" name="genres" value="Installation"{{#if offer.Installation}}checked {{/if}}/>Installation<br>
-      <input type="checkbox" name="genres" value="Painting"{{#if offer.Painting}}checked {{/if}} />Painting<br>
-      <input type="checkbox" name="genres" value="Media"{{#if offer.Media}}checked {{/if}}/>Media<br>
-      <input type="checkbox" name="genres" value="Photography"{{#if offer.Photography}}checked {{/if}}/>Photography<br>
-      <input type="checkbox" name="genres" value="Ceramic"{{#if offer.Ceramic}}checked {{/if}}/>Ceramic<br>
-      <input type="checkbox" name="genres" value="PerformingArts"{{#if offer.PerformingArts}}checked {{/if}}/>Performing Arts<br>
-      <input type="checkbox" name="genres" value="Architecture"{{#if offer.Architecture}}checked {{/if}}/>Architecture<br>
-      <input type="checkbox" name="genres" value="Graphics"{{#if offere.Graphics}}checked {{/if}}/>Graphics<br>
-      <input type="checkbox" name="genres" value="Other"{{#if offere.Other}}checked {{/if}}/>Other<br>
+      <input type="checkbox" name="genres" value="Installation"{{#if user.installation}}checked {{/if}}/>Installation<br>
+      <input type="checkbox" name="genres" value="Painting"{{#if user.painting}}checked {{/if}} />Painting<br>
+      <input type="checkbox" name="genres" value="Media"{{#if user.media}}checked {{/if}}/>Media<br>
+      <input type="checkbox" name="genres" value="Photography"{{#if user.photography}}checked {{/if}}/>Photography<br>
+      <input type="checkbox" name="genres" value="Ceramics"{{#if user.ceramics}}checked {{/if}}/>Ceramic<br>
+      <input type="checkbox" name="genres" value="Performing Arts"{{#if user.performingArts}}checked {{/if}}/>Performing Arts<br>
+      <input type="checkbox" name="genres" value="Architecture"{{#if user.architecture}}checked {{/if}}/>Architecture<br>
+      <input type="checkbox" name="genres" value="Graphics"{{#if user.graphics}}checked {{/if}}/>Graphics<br>
+      <input type="checkbox" name="genres" value="Other"{{#if user.other}}checked {{/if}}/>Other<br>
   </div>
+
+
 
   <label for="input-location">Location:
     <select name="location" value="Choose a genre you are working in">

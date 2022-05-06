@@ -34,7 +34,12 @@ router.get('/offer-suggestions', (req, res, next) => {
     // searchs for all offers which contain the user's genre category
     // filters out own offers
     let genresArray = req.user.genres;
-    Offer.find({$and : [{ genres: { $in: req.user.genres } },{creator : { $ne : {_id: req.user.id}}}]})
+    Offer.find({
+      $and: [
+        { genres: { $in: req.user.genres } },
+        { creator: { $ne: { _id: req.user.id } } }
+      ]
+    })
       .sort({ createdAt: -1 })
       .limit(limit)
       .populate('creator')
@@ -43,7 +48,12 @@ router.get('/offer-suggestions', (req, res, next) => {
         if (offers.length < limit) {
           // finds latest offers that do not contain the user's genre and concats the list of results
           // filters out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
-          Offer.find({$and : [{ genres: { $nin: req.user.genres } },{creator : { $ne : {_id: req.user.id}}}]})
+          Offer.find({
+            $and: [
+              { genres: { $nin: req.user.genres } },
+              { creator: { $ne: { _id: req.user.id } } }
+            ]
+          })
             .sort({ createdAt: -1 })
             .limit(limit - offers.length)
             .populate('creator')
@@ -79,29 +89,30 @@ router.get('/offer-search', (req, res, next) => {
   const searchTerm = req.query.searchfield;
   queryObj = {}; // empties queryObj
   // writes searchObj with search "term", filters out results of user
-  if(req.user) {
+  if (req.user) {
     searchObj = {
       $and: [
-        {creator : { $ne : {_id: req.user.id}}}, {
+        { creator: { $ne: { _id: req.user.id } } },
+        {
+          $or: [
+            { title: { $regex: searchTerm } },
+            { description: { $regex: searchTerm } },
+            { genres: { $regex: searchTerm } },
+            { materials: { $regex: searchTerm } }
+          ]
+        }
+      ]
+    };
+  } else {
+    searchObj = {
       $or: [
         { title: { $regex: searchTerm } },
         { description: { $regex: searchTerm } },
         { genres: { $regex: searchTerm } },
         { materials: { $regex: searchTerm } }
       ]
-    }
-  ]
-}
-  } else {
-  searchObj = {
-    $or: [
-      { title: { $regex: searchTerm } },
-      { description: { $regex: searchTerm } },
-      { genres: { $regex: searchTerm } },
-      { materials: { $regex: searchTerm } }
-    ]
+    };
   }
-}
   // performs query with searchObj
   Offer.find(searchObj)
     .sort({ createdAt: -1 })
@@ -212,44 +223,48 @@ router.get('/offer-filtered', (req, res, next) => {
   let limit = 30;
   searchObj = {};
   //checks if user is loged in, if yes: filters out user's results
-  if(req.user) {
-
+  if (req.user) {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = {creator : { $ne : {_id: req.user.id}}};
+      queryObj = { creator: { $ne: { _id: req.user.id } } };
     } else if (!req.query.genres) {
-      queryObj = { $and: [
-        { creator : { $ne : {_id: req.user.id}}}, 
-        { materials: { $in: req.query.materials } }
-      ]}
+      queryObj = {
+        $and: [
+          { creator: { $ne: { _id: req.user.id } } },
+          { materials: { $in: req.query.materials } }
+        ]
+      };
     } else if (!req.query.materials) {
-      queryObj = { $and: [
-        { creator : { $ne : {_id: req.user.id }}}, 
-        { genres: { $in: req.query.genres }} 
-      ]}
+      queryObj = {
+        $and: [
+          { creator: { $ne: { _id: req.user.id } } },
+          { genres: { $in: req.query.genres } }
+        ]
+      };
     } else {
-      queryObj = { $and: [
-          { creator : { $ne : {_id: req.user.id}}},
+      queryObj = {
+        $and: [
+          { creator: { $ne: { _id: req.user.id } } },
           { genres: { $in: req.query.genres } },
           { materials: { $in: req.query.materials } }
-        ]};
+        ]
+      };
     }
   } else {
-
-  if (!req.query.genres && !req.query.materials) {
-    queryObj = {};
-  } else if (!req.query.genres) {
-    queryObj = { materials: { $in: req.query.materials } };
-  } else if (!req.query.materials) {
-    queryObj = { genres: { $in: req.query.genres } };
-  } else {
-    queryObj = {
-      $and: [
-        { genres: { $in: req.query.genres } },
-        { materials: { $in: req.query.materials } }
-      ]
-    };
+    if (!req.query.genres && !req.query.materials) {
+      queryObj = {};
+    } else if (!req.query.genres) {
+      queryObj = { materials: { $in: req.query.materials } };
+    } else if (!req.query.materials) {
+      queryObj = { genres: { $in: req.query.genres } };
+    } else {
+      queryObj = {
+        $and: [
+          { genres: { $in: req.query.genres } },
+          { materials: { $in: req.query.materials } }
+        ]
+      };
+    }
   }
-}
 
   Offer.find(queryObj)
     .sort({ createdAt: -1 })
