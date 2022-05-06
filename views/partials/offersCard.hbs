@@ -1,6 +1,11 @@
-<div class="offerCard">
+{{!-- Bootstrap --}}
+
+<div class="offersCard">
+
     <img src="{{picture}}" alt="{{title}}">
+
     <h3> {{title}}</h3>
+
     <a href="/user/{{ creator._id }}"><p>{{creator.name}} | {{date createdAt}}</p></a>
     <span><strong>Genres</strong>: 
         {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
@@ -20,3 +25,10 @@
 
     <a href="/offer/{{ _id }}">See Details</a>
 </div>
+
+{{!-- <div class="container">
+  <div class="row">
+    <div class="col-4">
+    </div>
+  </div>
+</div> --}}

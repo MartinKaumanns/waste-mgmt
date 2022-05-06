@@ -2,7 +2,7 @@ $font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $grey: hsl(0, 0, 90%);
 /* font-family: 'Inter', sans-serif; */
 * {
-  font-family: 'Inter', sans-serif;
+  /*  font-family: 'Inter', sans-serif; */
   &,
   &:before,
   &:after {
@@ -11,7 +11,7 @@ $grey: hsl(0, 0, 90%);
 }
 
 body {
-  max-width: 52em;
+  /* max-width: 52em */
   padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
@@ -90,10 +90,16 @@ label {
   margin-bottom: 0.5em;
 }
 
-.offersCard {
+.offersWraper {
   display: flex;
-  flex-basis: 200px;
-  justify-content: space-between;
-  div {
+  justify-content: space-around;
+  margin: 5%;
+}
+.offersCard {
+  width: 30vw;
+  img {
+    width: 20em;
+    height: 12em;
+    object-fit: cover;
   }
 }
