@@ -18,41 +18,183 @@
     </label>
   </div>
 
-  <div>
+{{!--   <div>
   <label for="input-genre">Genre: <br>
-      <input type="checkbox" name="genres" value="Installation" {{#if offer.installation}}checked {{/if}}/>Installation<br>
-      <input type="checkbox" name="genres" value="Painting"{{#if offer.painting}}checked {{/if}} />Painting<br>
-      <input type="checkbox" name="genres" value="Media"{{#if offer.media}}checked {{/if}}/>Media<br>
-      <input type="checkbox" name="genres" value="Photography"{{#if offer.photography}}checked {{/if}}/>Photography<br>
-      <input type="checkbox" name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/>Ceramics<br>
-     {{!--  <input type="checkbox" name="genres" value="PerformingArts"{{#if offer.performingArts}}checked {{/if}}/>Performing Arts<br> --}}
-      <input type="checkbox" name="genres" value="Architecture"{{#if offer.architecture}}checked {{/if}}/>Architecture<br>
-      {{!-- <input type="checkbox" name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/>Graphics<br> --}}
-      {{!-- <input type="checkbox" name="genres" value="Other"{{#if offer.other}}checked {{/if}}/>Other<br> --}}
+<input type="checkbox" name="genres" value="Installation" {{#if offer.installation}}checked {{/if}}/>Installation<br>
+<input type="checkbox" name="genres" value="Painting"{{#if offer.painting}}checked {{/if}} />Painting<br>
+<input type="checkbox" name="genres" value="Media"{{#if offer.media}}checked {{/if}}/>Media<br>
+<input type="checkbox" name="genres" value="Photography"{{#if offer.photography}}checked {{/if}}/>Photography<br>
+<input type="checkbox" name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/>Ceramics<br>
+<input type="checkbox" name="genres" value="PerformingArts"{{#if offer.performingArts}}checked {{/if}}/>Performing Arts<br>
+<input type="checkbox" name="genres" value="Architecture"{{#if offer.architecture}}checked {{/if}}/>Architecture<br>
+<input type="checkbox" name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/>Graphics<br>
+<input type="checkbox" name="genres" value="Other"{{#if offer.other}}checked {{/if}}/>Other<br>
    </label>
-   </div>
+   </div> --}}
 
-<div>
-
+<div class="wrapper">
   <div id="ck-button">
-<div class="single-button">
-   <label>
-      <input type="checkbox" hidden name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/><span>Graphics</span>
-   </label>
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Installation" {{#if offer.installation}}checked {{/if}}/><span>Installation</span>
+       </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Painting"{{#if offer.painting}}checked {{/if}}/><span>Painting</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Media"{{#if offer.media}}checked {{/if}}/><span>Media</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Photography"{{#if offer.photography}}checked {{/if}}/><span>Photography</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/><span>Ceramics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Performing Arts"{{#if offer.performingArts}}checked {{/if}}/><span>Performing Arts</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Architecture"{{#if offer.architecture}}checked {{/if}}/><span>Architecture</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/><span>Graphics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Other"{{#if offer.Other}}checked {{/if}}/><span>Other</span>
+      </label>
+    </div>
    </div>
+</div>
+/////  materials
+
+<div class="wrapper">
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="wood"{{#if offer.wood}}checked {{/if}}/><span>wood</span>
+       </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="metal" {{#if offer.metal}} checked {{/if}}/><span>metal</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="plastic"{{#if offer.plastic}}checked {{/if}}/><span>Plastic</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="paper / cardboard"{{#if offer.paper}}checked {{/if}}/><span>paper / cardboard</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="pens / brushes"{{#if offer.pens}}checked {{/if}}/><span>pens / brushes</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="paints"{{#if offer.paints}}checked {{/if}}/><span>paints</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="textile"{{#if offer.textile}}checked {{/if}}/><span>textile</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="stone / building materials"{{#if offer.stone}}checked {{/if}}/><span>stone / building materials</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="materials" value="moulding / casting"{{#if offer.moulding}}checked {{/if}}/><span>moulding / casting</span>
+      </label>
+    </div>
    </div>
    <div id="ck-button">
-<div class="single-button">
-   <label>
-      <input type="checkbox" hidden name="genres" value="Performing Arts"{{#if offer.performingArts}}checked {{/if}}/><span>Performing Arts</span>
-   </label>
+     <div class="single-button">
+       <label>
+         <input type="checkbox" hidden name="materials" value="tools"{{#if offer.tools}}checked {{/if}}/><span>tools</span>
+       </label>
+     </div>
+   </div>
+   <div id="ck-button">
+     <div class="single-button">
+       <label>
+         <input type="checkbox" hidden name="materials" value="technical equipment"{{#if offer.technicalEquipment}}checked {{/if}}/><span>technical equipment</span>
+       </label>
+     </div>
+   </div>
+   <div id="ck-button">
+     <div class="single-button">
+       <label>
+         <input type="checkbox" hidden name="materials" value="studio furniture"{{#if offer.studioFurniture}}checked {{/if}}/><span>studio furniture</span>
+       </label>
+     </div>
+   </div>
+   <div id="ck-button">
+     <div class="single-button">
+       <label>
+         <input type="checkbox" hidden name="materials" value="other"{{#if offer.other}}checked {{/if}}/><span>other</span>
+       </label>
+     </div>
    </div>
 </div>
-</div>
 
 
-
-  <div>
+{{!--   <div>
   <label for="input-material">Material Category: </br>
       <input type="checkbox" name="materials" value="wood"{{#if offer.wood}}checked {{/if}} />wood</br>
       <input type="checkbox" name="materials" value="metal" {{#if offer.metal}} checked {{/if}}/>metal</br>
@@ -64,11 +206,11 @@
       <input type="checkbox" name="materials" value="stone"{{#if offer.stone}}checked {{/if}}/>stone / building materials</br>
       <input type="checkbox" name="materials" value="moulding"{{#if offer.moulding}}checked {{/if}}/>moulding / casting</br>
       <input type="checkbox" name="materials" value="tools"{{#if offer.tools}}checked {{/if}}/>tools</br>
-      <input type="checkbox" name="materials" value="technicalEquipment"{{#if offer.technicalEquipment}}checked {{/if}}/>technical Equipment</br>
-      <input type="checkbox" name="materials" value="studioFurniture"{{#if offer.studioFurniture}}checked {{/if}}/>studio Furniture</br>
+      <input type="checkbox" name="materials" value="technical equipment"{{#if offer.technicalEquipment}}checked {{/if}}/>technical equipment</br>
+      <input type="checkbox" name="materials" value="studio furniture"{{#if offer.studioFurniture}}checked {{/if}}/>studio furniture</br>
       <input type="checkbox" name="materials" value="other"{{#if offer.other}}checked {{/if}}/>other</br>
     </label>
-    </div>
+    </div> --}}
 
   <label for="input-location">Location:
     <select name="location" placeholder="">

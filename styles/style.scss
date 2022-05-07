@@ -106,10 +106,14 @@ label {
 
 /* Checkboxes */
 
-#ck-button {
-  margin: 4px;
+.wrapper {
   display: flex;
   justify-content: left;
+  flex-wrap: wrap;
+}
+
+#ck-button {
+  margin: 4px;
 
   /* background-color: #efefef;
   border-radius: 4px;
