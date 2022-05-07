@@ -24,7 +24,7 @@ const offerSchema = new mongoose.Schema(
           'Media',
           'Photography',
           'Ceramics',
-          'PerformingArts',
+          'Performing Arts',
           'Architecture',
           'Graphics',
           'Other'
