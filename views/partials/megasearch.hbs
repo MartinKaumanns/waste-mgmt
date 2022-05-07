@@ -4,8 +4,13 @@
     type="text"
     name="searchfield"
     id=""
-    placeholder="Type in anything …"
+    {{#if filteredOffers.searchTerm }}value={{filteredOffers.searchTerm}}{{/if}}
+    placeholder={{#if filteredOffers.searchTerm}}{{filteredOffers.searchTerm}}{{else}}"Type in anything …"{{/if}}
   />
+<button formaction="/offer/offer-search/date">GO!</button>
 
-  <button>GO!</button>
+<button formaction="/offer/offer-search/price">Sort by price</button>
+<button formaction="/offer/offer-search/price-descending">Sort by price - descending</button>
+<button formaction="/offer/offer-search/date">Sort by date - Latest first</button>
+<button formaction="/offer/offer-search/date-oldest">Sort by date - Oldest first</button>
 </form>

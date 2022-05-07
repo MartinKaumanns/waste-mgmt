@@ -1,4 +1,4 @@
-<form action="/offer/offer-filtered">
+<form action="/offer/offer-filtered/">
 <h2>catagory search</h2>
     {{!-- <div>
   <label for="input-genre">Genre: <br>
@@ -193,7 +193,12 @@
 </div>
 
 
-<button>GO!</button>
+<button formaction="/offer/offer-filtered/date">GO!</button>
+
+<button formaction="/offer/offer-filtered/price">Sort by price</button>
+<button formaction="/offer/offer-filtered/price-descending">Sort by price - descending</button>
+<button formaction="/offer/offer-filtered/date">Sort by date - Latest first</button>
+<button formaction="/offer/offer-filtered/date-oldest">Sort by date - Oldest first</button>
 </form>
 
 {{!-- <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">

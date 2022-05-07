@@ -24,8 +24,11 @@
 
 <h3>{{ profile.name }}'s Offers:</h3>
 
+{{#if userOffers}}
 {{#each userOffers}}
   {{>offersCard}}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
-
+{{else}}
+<p>No active offers</p>
+{{/if}}

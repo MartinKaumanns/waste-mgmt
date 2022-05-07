@@ -1,10 +1,9 @@
 {{> megamenu}}{{> megasearch}}
-
 <span>Sort by</span>
-<form action="/offer/offer-sorted-price">
+{{!-- <form action="/offer/offer-sorted-price">
     <button>Price</button>
-</form>
-<form action="/offer/offer-sorted-descending-price">
+</form> --}}
+{{!-- <form action="/offer/offer-sorted-descending-price">
     <button>Price descending</button>
 </form>
 <form action="/offer/offer-sorted-date">
@@ -14,8 +13,11 @@
 <form action="/offer/offer-sorted-oldest-date">
     <button>Date: Oldest First
     </button>
-</form>
-
+</form> --}}
+{{#if filteredOffers}}
+{{else}}
+<h2>No offers found. Try another filter or search term!</h2>
+{{/if}}
 {{#each filteredOffers}}
 {{> offersCard }}
 {{#unless @last}}<br />{{/unless}}
