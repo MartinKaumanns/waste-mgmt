@@ -1,6 +1,8 @@
 <div class="offerCard">
 
-<img src="{{offer.picture}}" alt="photo of object" />
+{{#each offer.picture}}
+<img src="{{this}}" alt="photo of object" />
+{{/each}}
 
 <h1>
   {{offer.title}}

@@ -31,9 +31,11 @@ const offerSchema = new mongoose.Schema(
         ]
       }
     ],
-    picture: {
-      type: String
-    },
+    picture: [
+      {
+        type: String
+      }
+    ],
     materials: [
       {
         type: String,
