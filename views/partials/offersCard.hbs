@@ -1,12 +1,13 @@
 {{!-- Bootstrap --}}
 
 <div class="offersCard">
+  <a href="/offer/{{ _id }}">
 
     <img src="{{picture}}" alt="{{title}}">
 
     <h3> {{title}}</h3>
-
-    <span><a href="/user/{{ creator._id }}">{{creator.name}} | </a>{{date createdAt}}</span>
+    </a>
+    <span><a href="/user/{{ creator._id }}">{{creator.name}}</a> | {{date createdAt}}</span>
     <br>
     <span><strong>Genres</strong>: 
         {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
@@ -23,8 +24,6 @@
         {{price}} € </span>
         {{else}} <strong> It's for free!</strong>{{/if}}
         <br />
-
-    <a href="/offer/{{ _id }}">See Details</a>
 </div>
 
 {{!-- <div class="container">
