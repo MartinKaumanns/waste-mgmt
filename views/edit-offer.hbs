@@ -20,17 +20,37 @@
 
   <div>
   <label for="input-genre">Genre: <br>
-      <input type="checkbox" name="genres" value="Installation"{{#if offer.installation}}checked {{/if}}/>Installation<br>
+      <input type="checkbox" name="genres" value="Installation" {{#if offer.installation}}checked {{/if}}/>Installation<br>
       <input type="checkbox" name="genres" value="Painting"{{#if offer.painting}}checked {{/if}} />Painting<br>
       <input type="checkbox" name="genres" value="Media"{{#if offer.media}}checked {{/if}}/>Media<br>
       <input type="checkbox" name="genres" value="Photography"{{#if offer.photography}}checked {{/if}}/>Photography<br>
-      <input type="checkbox" name="genres" value="Ceramic"{{#if offer.ceramics}}checked {{/if}}/>Ceramic<br>
-      <input type="checkbox" name="genres" value="PerformingArts"{{#if offer.performingArts}}checked {{/if}}/>Performing Arts<br>
+      <input type="checkbox" name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/>Ceramics<br>
+     {{!--  <input type="checkbox" name="genres" value="PerformingArts"{{#if offer.performingArts}}checked {{/if}}/>Performing Arts<br> --}}
       <input type="checkbox" name="genres" value="Architecture"{{#if offer.architecture}}checked {{/if}}/>Architecture<br>
-      <input type="checkbox" name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/>Graphics<br>
-      <input type="checkbox" name="genres" value="Other"{{#if offer.other}}checked {{/if}}/>Other<br>
+      {{!-- <input type="checkbox" name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/>Graphics<br> --}}
+      {{!-- <input type="checkbox" name="genres" value="Other"{{#if offer.other}}checked {{/if}}/>Other<br> --}}
    </label>
    </div>
+
+<div>
+
+  <div id="ck-button">
+<div class="single-button">
+   <label>
+      <input type="checkbox" hidden name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/><span>Graphics</span>
+   </label>
+   </div>
+   </div>
+   <div id="ck-button">
+<div class="single-button">
+   <label>
+      <input type="checkbox" hidden name="genres" value="Performing Arts"{{#if offer.performingArts}}checked {{/if}}/><span>Performing Arts</span>
+   </label>
+   </div>
+</div>
+</div>
+
+
 
   <div>
   <label for="input-material">Material Category: </br>

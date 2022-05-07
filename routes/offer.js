@@ -423,7 +423,12 @@ router.post('/:id/offer-email', routeGuard, (req, res, next) => {
   Offer.findById(offerId)
     .populate('creator')
     ///EMAIL Client down therefore no redirection to email-feedback
-    /* .then((offer) => {
+    .then((offer) => {
+      console.log(
+        `Hi ${offer.creator.name} ! ${req.user.name} is interested in ${offer.title} ${req.body.text} ${req.user.email}`
+      );
+    })
+    /* 
       //console.log(offer.creator.email)
       transporter
         .sendMail({
@@ -431,8 +436,9 @@ router.post('/:id/offer-email', routeGuard, (req, res, next) => {
           to: offer.creator.email,
           subject: 'waste-mgmt offer',
           text: req.body.text,
-          html: `Hi ${req.user.name} is interested in ${offer.title} <br> ${req.body.text}`
-        }) */
+          html: `Hi ${offer.creator.name} ${req.user.name} is interested in ${offer.title} <br> ${req.body.text}`
+        }) 
+        */
     .then(() => {
       res.render('email-feedback', { offerId });
     })
