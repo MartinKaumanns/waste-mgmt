@@ -244,8 +244,11 @@ router.get('/offer-filtered', (req, res, next) => {
       queryObj = {
         $and: [
           { creator: { $ne: { _id: req.user.id } } },
-          { genres: { $in: req.query.genres } },
-          { materials: { $in: req.query.materials } }
+          { $or: [
+            { genres: { $in: req.query.genres } },
+            { materials: { $in: req.query.materials } }
+          ]
+          }
         ]
       };
     }
@@ -258,7 +261,7 @@ router.get('/offer-filtered', (req, res, next) => {
       queryObj = { genres: { $in: req.query.genres } };
     } else {
       queryObj = {
-        $and: [
+        $or: [
           { genres: { $in: req.query.genres } },
           { materials: { $in: req.query.materials } }
         ]
