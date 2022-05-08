@@ -162,7 +162,6 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
     });
 });
 
-
 router.get('/offer-search/price', (req, res, next) => {
   const limit = 30;
   const searchTerm = req.query.searchfield;
@@ -275,7 +274,6 @@ router.get('/offer-filtered/price', (req, res, next) => {
         ]
       };
     }
-   
   } else {
     if (!req.query.genres && !req.query.materials) {
       queryObj = {};
@@ -413,7 +411,6 @@ router.get('/offer-filtered/price-descending', (req, res, next) => {
         ]
       };
     }
-   
   } else {
     if (!req.query.genres && !req.query.materials) {
       queryObj = {};
@@ -551,7 +548,6 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
         ]
       };
     }
-   
   } else {
     if (!req.query.genres && !req.query.materials) {
       queryObj = {};
@@ -685,7 +681,7 @@ router.get('/offer-sorted-price', (req, res, next) => {
 
 router.get('/offer-sorted-descending-price', (req, res, next) => {
   const limit = 30;
-  console.log(req.query.genres)
+  console.log(req.query.genres);
   if (
     !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
   ) {
@@ -725,7 +721,6 @@ router.get('/offer-sorted-date', (req, res, next) => {
       .limit(limit)
       .populate('creator')
       .then((filteredOffers) => {
-        
         res.render('offer-filtered', { filteredOffers, queryObj });
       });
   }
@@ -788,7 +783,6 @@ router.get('/offer-filtered/date', (req, res, next) => {
         ]
       };
     }
-   
   } else {
     if (!req.query.genres && !req.query.materials) {
       queryObj = {};
@@ -884,7 +878,7 @@ router.get('/offer-filtered/date', (req, res, next) => {
             filteredOffers[0].other = true;
           }
         }
-        res.render('offer-filtered', { filteredOffers});
+        res.render('offer-filtered', { filteredOffers });
       }
     })
     .catch((error) => {
@@ -898,6 +892,9 @@ router.get('/:id/offer-email', (req, res, next) => {
     .populate('creator')
     .then((offer) => {
       res.render('offer-email', { offerId, offer });
+    })
+    .catch((error) => {
+      next(error);
     });
 });
 

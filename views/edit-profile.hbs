@@ -25,7 +25,7 @@
   {{! image }}
   {{! description }}
   {{! genre }}
-  <div>
+{{!--   <div>
 
     <label for="genres">Genre:</label><br />
       <input type="checkbox" name="genres" value="Installation"{{#if user.installation}}checked {{/if}}/>Installation<br>
@@ -37,8 +37,73 @@
       <input type="checkbox" name="genres" value="Architecture"{{#if user.architecture}}checked {{/if}}/>Architecture<br>
       <input type="checkbox" name="genres" value="Graphics"{{#if user.graphics}}checked {{/if}}/>Graphics<br>
       <input type="checkbox" name="genres" value="Other"{{#if user.other}}checked {{/if}}/>Other<br>
+  </div> --}}
+<label for="genres">Genre:</label><br />
+<div class="wrapper">
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Installation" {{#if user.installation}}checked {{/if}}/><span>Installation</span>
+       </label>
+    </div>
   </div>
-
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Painting"{{#if user.painting}}checked {{/if}}/><span>Painting</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Media"{{#if user.media}}checked {{/if}}/><span>Media</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Photography"{{#if user.photography}}checked {{/if}}/><span>Photography</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Ceramics"{{#if user.ceramics}}checked {{/if}}/><span>Ceramics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Performing Arts"{{#if user.performingArts}}checked {{/if}}/><span>Performing Arts</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Architecture"{{#if user.architecture}}checked {{/if}}/><span>Architecture</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Graphics"{{#if user.graphics}}checked {{/if}}/><span>Graphics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Other"{{#if user.Other}}checked {{/if}}/><span>Other</span>
+      </label>
+    </div>
+   </div>
+</div>
 
 
   <label for="input-location">Location:
