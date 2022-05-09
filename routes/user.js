@@ -15,7 +15,6 @@ router.get('/:id', routeGuard, (req, res, next) => {
     .then((userDoc) => {
       userSingle = userDoc;
       userIsOwner = req.user && String(req.user._id) === String(userDoc._id);
-      console.log('user is owner?' + userIsOwner);
       return Offer.find({ creator: userDoc._id }).sort({createdAt: -1}).populate('creator');
     })
     .then((userOffers) => {

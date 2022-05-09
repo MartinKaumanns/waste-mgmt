@@ -1,3 +1,5 @@
+ {{>navbar}}
+
 <form
   action="/offer/{{offer._id}}/edit"
   method="POST"
@@ -14,23 +16,9 @@
     <img src="{{offer.picture}}" alt="Existing picture">
     {{/if}}
     <label for="input-image">Image:
-      <input type="file" name="picture" id="input-image" />
+      <input type="file" name="picture" id="input-image" multiple/>
     </label>
   </div>
-
-{{!--   <div>
-  <label for="input-genre">Genre: <br>
-<input type="checkbox" name="genres" value="Installation" {{#if offer.installation}}checked {{/if}}/>Installation<br>
-<input type="checkbox" name="genres" value="Painting"{{#if offer.painting}}checked {{/if}} />Painting<br>
-<input type="checkbox" name="genres" value="Media"{{#if offer.media}}checked {{/if}}/>Media<br>
-<input type="checkbox" name="genres" value="Photography"{{#if offer.photography}}checked {{/if}}/>Photography<br>
-<input type="checkbox" name="genres" value="Ceramics"{{#if offer.ceramics}}checked {{/if}}/>Ceramics<br>
-<input type="checkbox" name="genres" value="PerformingArts"{{#if offer.performingArts}}checked {{/if}}/>Performing Arts<br>
-<input type="checkbox" name="genres" value="Architecture"{{#if offer.architecture}}checked {{/if}}/>Architecture<br>
-<input type="checkbox" name="genres" value="Graphics"{{#if offer.graphics}}checked {{/if}}/>Graphics<br>
-<input type="checkbox" name="genres" value="Other"{{#if offer.other}}checked {{/if}}/>Other<br>
-   </label>
-   </div> --}}
 
 <div class="wrapper">
   <div id="ck-button">

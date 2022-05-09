@@ -1,3 +1,5 @@
+ {{>navbar}}
+
 <form action="/offer/create" method="POST" enctype="multipart/form-data">
   <label for="input-title">Title</label>
   <input type="text" id="input-title" name="title" placeholder="Your Title" />
@@ -11,38 +13,6 @@
       <input type="file" name="picture" id="input-image" multiple />
     </label>
   </div>
-
-  {{! <div>
-  <label for="input-genre">Genre: <br>
-      <input type="checkbox" name="genres" value="Installation"/>Installation<br>
-      <input type="checkbox" name="genres" value="Painting"/>Painting<br>
-      <input type="checkbox" name="genres" value="Media"/>Media<br>
-      <input type="checkbox" name="genres" value="Photography"/>Photography<br>
-      <input type="checkbox" name="genres" value="Ceramics"/>Ceramics<br>
-      <input type="checkbox" name="genres" value="Performing Arts"/>Performing Arts<br>
-      <input type="checkbox" name="genres" value="Architecture"/>Architecture<br>
-      <input type="checkbox" name="genres" value="Graphics"/>Graphics<br>
-      <input type="checkbox" name="genres" value="Other"/>other<br>
-   </label>
-   </div>
-
-  <div>
-  <label for="input-material">Material Category: </br>
-      <input type="checkbox" name="materials" value="wood"/>wood</br>
-      <input type="checkbox" name="materials" value="metal"/>metal</br>
-      <input type="checkbox" name="materials" value="plastic"/>plastic</br>
-      <input type="checkbox" name="materials" value="paper / cardboard"/>paper / cardboard</br>
-      <input type="checkbox" name="materials" value="pens / brushes"/>pens / brushes</br>
-      <input type="checkbox" name="materials" value="paints"/>paints</br>
-      <input type="checkbox" name="materials" value="textile"/>textile</br>
-      <input type="checkbox" name="materials" value="stone / building materials"/>stone / building materials</br>
-      <input type="checkbox" name="materials" value="moulding / casting"/>moulding / casting</br>
-      <input type="checkbox" name="materials" value="tools"/>tools</br>
-      <input type="checkbox" name="materials" value="technical equipment"/>technical equipment</br>
-      <input type="checkbox" name="materials" value="studio furniture"/>studio furniture</br>
-      <input type="checkbox" name="materials" value="other"/>other</br>
-    </label>
-    </div> }}
 
   <div class="wrapper">
     <div id="ck-button">

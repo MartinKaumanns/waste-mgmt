@@ -1,3 +1,4 @@
+ {{>navbar}}
 
 <h1>{{profile.name}}'s Profile</h1>
 <img src="{{profile.picture}}" alt="Profile Picture" />
@@ -9,6 +10,8 @@
 
   <span><strong>Genres</strong>: {{#each profile.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
 {{/each}}
+
+
 <br />
 <span><strong>Location</strong>: {{profile.location}}</span>
 

@@ -1,3 +1,5 @@
+{{>navbaroffers}}
+
 {{> megamenu}} {{> megasearch}}
 
 <h1>Latest Offers</h1>
@@ -5,3 +7,12 @@
 {{> offersCard }}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
+
+<script>
+
+    
+
+    window.addEventListener('load', () => hideSearchSortingButtons())
+
+    
+</script>

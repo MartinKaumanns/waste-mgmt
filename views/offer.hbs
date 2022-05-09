@@ -1,3 +1,5 @@
+ {{>navbar}}
+
 <div class="offerCard">
 
 {{#each offer.picture}}
@@ -39,7 +41,8 @@
 </form>
 
 {{else}}
-<form action="/offer/{{ offer._id}}/offer-email">
+{{!-- <form action="/offer/{{ offer._id}}/offer-email"> --}}
+<form action="/email/{{ offer._id}}/send-email">
   <button>Send Email</button>
 </form>
 {{/if}}

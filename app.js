@@ -67,7 +67,7 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/offer', offerRouter);
 app.use('/user', userRouter);
-app.use('/user', mailerRouter);
+app.use('/email', mailerRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

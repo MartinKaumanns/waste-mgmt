@@ -7,17 +7,6 @@ const Offer = require('./../models/offer');
 const fileUploader = require('../cloudinary.config.js');
 const { render } = require('../app');
 
-const nodemailer = require('nodemailer');
-
-const transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
-  auth: {
-    user: process.env.EMAIL_SENDER,
-    pass: process.env.EMAIL_PASSWORD
-  }
-});
-
 const router = new Router();
 
 let queryObj;
@@ -27,15 +16,23 @@ router.get('/create', (req, res) => {
   res.render('offer-create');
 });
 
+router.get('/category-megamenu', (req,res)=> {
+  res.render('category-megamenu')
+})
+
+router.get('/search-megasearch', (req,res)=> {
+  res.render('search-megasearch')
+})
+
 router.get('/offer-suggestions', (req, res, next) => {
   let limit = 30;
   // checks if user is logged in
   if (req.user) {
     // searchs for all offers which contain the user's genre category
     // filters out own offers
-    let genresArray = req.user.genres;
     Offer.find({
       $and: [
+        {completed: false},
         { genres: { $in: req.user.genres } },
         { creator: { $ne: { _id: req.user.id } } }
       ]
@@ -91,6 +88,7 @@ router.get('/offer-search/date', (req, res, next) => {
   if (req.user) {
     searchObj = {
       $and: [
+        {completed: false},
         { creator: { $ne: { _id: req.user.id } } },
         {
           $or: [
@@ -104,11 +102,13 @@ router.get('/offer-search/date', (req, res, next) => {
     };
   } else {
     searchObj = {
-      $or: [
-        { title: { $regex: searchTerm } },
-        { description: { $regex: searchTerm } },
-        { genres: { $regex: searchTerm } },
-        { materials: { $regex: searchTerm } }
+      $and : [
+        {$or: [
+          { title: { $regex: searchTerm } },
+          { description: { $regex: searchTerm } },
+          { genres: { $regex: searchTerm } },
+          { materials: { $regex: searchTerm } }
+        ]}
       ]
     };
   }
@@ -119,7 +119,7 @@ router.get('/offer-search/date', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
-      res.render('offer-filtered', { filteredOffers });
+      res.render('offer-search', { filteredOffers });
     });
 });
 
@@ -130,6 +130,7 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
   if (req.user) {
     searchObj = {
       $and: [
+        {completed: false},
         { creator: { $ne: { _id: req.user.id } } },
         {
           $or: [
@@ -143,11 +144,14 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
     };
   } else {
     searchObj = {
-      $or: [
-        { title: { $regex: searchTerm } },
-        { description: { $regex: searchTerm } },
-        { genres: { $regex: searchTerm } },
-        { materials: { $regex: searchTerm } }
+      $and: [
+        {completed: false},
+        { $or: [
+          { title: { $regex: searchTerm } },
+          { description: { $regex: searchTerm } },
+          { genres: { $regex: searchTerm } },
+          { materials: { $regex: searchTerm } }
+        ]}
       ]
     };
   }
@@ -158,7 +162,7 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
-      res.render('offer-filtered', { filteredOffers });
+      res.render('offer-search', { filteredOffers });
     });
 });
 
@@ -169,6 +173,7 @@ router.get('/offer-search/price', (req, res, next) => {
   if (req.user) {
     searchObj = {
       $and: [
+        {completed: false},
         { creator: { $ne: { _id: req.user.id } } },
         {
           $or: [
@@ -182,12 +187,15 @@ router.get('/offer-search/price', (req, res, next) => {
     };
   } else {
     searchObj = {
-      $or: [
+        $and: [
+          {completed: false},
+          { $or: [
         { title: { $regex: searchTerm } },
         { description: { $regex: searchTerm } },
         { genres: { $regex: searchTerm } },
         { materials: { $regex: searchTerm } }
-      ]
+      ]}
+    ]
     };
   }
   // performs query with searchObj
@@ -197,7 +205,7 @@ router.get('/offer-search/price', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
-      res.render('offer-filtered', { filteredOffers });
+      res.render('offer-search', { filteredOffers });
     });
 });
 
@@ -208,6 +216,7 @@ router.get('/offer-search/price-descending', (req, res, next) => {
   if (req.user) {
     searchObj = {
       $and: [
+        {completed: false},
         { creator: { $ne: { _id: req.user.id } } },
         {
           $or: [
@@ -221,12 +230,15 @@ router.get('/offer-search/price-descending', (req, res, next) => {
     };
   } else {
     searchObj = {
-      $or: [
-        { title: { $regex: searchTerm } },
-        { description: { $regex: searchTerm } },
-        { genres: { $regex: searchTerm } },
-        { materials: { $regex: searchTerm } }
-      ]
+      $and: [
+        {completed: false},
+        { $or : [
+          { title: { $regex: searchTerm } },
+          { description: { $regex: searchTerm } },
+          { genres: { $regex: searchTerm } },
+          { materials: { $regex: searchTerm } }
+      ]}
+    ]
     };
   }
   // performs query with searchObj
@@ -236,7 +248,7 @@ router.get('/offer-search/price-descending', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
-      res.render('offer-filtered', { filteredOffers });
+      res.render('offer-search', { filteredOffers });
     });
 });
 
@@ -246,10 +258,14 @@ router.get('/offer-filtered/price', (req, res, next) => {
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = { creator: { $ne: { _id: req.user.id } } };
+      queryObj = { $and: [
+        {creator: { $ne: { _id: req.user.id } } },
+        {completed: false}
+      ]};
     } else if (!req.query.genres) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { materials: { $in: req.query.materials } }
         ]
@@ -257,6 +273,7 @@ router.get('/offer-filtered/price', (req, res, next) => {
     } else if (!req.query.materials) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { genres: { $in: req.query.genres } }
         ]
@@ -264,6 +281,7 @@ router.get('/offer-filtered/price', (req, res, next) => {
     } else {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           {
             $or: [
@@ -276,17 +294,19 @@ router.get('/offer-filtered/price', (req, res, next) => {
     }
   } else {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = {};
+      queryObj = {completed: false};
     } else if (!req.query.genres) {
-      queryObj = { materials: { $in: req.query.materials } };
+      queryObj = { $and: [{materials: { $in: req.query.materials } },{completed: false}]};
     } else if (!req.query.materials) {
-      queryObj = { genres: { $in: req.query.genres } };
+      queryObj = { $and: [{ genres: { $in: req.query.genres } },{completed:false}]};
     } else {
       queryObj = {
-        $or: [
+        $and:[
+        { $or: [
           { genres: { $in: req.query.genres } },
           { materials: { $in: req.query.materials } }
-        ]
+        ]}
+      ]
       };
     }
   }
@@ -383,10 +403,15 @@ router.get('/offer-filtered/price-descending', (req, res, next) => {
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = { creator: { $ne: { _id: req.user.id } } };
+      queryObj = {
+        $and: [
+          {completed: false}, 
+          {creator: { $ne: { _id: req.user.id } } }
+        ]};
     } else if (!req.query.genres) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { materials: { $in: req.query.materials } }
         ]
@@ -394,6 +419,7 @@ router.get('/offer-filtered/price-descending', (req, res, next) => {
     } else if (!req.query.materials) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { genres: { $in: req.query.genres } }
         ]
@@ -402,6 +428,7 @@ router.get('/offer-filtered/price-descending', (req, res, next) => {
       queryObj = {
         $and: [
           { creator: { $ne: { _id: req.user.id } } },
+          {completed: false},
           {
             $or: [
               { genres: { $in: req.query.genres } },
@@ -413,17 +440,20 @@ router.get('/offer-filtered/price-descending', (req, res, next) => {
     }
   } else {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = {};
+      queryObj = {completed: false};
     } else if (!req.query.genres) {
-      queryObj = { materials: { $in: req.query.materials } };
+      queryObj = { $and: [{materials: { $in: req.query.materials } },{completed: false}]};
     } else if (!req.query.materials) {
-      queryObj = { genres: { $in: req.query.genres } };
+      queryObj = { $and: [{ genres: { $in: req.query.genres } },{completed:false}]};
     } else {
       queryObj = {
-        $or: [
-          { genres: { $in: req.query.genres } },
-          { materials: { $in: req.query.materials } }
-        ]
+        $and:[
+          {completed:false},
+          { $or: [
+            { genres: { $in: req.query.genres } },
+            { materials: { $in: req.query.materials } }
+        ]}
+      ]
       };
     }
   }
@@ -520,10 +550,12 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = { creator: { $ne: { _id: req.user.id } } };
+      queryObj = { $and: [
+        {completed: false},{creator: { $ne: { _id: req.user.id } } }]};
     } else if (!req.query.genres) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { materials: { $in: req.query.materials } }
         ]
@@ -531,6 +563,7 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
     } else if (!req.query.materials) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { genres: { $in: req.query.genres } }
         ]
@@ -538,6 +571,7 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
     } else {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           {
             $or: [
@@ -548,19 +582,22 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
         ]
       };
     }
-  } else {
+  }else {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = {};
+      queryObj = {completed: false};
     } else if (!req.query.genres) {
-      queryObj = { materials: { $in: req.query.materials } };
+      queryObj = { $and: [{materials: { $in: req.query.materials } },{completed: false}]};
     } else if (!req.query.materials) {
-      queryObj = { genres: { $in: req.query.genres } };
+      queryObj = { $and: [{ genres: { $in: req.query.genres } },{completed:false}]};
     } else {
       queryObj = {
-        $or: [
-          { genres: { $in: req.query.genres } },
-          { materials: { $in: req.query.materials } }
-        ]
+        $and:[
+          {completed:false},
+          { $or: [
+            { genres: { $in: req.query.genres } },
+            { materials: { $in: req.query.materials } }
+        ]}
+      ]
       };
     }
   }
@@ -679,75 +716,75 @@ router.get('/offer-sorted-price', (req, res, next) => {
   }
 });
 
-router.get('/offer-sorted-descending-price', (req, res, next) => {
-  const limit = 30;
-  console.log(req.query.genres);
-  if (
-    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
-  ) {
-    Offer.find(searchObj)
-      .sort({ price: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers });
-      });
-  } else {
-    Offer.find(queryObj)
-      .sort({ price: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers });
-      });
-  }
-});
+// router.get('/offer-sorted-descending-price', (req, res, next) => {
+//   const limit = 30;
+//   console.log(req.query.genres);
+//   if (
+//     !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+//   ) {
+//     Offer.find(searchObj)
+//       .sort({ price: -1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers });
+//       });
+//   } else {
+//     Offer.find(queryObj)
+//       .sort({ price: -1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers });
+//       });
+//   }
+// });
 
-router.get('/offer-sorted-date', (req, res, next) => {
-  const limit = 30;
-  if (
-    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
-  ) {
-    Offer.find(searchObj)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers, searchObj });
-      });
-  } else {
-    Offer.find(queryObj)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers, queryObj });
-      });
-  }
-});
+// router.get('/offer-sorted-date', (req, res, next) => {
+//   const limit = 30;
+//   if (
+//     !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+//   ) {
+//     Offer.find(searchObj)
+//       .sort({ createdAt: -1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers, searchObj });
+//       });
+//   } else {
+//     Offer.find(queryObj)
+//       .sort({ createdAt: -1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers, queryObj });
+//       });
+//   }
+// });
 
-router.get('/offer-sorted-oldest-date', (req, res, next) => {
-  const limit = 30;
-  if (
-    !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
-  ) {
-    Offer.find(searchObj)
-      .sort({ createdAt: 1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers, searchObj });
-      });
-  } else {
-    Offer.find(queryObj)
-      .sort({ createdAt: 1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        res.render('offer-filtered', { filteredOffers, queryObj });
-      });
-  }
-});
+// router.get('/offer-sorted-oldest-date', (req, res, next) => {
+//   const limit = 30;
+//   if (
+//     !(Object.keys(searchObj).length === 0 && searchObj.constructor === Object)
+//   ) {
+//     Offer.find(searchObj)
+//       .sort({ createdAt: 1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers, searchObj });
+//       });
+//   } else {
+//     Offer.find(queryObj)
+//       .sort({ createdAt: 1 })
+//       .limit(limit)
+//       .populate('creator')
+//       .then((filteredOffers) => {
+//         res.render('offer-filtered', { filteredOffers, queryObj });
+//       });
+//   }
+// });
 
 router.get('/offer-filtered/date', (req, res, next) => {
   let limit = 30;
@@ -755,10 +792,11 @@ router.get('/offer-filtered/date', (req, res, next) => {
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = { creator: { $ne: { _id: req.user.id } } };
+      queryObj = {$and: [{completed: false},{ creator: { $ne: { _id: req.user.id } } }]};
     } else if (!req.query.genres) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { materials: { $in: req.query.materials } }
         ]
@@ -766,6 +804,7 @@ router.get('/offer-filtered/date', (req, res, next) => {
     } else if (!req.query.materials) {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           { genres: { $in: req.query.genres } }
         ]
@@ -773,6 +812,7 @@ router.get('/offer-filtered/date', (req, res, next) => {
     } else {
       queryObj = {
         $and: [
+          {completed: false},
           { creator: { $ne: { _id: req.user.id } } },
           {
             $or: [
@@ -785,17 +825,19 @@ router.get('/offer-filtered/date', (req, res, next) => {
     }
   } else {
     if (!req.query.genres && !req.query.materials) {
-      queryObj = {};
+      queryObj = {completed: false};
     } else if (!req.query.genres) {
-      queryObj = { materials: { $in: req.query.materials } };
+      queryObj = {$and: [{completed: false}, { materials: { $in: req.query.materials } }]};
     } else if (!req.query.materials) {
-      queryObj = { genres: { $in: req.query.genres } };
+      queryObj = {$and: [{completed: false}, {genres: { $in: req.query.genres }}]};
     } else {
-      queryObj = {
-        $or: [
+      queryObj = 
+      {$and: [
+        {completed: false},
+        {$or: [
           { genres: { $in: req.query.genres } },
           { materials: { $in: req.query.materials } }
-        ]
+        ]}]
       };
     }
   }
@@ -880,18 +922,6 @@ router.get('/offer-filtered/date', (req, res, next) => {
         }
         res.render('offer-filtered', { filteredOffers });
       }
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-
-router.get('/:id/offer-email', (req, res, next) => {
-  const offerId = req.params.id;
-  Offer.findById(offerId)
-    .populate('creator')
-    .then((offer) => {
-      res.render('offer-email', { offerId, offer });
     })
     .catch((error) => {
       next(error);
@@ -997,7 +1027,7 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
 router.post(
   '/create',
   routeGuard,
-  fileUploader.array('picture', 3),
+  fileUploader.array('picture', 5),
   (req, res, next) => {
     const {
       title,
@@ -1010,10 +1040,17 @@ router.post(
       location
     } = req.body;
 
-    const files = req.files;
-    console.log(files);
-    const paths = req.files.map((eachFile) => eachFile.path);
-    console.log(paths);
+    let files = req.files;
+    let paths =[];
+
+    /* set default image in case user did not select a file and trims array to max. 5 elements*/
+    if(files.length === 0) {
+      paths = ['https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg']
+    } else if (files.length > 5){
+      paths = paths.slice(0, 6);
+    } else {
+      paths = files.map((eachFile) => eachFile.path);
+    }
 
     Offer.create({
       title,
@@ -1037,47 +1074,10 @@ router.post(
   }
 );
 
-router.post('/:id/offer-email', routeGuard, (req, res, next) => {
-  const offerId = req.params.id;
-  Offer.findById(offerId)
-    .populate('creator')
-    ///EMAIL Client down therefore no redirection to email-feedback
-    .then((offer) => {
-      console.log(
-        `Hi ${offer.creator.name}! ${req.user.name} is interested in ${offer.title}. This is ${req.user.name}'s message:  ${req.body.text} Respond to this message via ${req.user.name}'s email address: ${req.user.email}. Check out our inspiring artists at waste-mgmt's project space and the latest offers on waste-mgmt.art. We are hiring: Fullstack Developers please contact us via hiring@waste-mgmt.info. Good luck with your deals! Your waste-mgmt team 🔫`
-      );
-    })
-    /* 
-      //console.log(offer.creator.email)
-      transporter
-        .sendMail({
-          from: `"User01" ${process.env.EMAIL}`,
-          to: offer.creator.email,
-          subject: `waste-mgmt: ${req.user.name} is interested in your offer`,
-          text: `Hi ${offer.creator.name}! ${req.user.name} is interested in ${offer.title}. This is ${req.user.name}'s message:  ${req.body.text} Respond to this message via ${req.user.name}'s email address: ${req.user.email}. Check out our inspiring artists at waste-mgmt's project space and the latest offers on waste-mgmt.art. We are hiring: Fullstack Developers please contact us via hiring@waste-mgmt.info. Good luck with your dealz 🔫 Your waste-mgmt team`,
-          html: `Hi ${offer.creator.name}! <br>
-  ${req.user.name} is interested in <i>${offer.title}</i>. This is ${req.user.name}'s message: <br>
-  ${req.body.text} <br>
-  Respond to this message via ${req.user.name}'s email address: ${req.user.email}. <br>
-  Check out our inspiring artists at waste-mgmt's <a href="waste-mgmt.art"><b>project space</b></a> and the <a href="waste-mgmt.art"><b>latest offers</b></a>. <br>
-  We are hiring: Fullstack Developers please contact us via hiring@waste-mgmt.info 
-  <br>Good luck with your dealz 🔫<br>
-  Your waste-mgmt team`
-        }) 
-        */
-    .then(() => {
-      res.render('email-feedback', { offerId });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  /* }); */
-});
-
 router.post(
   '/:id/edit',
   routeGuard,
-  fileUploader.single('picture'),
+  fileUploader.array('picture', 5),
   (req, res, next) => {
     const id = req.params.id;
     const {
@@ -1090,12 +1090,25 @@ router.post(
       alternativepayment,
       location
     } = req.body;
+
+    let files = req.files;
+    let paths =[];
+
+    /* set default image in case user did not select a file and trims array to max. 5 elements */
+    if(files.length === 0) {
+      paths = ['https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg']
+    } else if (files.length > 5){
+      paths = paths.slice(0, 6);
+    } else {
+      paths = files.map((eachFile) => eachFile.path);
+    }
+
     Offer.findByIdAndUpdate(
       { _id: id, creator: req.user._id },
       {
         title,
         description,
-        picture: req.file.path,
+        picture: paths,
         genres,
         materials,
         price,

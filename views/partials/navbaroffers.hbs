@@ -1,0 +1,23 @@
+<nav>
+      <a href="/" class="logo">WASTE MGMT</a>
+
+      {{#if user}}
+
+        <a href="/offer/offer-suggestions">Offers</a>
+        <a href="#" class="dropbtn category-search-button">Categories</a>
+        <a href="#" class="dropbtn search-button">Search</a>
+        <a href="/offer-create"></a>
+        <form action="/offer/create">
+          <button>New Offer</button>
+        </form>
+
+        <a href="/user/{{user.id}}">{{user.name}}'s Profile</a>
+
+        <form action="/authentication/sign-out" method="POST">
+          <button>Sign Out</button>
+        </form>
+      {{else}}
+        <a href="/authentication/sign-in">Sign In</a>
+        <a href="/authentication/sign-up">Sign Up</a>
+      {{/if}}
+    </nav>
