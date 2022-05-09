@@ -1,4 +1,8 @@
+  <div class="dropdown">
+  <a href="#" onclick="mySearchFunction()" class="dropbtn">Search</a>
+  <div id="mySearchDropdown" class="dropdown-content">
 <form action="/offer/offer-search">
+  
   <label for="search-field">Search:</label>
   <input
     type="text"
@@ -8,9 +12,43 @@
     placeholder={{#if filteredOffers.searchTerm}}{{filteredOffers.searchTerm}}{{else}}"Type in anything …"{{/if}}
   />
 <button formaction="/offer/offer-search/date">GO!</button>
+<a href="#" onclick="closingMySearchFunction()">x</a>
+  </div>
+</div>
 
-<button formaction="/offer/offer-search/price">Sort by price</button>
-<button formaction="/offer/offer-search/price-descending">Sort by price - descending</button>
-<button formaction="/offer/offer-search/date">Sort by date - Latest first</button>
-<button formaction="/offer/offer-search/date-oldest">Sort by date - Oldest first</button>
+
+<button formaction="/offer/offer-search/price" class="button-sorting">€</button>
+<button formaction="/offer/offer-search/price-descending" class="button-sorting">€€€</button>
+<button formaction="/offer/offer-search/date" class="button-sorting">Newest</button>
+<button formaction="/offer/offer-search/date-oldest" class="button-sorting">Oldest</button>
 </form>
+
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function mySearchFunction() {
+  document.getElementById("mySearchDropdown").classList.toggle("show");
+}
+
+ Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+//<script>
+//  function closingMySearchFunction() {
+//  document.getElementById('mySearchDropdown').classList.toggle('show');
+//
+//}
+//</script>

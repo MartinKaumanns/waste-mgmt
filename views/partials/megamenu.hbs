@@ -1,5 +1,5 @@
 <form action="/offer/offer-filtered/">
-<h2>catagory search</h2>
+{{!-- <h2>catagory search</h2> --}}
     {{!-- <div>
   <label for="input-genre">Genre: <br>
       <input type="checkbox" name="genres" value="Installation"/>Installation<br>
@@ -32,175 +32,214 @@
     </label>
     </div> --}}
 
-<div class="wrapper" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Installation" class="dropdown-item"{{#if filteredOffers.0.installation}}checked {{/if}}/><span>Installation</span>
-       </label>
+<div class="dropdown">
+  <a href="#"
+  onclick="megaMenuFunction()" class="dropbtn">Categories</a>
+  <div id="myDropdown" class="dropdown-content">
+    <div class="wrapper" >
+      <a href="#" onclick="closingMegaMenuFunction()" class="closing-Button"><span class="material-symbols-outlined">
+close
+</span></a> {{!-- closing button --}}
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Installation" class="dropdown-item"{{#if filteredOffers.0.installation}}checked {{/if}}/><span>Installation</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Painting" class="dropdown-item"{{#if filteredOffers.0.painting}}checked {{/if}}/><span>Painting</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Media" class="dropdown-item"{{#if filteredOffers.0.media}}checked {{/if}}/><span>Media</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Photography" class="dropdown-item"{{#if filteredOffers.0.photography}}checked {{/if}}/><span>Photography</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Ceramics" class="dropdown-item"{{#if filteredOffers.0.ceramics}}checked {{/if}}/><span>Ceramics</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Performing Arts" class="dropdown-item"{{#if filteredOffers.0.performingArts}}checked {{/if}}/><span>Performing Arts</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Architecture" class="dropdown-item"{{#if filteredOffers.0.architecture}}checked {{/if}}/><span>Architecture</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Graphics" class="dropdown-item"{{#if filteredOffers.0.graphics}}checked {{/if}}/><span>Graphics</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="genres" value="Other" class="dropdown-item"{{#if filteredOffers.0.Other}}checked {{/if}}/><span>Other</span>
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Painting" class="dropdown-item"{{#if filteredOffers.0.painting}}checked {{/if}}/><span>Painting</span>
-      </label>
+
+    <div class="wrapper">
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="wood" class="dropdown-item"{{#if filteredOffers.0.wood}}checked {{/if}}/><span>wood</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="metal" class="dropdown-item"{{#if filteredOffers.0.metal}} checked {{/if}}/><span>metal</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="plastic" class="dropdown-item"{{#if filteredOffers.0.plastic}}checked {{/if}}/><span>Plastic</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="paper / cardboard" class="dropdown-item"{{#if filteredOffers.0.paper}}checked {{/if}}/><span>paper / cardboard</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="pens / brushes" class="dropdown-item"{{#if filteredOffers.0.pens}}checked {{/if}}/><span>pens / brushes</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="paints" class="dropdown-item"{{#if filteredOffers.0.paints}}checked {{/if}}/><span>paints</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="textile" class="dropdown-item"{{#if filteredOffers.0.textile}}checked {{/if}}/><span>textile</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="stone / building materials" class="dropdown-item"{{#if filteredOffers.0.stone}}checked {{/if}}/><span>stone / building materials</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="moulding / casting" class="dropdown-item"{{#if filteredOffers.0.moulding}}checked {{/if}}/><span>moulding / casting</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="tools" class="dropdown-item"{{#if filteredOffers.0.tools}}checked {{/if}}/><span>tools</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="technical equipment" class="dropdown-item"{{#if filteredOffers.0.technicalEquipment}}checked {{/if}}/><span>technical equipment</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="studio furniture" class="dropdown-item"{{#if filteredOffers.0.studioFurniture}}checked {{/if}}/><span>studio furniture</span>
+          </label>
+        </div>
+      </div>
+      <div id="ck-button">
+        <div class="single-button">
+          <label>
+            <input type="checkbox" hidden name="materials" value="other" class="dropdown-item"{{#if filteredOffers.0.other}}checked {{/if}}/><span>other</span>
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Media" class="dropdown-item"{{#if filteredOffers.0.media}}checked {{/if}}/><span>Media</span>
-      </label>
+    <div class="go-button-wrapper">
+  <button formaction="/offer/offer-filtered/date" class="go-button">GO!</button>
     </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Photography" class="dropdown-item"{{#if filteredOffers.0.photography}}checked {{/if}}/><span>Photography</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Ceramics" class="dropdown-item"{{#if filteredOffers.0.ceramics}}checked {{/if}}/><span>Ceramics</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Performing Arts" class="dropdown-item"{{#if filteredOffers.0.performingArts}}checked {{/if}}/><span>Performing Arts</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Architecture" class="dropdown-item"{{#if filteredOffers.0.architecture}}checked {{/if}}/><span>Architecture</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Graphics" class="dropdown-item"{{#if filteredOffers.0.graphics}}checked {{/if}}/><span>Graphics</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="genres" value="Other" class="dropdown-item"{{#if filteredOffers.0.Other}}checked {{/if}}/><span>Other</span>
-      </label>
-    </div>
-   </div>
+  
 </div>
 
-<div class="wrapper">
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="wood" class="dropdown-item"{{#if filteredOffers.0.wood}}checked {{/if}}/><span>wood</span>
-       </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="metal" class="dropdown-item"{{#if filteredOffers.0.metal}} checked {{/if}}/><span>metal</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="plastic" class="dropdown-item"{{#if filteredOffers.0.plastic}}checked {{/if}}/><span>Plastic</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="paper / cardboard" class="dropdown-item"{{#if filteredOffers.0.paper}}checked {{/if}}/><span>paper / cardboard</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="pens / brushes" class="dropdown-item"{{#if filteredOffers.0.pens}}checked {{/if}}/><span>pens / brushes</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="paints" class="dropdown-item"{{#if filteredOffers.0.paints}}checked {{/if}}/><span>paints</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="textile" class="dropdown-item"{{#if filteredOffers.0.textile}}checked {{/if}}/><span>textile</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="stone / building materials" class="dropdown-item"{{#if filteredOffers.0.stone}}checked {{/if}}/><span>stone / building materials</span>
-      </label>
-    </div>
-  </div>
-  <div id="ck-button">
-    <div class="single-button">
-      <label>
-        <input type="checkbox" hidden name="materials" value="moulding / casting" class="dropdown-item"{{#if filteredOffers.0.moulding}}checked {{/if}}/><span>moulding / casting</span>
-      </label>
-    </div>
-   </div>
-   <div id="ck-button">
-     <div class="single-button">
-       <label>
-         <input type="checkbox" hidden name="materials" value="tools" class="dropdown-item"{{#if filteredOffers.0.tools}}checked {{/if}}/><span>tools</span>
-       </label>
-     </div>
-   </div>
-   <div id="ck-button">
-     <div class="single-button">
-       <label>
-         <input type="checkbox" hidden name="materials" value="technical equipment" class="dropdown-item"{{#if filteredOffers.0.technicalEquipment}}checked {{/if}}/><span>technical equipment</span>
-       </label>
-     </div>
-   </div>
-   <div id="ck-button">
-     <div class="single-button">
-       <label>
-         <input type="checkbox" hidden name="materials" value="studio furniture" class="dropdown-item"{{#if filteredOffers.0.studioFurniture}}checked {{/if}}/><span>studio furniture</span>
-       </label>
-     </div>
-   </div>
-   <div id="ck-button">
-     <div class="single-button">
-       <label>
-         <input type="checkbox" hidden name="materials" value="other" class="dropdown-item"{{#if filteredOffers.0.other}}checked {{/if}}/><span>other</span>
-       </label>
-     </div>
-   </div>
-</div>
 
-
-<button formaction="/offer/offer-filtered/date" class="dropdown-item">GO!</button>
-</div>
-
-<button formaction="/offer/offer-filtered/price">Sort by price</button>
-<button formaction="/offer/offer-filtered/price-descending">Sort by price - descending</button>
-<button formaction="/offer/offer-filtered/date">Sort by date - Latest first</button>
-<button formaction="/offer/offer-filtered/date-oldest">Sort by date - Oldest first</button>
+<button formaction="/offer/offer-filtered/price" class="button-sorting">€</button>
+<button formaction="/offer/offer-filtered/price-descending" class="button-sorting">€€€</button>
+<button formaction="/offer/offer-filtered/date" class="button-sorting">Newest</button>
+<button formaction="/offer/offer-filtered/date-oldest" class="button-sorting">Oldest</button>
 </form>
+
+<script>
+  /* When the user clicks on the button, toggle between hiding and showing
+the dropdown content */ function megaMenuFunction() {
+  console.log('click works')
+  document.getElementById('myDropdown').classList.toggle('show');
+}
+
+
+// Close the dropdown if the user clicks outside of it
+
+// window.onclick = function (event) {
+//   if ((!event.target.matches(['.dropbtn', ".wrapper", ".dropdown-item"]))) {
+//     var dropdowns = document.getElementsByClassName('dropdown-content');
+//     var i;
+//     for (i = 0; i < dropdowns.length; i++) {
+//       var openDropdown = dropdowns[i];
+//       if (openDropdown.classList.contains('show')) {
+//         openDropdown.classList.remove('show');
+//       }
+//     }
+//   }
+// };
+</script>
+<script>
+  function closingMegaMenuFunction() {
+  document.getElementById('myDropdown').classList.toggle('show');
+
+}
+</script>
 
 {{!-- <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
 <label class="btn btn-primary" for="btn-check">Single toggle</label> --}}

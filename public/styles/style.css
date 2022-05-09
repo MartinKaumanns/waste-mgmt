@@ -1,5 +1,6 @@
 /* font-family: 'Inter', sans-serif; */
 * {
+  margin: 0;
   /*  font-family: 'Inter', sans-serif; */
 }
 
@@ -9,6 +10,7 @@
 
 body {
   /* max-width: 52em */
+  color: #674dec;
   padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
@@ -19,6 +21,15 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.logo {
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #674dec;
 }
 
 nav {
@@ -104,13 +115,27 @@ label {
 }
 
 .offersCard {
-  width: 30vw;
+  line-height: 1.4em;
+  width: 20em;
+  border: 2px solid #674dec;
 }
 
 .offersCard img {
   width: 20em;
-  height: 12em;
+  height: 15em;
   object-fit: cover;
+}
+
+#card-heading:hover {
+  color: #674dec;
+}
+
+.card-text {
+  padding: 1em 1em;
+}
+
+.card-text h3 {
+  font-size: 1.2em;
 }
 
 /* Checkboxes */
@@ -129,18 +154,19 @@ label {
   float: left; */
 }
 
-#ck-button label {
-  float: left;
-  width: 8em;
-  border: 2px solid #674dec;
-  border-radius: 20px;
+#ck-button label span {
+  float: none;
+  color: #674dec;
+  font-size: 2em;
+  padding: 0.2em 1.2em;
+  border: 3px solid #674dec;
+  border-radius: 2em;
 }
 
 #ck-button label span {
   text-align: center;
-  padding: 3px 0px;
   display: block;
-  border-radius: 18px;
+  border-radius: 2em;
 }
 
 #ck-button label input {
@@ -149,7 +175,8 @@ label {
 }
 
 #ck-button input:hover + span {
-  background-color: #9284d7;
+  background-color: #674dec;
+  color: #fff;
 }
 
 #ck-button input:checked + span {
@@ -159,11 +186,134 @@ label {
 
 #ck-button input:checked:hover + span {
   background-color: #3b25a8;
+  border-color: #3b25a8;
   color: #fff;
 }
 
 .single-button {
   margin-right: 1em;
+}
+
+.dropbtn {
+  background-color: #674dec;
+  color: white;
+  padding: 0.8em 2em;
+  font-size: 1em;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+  background-color: #3b25a8;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.closeMegamenu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  padding: 2em 2em;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  color: #fff;
+  background-color: #3b25a8;
+  text-decoration: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.go-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.go-button {
+  color: #000000;
+  font-size: 2em;
+  padding: 0.2em 3em;
+  border: 3px solid #000000;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+/* .go-button label span {
+  text-align: center;
+  display: block;
+  border-radius: 2em;
+}
+
+.go-button label input {
+  position: absolute;
+  /* top: -20px; 
+} 
+*/
+.go-button:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+.button-sorting {
+  color: #000000;
+  font-size: 1em;
+  padding: 0.2em 1.2em;
+  border: 1.5px solid #000000;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+.button-sorting:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+/* .button-sorting:active {
+  background-color: #000000;
+  color: #fff;
+} */
+.closing-button {
+  color: #000000;
+  font-size: 2em;
+  padding: 0.2em;
+  border: 3px solid #000000;
+  border-radius: 2em;
+}
+
+.closing-button:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 32;
+  font-size: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */
