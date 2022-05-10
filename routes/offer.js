@@ -1093,7 +1093,7 @@ router.post(
     } = req.body;
 
     let files = req.files;
-    let paths = [];
+    let paths = []
 
     /* set default image in case user did not select a file and trims array to max. 5 elements*/
     if (files.length === 0) {
@@ -1101,6 +1101,7 @@ router.post(
         'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg'
       ];
     } else if (files.length > 5) {
+      paths = files.map((eachFile) => eachFile.path);
       paths = paths.slice(0, 6);
     } else {
       paths = files.map((eachFile) => eachFile.path);
@@ -1154,6 +1155,7 @@ router.post(
         'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg'
       ];
     } else if (files.length > 5) {
+      paths = files.map((eachFile) => eachFile.path);
       paths = paths.slice(0, 6);
     } else {
       paths = files.map((eachFile) => eachFile.path);

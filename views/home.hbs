@@ -1,11 +1,18 @@
  {{>navbar}}
 
-<h1>{{title}}</h1>
-
-<img
-  src="https://images.unsplash.com/photo-1614896777839-cdec1a580b0a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80"
-  alt=""
-/>
+<div class="project-space">
+  <div class="project-space-info">
+    <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em></h2>
+    <span>
+    materials used from waste-mgmt: {{#each project.materials}}{{this}} {{/each}}
+      <a href="{{project.insta}}">@hauck_pluempe</a>  
+     <a href="{{project.web  }}">{{project.web }}</a>
+   </span>
+  </div>
+    {{#each project.picture}}
+      <img src="{{this}}" alt="photo of project" />
+    {{/each}}
+</div>
 
 <p>Welcome to {{title}} To have a look at the offerings please sign up first</p>
 
@@ -17,4 +24,4 @@
 {{/each}}
 </div>
 
-<a href="/offer/offer-suggestions">See all Offerings</a>
+<a href="/offer/offer-suggestions">See all Offerings</a></span>
