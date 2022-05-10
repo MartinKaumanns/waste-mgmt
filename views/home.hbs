@@ -1,6 +1,13 @@
  {{>navbar}}
-
 <div class="project-space">
+ 
+      {{#each project.picture}}
+      <img src="{{this}}" class="project-img" alt="photo of project" style="display:none"/>
+      {{/each}}
+
+      <img src="{{project.picture.[0]}}" id="slider" class="slider" alt="">
+
+ 
   <div class="project-space-info">
     <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em></h2>
     <span>
@@ -9,10 +16,8 @@
      <a href="{{project.web  }}">{{project.web }}</a>
    </span>
   </div>
-    {{#each project.picture}}
-      <img src="{{this}}" alt="photo of project" />
-    {{/each}}
 </div>
+
 
 <p>Welcome to {{title}} To have a look at the offerings please sign up first</p>
 
@@ -24,4 +29,28 @@
 {{/each}}
 </div>
 
-<a href="/offer/offer-suggestions">See all Offerings</a></span>
+<a href="/offer/offer-suggestions">See all offers</a></span>
+
+<script>
+
+const imgArray = document.getElementsByClassName('project-img')
+const slider = document.querySelector('.slider')
+
+let curIndex = 0;
+let imgDuration = 5000; // duration for single image - don't mess around with values :)
+
+function slideShow() {
+    slider.className += "fadeOut";
+    setTimeout(function() {
+        slider.src = imgArray[curIndex].src;
+        slider.className = "";
+    },1000);
+    curIndex++;
+    if (curIndex == imgArray.length) { curIndex = 0; }
+    setTimeout(slideShow, imgDuration);
+}
+slideShow();
+
+
+
+</script>

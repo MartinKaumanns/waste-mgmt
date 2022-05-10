@@ -308,10 +308,38 @@ label {
   color: #fff;
 }
 
+/* deactivated offers*/
 .bw-image {
   -webkit-filter: grayscale(100%);
   /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+}
+
+/* slide show */
+#slider {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+#slider.fadeOut {
+  opacity: 0;
+}
+
+/* project space positioning of text div on slide show */
+.project-space {
+  position: relative;
+}
+
+.project-space-info {
+  position: absolute;
+  bottom: 15em;
+  left: 2em;
+}
+
+.project-space-info span {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 /*# sourceMappingURL=style.css.map */
