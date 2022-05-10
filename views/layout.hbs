@@ -64,8 +64,8 @@ function hideSearchSortingButtons() {
 }
 
 function hideCategorySortingButtons() {
-  serachSortingButtonDivElement.classList.add('show')
-  categorySortingButtonDivElement.classList.add('hide')
+  if(serachSortingButtonDivElement) serachSortingButtonDivElement.classList.add('show')
+  if(categorySortingButtonDivElement) categorySortingButtonDivElement.classList.add('hide')
 }
 
 </script>

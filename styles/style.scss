@@ -3,6 +3,7 @@ $grey: hsl(0, 0, 90%);
 /* font-family: 'Inter', sans-serif; */
 * {
   margin: 0;
+  padding: 0;
   /*  font-family: 'Inter', sans-serif; */
   &,
   &:before,
@@ -14,7 +15,7 @@ $grey: hsl(0, 0, 90%);
 body {
   /* max-width: 52em */
   color: #674dec;
-  padding: 0 1em;
+  padding: 0 2em;
   margin: 0 auto;
   font-family: sans-serif;
   font-family: $font-sans;
@@ -26,19 +27,31 @@ a {
   text-decoration: none;
 }
 .logo {
-  font-size: 1.5em;
+  padding-left: 0em;
+  font-size: 1.7em;
+  font-weight: 500;
   text-decoration: none;
+  letter-spacing: -0.3px;
 }
 
 .logo:hover {
   color: #674dec;
+  text-decoration: none;
 }
 
 nav {
   display: flex;
+  align-items: center;
+
   a,
   button {
-    padding: 1em 1em;
+    font-size: 1.7em;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+
+    padding: 1em 0 0 2em;
     border: 0;
     &:not(:last-child) {
       margin-right: 1em;
@@ -71,8 +84,8 @@ img {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+/*   display: flex;
+  flex-direction: column; */
 }
 
 input:not([type='checkbox']),
@@ -84,9 +97,9 @@ button,
 .btn {
   padding: 1em;
   border: 1px solid $grey;
-  border-radius: 0;
-  margin-bottom: 1em;
+  border-radius: 40px;
   font: inherit;
+  font-size: 1.2em;
   color: inherit;
   background-color: transparent;
 }
@@ -104,7 +117,7 @@ label {
 
 .offersWraper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 5%;
 }
 .offersCard {
@@ -186,20 +199,22 @@ label {
   margin-right: 1em;
 }
 
-// dropdown
+/* DROPDOWN BUTTONS */
 
 .dropbtn {
   background-color: #674dec;
   color: white;
-  padding: 0.8em 2em;
-  font-size: 1em;
-  border: none;
+  margin-top: 1.5em;
+  padding: 0.4em 1.2em;
+  font-size: 1.2em;
   border-radius: 40px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .dropbtn:hover {
   background-color: #3b25a8;
+  text-decoration: none;
 }
 
 .dropdown {
@@ -211,6 +226,8 @@ label {
   position: relative;
   display: inline-block;
 }
+
+/* OPENED DROPDOWN */
 
 .dropdown-content {
   padding: 2em 2em;
@@ -243,6 +260,7 @@ label {
 .hide {
   display: none;
 }
+
 ///GO BUTTON
 
 .go-button-wrapper {
