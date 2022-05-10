@@ -106,6 +106,8 @@ const offerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+offerSchema.index({ title: 'text', description: 'text', materials: 'text', genres: 'text' });
+
 const Offer = mongoose.model('Offer', offerSchema);
 
 module.exports = Offer;

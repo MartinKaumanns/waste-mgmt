@@ -92,28 +92,14 @@ router.get('/offer-search/date', (req, res, next) => {
       $and: [
         { completed: false },
         { creator: { $ne: { _id: req.user.id } } },
-        {
-          $or: [
-            { title: { $regex: searchTerm } },
-            { description: { $regex: searchTerm } },
-            { genres: { $regex: searchTerm } },
-            { materials: { $regex: searchTerm } }
-          ]
-        }
+        { $text: { $search: searchTerm } }
       ]
     };
   } else {
     searchObj = {
       $and: [
         { completed: false },
-        {
-          $or: [
-            { title: { $regex: searchTerm } },
-            { description: { $regex: searchTerm } },
-            { genres: { $regex: searchTerm } },
-            { materials: { $regex: searchTerm } }
-          ]
-        }
+        { $text: { $search: searchTerm } }
       ]
     };
   }
