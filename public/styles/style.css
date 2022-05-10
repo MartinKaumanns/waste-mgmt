@@ -38,13 +38,13 @@ nav {
 
 nav a,
 nav button {
-  padding: 1em 0;
+  padding: 1em 1em;
   border: 0;
 }
 
 nav a:not(:last-child),
 nav button:not(:last-child) {
-  margin-right: 1em;
+  /* margin-right: 1em; */
 }
 
 nav a:first-child,

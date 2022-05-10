@@ -38,7 +38,7 @@ nav {
   display: flex;
   a,
   button {
-    padding: 1em 0;
+    padding: 1em 1em;
     border: 0;
     &:not(:last-child) {
       margin-right: 1em;
@@ -99,6 +99,8 @@ textarea {
 label {
   margin-bottom: 0.5em;
 }
+
+////|||||
 
 .offersWraper {
   display: flex;
