@@ -61,6 +61,10 @@ nav {
     }
   }
 }
+nav a:hover {
+  text-decoration: none;
+  color:#674dec;
+}
 
 h1,
 h2,
@@ -121,9 +125,10 @@ label {
   margin: 5%;
 }
 .offersCard {
+  
   line-height: 1.4em;
   width: 20em;
-  border: 2px solid #674dec;
+  /* border: 2px solid #674dec; */
   img {
     width: 20em;
     height: 15em;
@@ -135,9 +140,13 @@ label {
 }
 
 .card-text {
-  padding: 1em 1em;
+  padding: 0.8em 0;
+  /* padding: 1em 1em; */
   h3 {
-    font-size: 1.2em;
+    font-size: 1.5em;
+    line-height: 1.1em;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
   }
 }
 
@@ -152,11 +161,7 @@ label {
 #ck-button {
   margin: 4px;
 
-  /* background-color: #efefef;
-  border-radius: 4px;
-  border: 1px solid #d0d0d0;
-  overflow: auto;
-  float: left; */
+ 
 }
 
 #ck-button label span {
@@ -202,20 +207,27 @@ label {
 /* DROPDOWN BUTTONS */
 
 .dropbtn {
-  background-color: #674dec;
-  color: white;
+  color: #674dec;
+  background-color: #ffffff;
+  border: 3px solid #674dec;
   margin-top: 1.5em;
   padding: 0.4em 1.2em;
   font-size: 1.2em;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+
   border-radius: 40px;
   cursor: pointer;
   text-decoration: none;
 }
 
 .dropbtn:hover {
-  background-color: #3b25a8;
+  color: #fff;
+  background-color: #674dec;
+  border: 3px solid #674dec;
   text-decoration: none;
 }
+
 
 .dropdown {
   position: relative;
@@ -230,10 +242,11 @@ label {
 /* OPENED DROPDOWN */
 
 .dropdown-content {
-  padding: 2em 2em;
+  margin: 0 auto;
+   padding: 2em 0; 
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #ffffff;
   width: 100vw;
   height: 100vh;
   overflow: auto;
@@ -277,17 +290,7 @@ label {
   cursor: pointer;
 }
 
-/* .go-button label span {
-  text-align: center;
-  display: block;
-  border-radius: 2em;
-}
 
-.go-button label input {
-  position: absolute;
-  /* top: -20px; 
-} 
-*/
 
 .go-button:hover {
   background-color: #000000;
@@ -296,8 +299,8 @@ label {
 
 .button-sorting {
   color: #000000;
-  font-size: 1em;
-  padding: 0.2em 1.2em;
+  font-size: 0.8em;
+  padding: 0.1em 1.2em;
   border: 1.5px solid #000000;
   border-radius: 2em;
   cursor: pointer;
@@ -308,28 +311,5 @@ label {
   color: #fff;
 }
 
-/* .button-sorting:active {
-  background-color: #000000;
-  color: #fff;
-} */
 
-/// Closing button
 
-.closing-button {
-  color: #000000;
-  font-size: 2em;
-  padding: 0.2em;
-  border: 3px solid #000000;
-  border-radius: 2em;
-}
-
-.closing-button:hover {
-  background-color: #000000;
-  color: #fff;
-}
-
-//nav bar X
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 32;
-  font-size: 1em;
-}

@@ -40,7 +40,7 @@ router.get('/',  fileUploader.array('picture', 5), (req, res, next) => {
     .populate('creator')
     .then((foundOffers) => {
       offers=foundOffers;
-      return Project.findById('627a51530e9825cd37ad811d').populate('creator')
+      return Project.findById('627a62a7ca10c0c356b7780a').populate('creator')
     })
     .then((project)=> {
       console.log(project)
