@@ -12,9 +12,8 @@
     <textarea id="description-input" name="description" rows="4" cols="50">{{offer.description}}   
     </textarea></label>
 
-  <div>{{#if offer.picture}}
-    <img src="{{offer.picture}}" alt="Existing picture">
-    {{/if}}
+  <div>
+    <img src="{{offer.picture.[0]}}" alt="Existing picture">
     <label for="input-image">Image:
       <input type="file" name="picture" id="input-image" multiple/>
     </label>

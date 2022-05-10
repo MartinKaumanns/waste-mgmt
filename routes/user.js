@@ -7,7 +7,7 @@ const fileUploader = require('../cloudinary.config.js');
 const User = require('./../models/user');
 const Offer = require('./../models/offer');
 
-router.get('/:id', routeGuard, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   let userSingle;
   let userIsOwner;
   const { id } = req.params;
@@ -129,6 +129,8 @@ router.post(
     let picture;
     if (req.file) {
       picture = req.file.path;
+    } else {
+      picture = 'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652188991/waste-mgmt/lxvcqrugd3jmbkramfob.jpg'
     }
     User.findByIdAndUpdate(
       { _id: id, creator: req.user._id },

@@ -17,6 +17,8 @@ router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
   let picture;
   if (req.file) {
     picture = req.file.path;
+  } else {
+    picture = 'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652188991/waste-mgmt/lxvcqrugd3jmbkramfob.jpg'
   }
 
   bcryptjs

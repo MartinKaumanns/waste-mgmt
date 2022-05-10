@@ -1098,7 +1098,7 @@ router.post(
     /* set default image in case user did not select a file and trims array to max. 5 elements*/
     if (files.length === 0) {
       paths = [
-        'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg'
+        'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652187504/waste-mgmt/cz5btg6wm6whle7llbfm.png'
       ];
     } else if (files.length > 5) {
       paths = files.map((eachFile) => eachFile.path);
@@ -1152,7 +1152,7 @@ router.post(
     /* set default image in case user did not select a file and trims array to max. 5 elements */
     if (files.length === 0) {
       paths = [
-        'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652108811/waste-mgmt/hpvueykjeuiotesfq9nz.jpg'
+        'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652187504/waste-mgmt/cz5btg6wm6whle7llbfm.png'
       ];
     } else if (files.length > 5) {
       paths = files.map((eachFile) => eachFile.path);

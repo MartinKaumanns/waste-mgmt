@@ -1,32 +1,60 @@
 {{!-- Bootstrap --}}
 
 <div class="offersCard">
-  <a href="/offer/{{ _id }}" id="card-heading">
-<div>
-    <img src="{{picture.[0]}}" alt="{{title}}">
-</div>
-<div class="card-text">
-    <h3> {{title}}</h3>
-    {{!-- <h2>{{completed}}</h2> --}}
-    </a>
-    <span><a href="/user/{{ creator._id }}">{{creator.name}}</a> | {{date createdAt}}</span>
-    <br>
-    <span>{{!-- <strong>Genres</strong>:  --}}
-        {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
-        {{/each}}
+  {{#if completed}}
+      <div>
+        <img class="bw-image" src="{{picture.[0]}}" alt="{{title}}">
+      </div>
+      <div class="card-text">
+        <h3> {{title}} // SOLD</h3>
+        <span>{{creator.name}} | {{date createdAt}}</span>
+        <br>
+        <span>{{!-- <strong>Genres</strong>:  --}}
+          {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}
+          {{/each}}
+        </span>
         <br />
-    <span>{{!-- <strong>Material</strong>:  --}}
-        {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
-        {{/each}}
+        <span>{{!-- <strong>Material</strong>:  --}}
+          {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
+          {{/each}}
         <br />
 
-    <span>
-    {{#if price}}
-        {{!-- <strong>Price</strong>:  --}}
-        {{price}} € </span>
-        {{else}} <strong> It's for free!</strong>{{/if}}
+        <span>
+          {{#if price}}
+          {{!-- <strong>Price</strong>:  --}}
+          {{price}} € </span>
+        {{else}} 
+          <strong> It's for free!</strong>{{/if}}
         <br />
-</div>
+      </div>
+  {{else}}
+    <a href="/offer/{{ _id }}" id="card-heading">
+      <div>
+        <img src="{{picture.[0]}}" alt="{{title}}">
+      </div>
+      <div class="card-text">
+        <h3> {{title}}</h3>
+        </a><span><a href="/user/{{ creator._id }}">{{creator.name}}</a> | {{date createdAt}}</span>
+        <br>
+        <span>{{!-- <strong>Genres</strong>:  --}}
+          {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}
+          {{/each}}
+        </span>
+        <br />
+        <span>{{!-- <strong>Material</strong>:  --}}
+          {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
+          {{/each}}
+        <br />
+
+        <span>
+          {{#if price}}
+          {{!-- <strong>Price</strong>:  --}}
+          {{price}} € </span>
+        {{else}} 
+          <strong> It's for free!</strong>{{/if}}
+        <br />
+      </div>
+  {{/if}}
 </div>
 
 {{!-- <div class="container">
