@@ -1,31 +1,33 @@
  {{>navbar}}
-
-<h1>{{profile.name}}'s Profile</h1>
-<img src="{{profile.picture}}" alt="Profile Picture" />
-
-<span><strong>Name</strong>: {{profile.name}}</span>
-<br />
-<span><strong>Email</strong>: {{profile.email}}</span>
-<br />
-
-  <span><strong>Genres</strong>: {{#each profile.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
-{{/each}}
-
-
-<br />
-<span><strong>Location</strong>: {{profile.location}}</span>
-
+<div id="profile-head">
+    <div>
+      <img src="{{profile.picture}}" alt="Profile Picture" />
+    </div> 
+    <div class="profile-details">
+      <div>
+        <h3>Hi, I’m {{profile.name}}</h3>
+        {{!-- <div><strong>Name</strong>: {{profile.name}}</div> --}}
+          <div>Im am working in the fields of {{#each profile.genres}}{{this}}{{#unless @last}} and {{/unless}} {{/each}}</div>
+        
+          <div>Right now I am based in Berlin,  {{profile.location}}</div>
+        <div>If you want to contact me, shoot me a mail: {{profile.email}}</div>
+    </div>
+    </div>
+ 
 {{#if userIsOwner}}
 <form action="/user/{{profile._id}}/edit" >
-  <button>Edit my profile</button>
+  <button class="profile-btn">Edit profile</button>
 </form>
 
 <form action="/user/{{ profile._id}}/delete" method="POST">
-  <button>Delete my profile</button>
+  <button class="erase-btn">Delete profile</button>
 </form>
 {{/if}}
+</div>
 
-<h3>{{ profile.name }}'s Offers:</h3>
+
+<h1>{{ profile.name }}’s Offers:</h1>
+<div class="offersWrapper">
 
 {{#if userOffers}}
 {{#each userOffers}}
@@ -35,3 +37,4 @@
 {{else}}
 <p>No active offers</p>
 {{/if}}
+</div>

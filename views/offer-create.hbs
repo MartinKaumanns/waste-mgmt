@@ -1,20 +1,26 @@
- {{>navbar}}
-
+ {{> navbar}}
+<div class="offer-create">
 <form action="/offer/create" method="POST" enctype="multipart/form-data">
-  <label for="input-title">Title:
-  <input type="text" id="input-title" name="title" placeholder="Your Title" /></label>
-  <br>
+<div>
 
-  <label for="description-input">Description:
-    <textarea id="description-input" name="description" rows="4" cols="50">
-    </textarea></label>
+  <label for="input-title">Title
+  <input type="text" id="input-title" name="title" placeholder="Your Title" /></label>
+</div>
+<div>
+  <label for="description-input" >Description
+    <textarea id="description-input" name="description" ></textarea>
+  </label>
+</div>
 
   <div>
-    <label for="input-image">Images (max. 5) </label>
+    <h3>Upload </h3>
+    <label for="input-image" class="custom-file-upload">Images (max. 5) 
       <input type="file" name="picture" id="input-image" multiple />
-  
+    </label>
   </div>
+ </div>
 
+    <h3 class="offer-label" >Choose a genre you want your offer to be found in </h3>
   <div class="wrapper">
     <div id="ck-button">
       <div class="single-button">
@@ -107,7 +113,7 @@
   </div>
   <br>
  {{!--  ///// materials --}}
-
+<h3 class="offer-label">Choose materials your offer is made of </h3>
   <div class="wrapper">
     <div id="ck-button">
       <div class="single-button">
@@ -238,9 +244,10 @@
       </div>
     </div>
   </div>
-
-  <label for="input-location">Location:
-    <select name="location" placeholder="">
+<div class="offer-create">
+<div>
+  <label for="input-location">Location
+    <select name="location">
       <option value="Friedrichshain">Friedrichshain</option>
       <option value="Kreuzberg">Kreuzberg</option>
       <option value="Neukölln">Neukölln</option>
@@ -267,25 +274,29 @@
       <option value="Spandau">Spandau</option>
       <option value="Schöneweide">Schöneweide</option>
     </select></label>
-
-  <label for="input-price">Price:
+    </div>
+    <div>
+  <label for="input-price">Price
     <input
       type="number"
       id="input-price"
       name="price"
-      placeholder="0"
-    /></label>
-
+      placeholder="0"/></label>
+</div>
+{{!-- <div>
   <label for="input-price">Alternative Payments:
     <textarea
       type="text"
       id="input-payment"
       name="payment"
-      placeholder="Alternative Payment"
-      rows="2"
-      cols="50"
-    >
+      placeholder="Alternative Payment">
     </textarea></label>
+</div> --}}
 
-  <button>Create Offer</button>
+<div class="go-button-wrapper">
+  <button class="go-button centered">Create Offer</button>
+</div>
+
 </form>
+
+

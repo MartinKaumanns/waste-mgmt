@@ -1,6 +1,5 @@
 {{!-- Bootstrap --}}
-
-<div class="offersCard">
+<div id="offersCard">
   {{#if completed}}
       <div>
         <img class="bw-image" src="{{picture.[0]}}" alt="{{title}}">
@@ -18,23 +17,22 @@
           {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
           {{/each}}
         <br />
-
         <span>
           {{#if price}}
           {{!-- <strong>Price</strong>:  --}}
           {{price}} € </span>
         {{else}} 
-          <strong> It's for free!</strong>{{/if}}
+          It's for free!{{/if}}
         <br />
       </div>
   {{else}}
-    <a href="/offer/{{ _id }}" id="card-heading">
+    <a href="/offer/{{ _id }}" id="card-heading" class="card-text">
       <div>
         <img src="{{picture.[0]}}" alt="{{title}}">
       </div>
       <div class="card-text">
         <h3> {{title}}</h3>
-        </a><span><a href="/user/{{ creator._id }}">{{creator.name}}</a> | {{date createdAt}}</span>
+        </a><span><a href="/user/{{ creator._id }}" class="card-text">{{creator.name}}</a> | {{date createdAt}}</span>
         <br>
         <span>{{!-- <strong>Genres</strong>:  --}}
           {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}
@@ -51,7 +49,7 @@
           {{!-- <strong>Price</strong>:  --}}
           {{price}} € </span>
         {{else}} 
-          <strong> It's for free!</strong>{{/if}}
+          It's for free!{{/if}}
         <br />
       </div>
   {{/if}}

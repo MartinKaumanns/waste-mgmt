@@ -9,27 +9,25 @@
 
  
   <div class="project-space-info">
-    <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em></h2>
+    <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2>
     <span>
-    materials used from waste-mgmt: {{#each project.materials}}{{this}} {{/each}}
+    materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}
       <a href="{{project.insta}}">@hauck_pluempe</a>  
      <a href="{{project.web  }}">{{project.web }}</a>
    </span>
   </div>
 </div>
 
-
-<p>Welcome to {{title}} To have a look at the offerings please sign up first</p>
-
-<h2>Latest offers</h2>
-<div class="offersWraper">
+<h1>Latest offers</h1>
+<div class="offersWrapper">
 {{#each offers}}
   {{>offersCard}}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
 </div>
-
-<a href="/offer/offer-suggestions">See all offers</a></span>
+<div class="go-button-wrapper">
+<a href="/offer/offer-suggestions" class="go-button centered">See all offers</a></span>
+</div>
 
 <script>
 

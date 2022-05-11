@@ -36,7 +36,7 @@ router.get('/',  fileUploader.array('picture', 5), (req, res, next) => {
 
   Offer.find()
     .sort({ createdAt: -1 })
-    .limit(3)
+    .limit(4)
     .populate('creator')
     .then((foundOffers) => {
       offers=foundOffers;

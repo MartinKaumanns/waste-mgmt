@@ -1,48 +1,101 @@
  {{>navbar}}
+<div class="offer-create">
+  <form action="/authentication/sign-up" method="POST" enctype="multipart/form-data" >
 
-<form
-  action="/authentication/sign-up"
-  method="POST"
-  enctype="multipart/form-data"
->
-  <label for="input-name">Name</label>
-  <input type="text" id="input-name" name="name" placeholder="Your Name" />
-  <label for="input-email">Email</label>
-  <input type="email" id="input-email" name="email" placeholder="Your Email" />
-  <label for="input-password">Password</label>
-  <input
-    type="password"
-    name="password"
-    id="input-password"
-    placeholder="A Strong Password"
-  />
   <div>
-    <label for="">Image:
-      <input type="file" name="picture" id="" />
-    </label>
+      <label for="input-name">Name
+      <input type="text" id="input-name" name="name" placeholder="Your Name" />
+      </label>
   </div>
-  {{! image }}
-  {{! description }}
-  {{! genre }}
   <div>
-
-    <label for="genres">Genre:</label><br />
-
-    <input type="checkbox" name="genres" value="Installation" />Installation<br
-    />
-    <input type="checkbox" name="genres" value="Painting" />Painting<br />
-    <input type="checkbox" name="genres" value="Media" />Media<br />
-    <input type="checkbox" name="genres" value="Photography" />Photography<br />
-    <input type="checkbox" name="genres" value="Ceramics" />Ceramics<br />
-    <input type="checkbox" name="genres" value="Performing Arts" />Performing
-    Arts<br />
-    <input type="checkbox" name="genres" value="Architecture" />Architecture<br
-    />
-    <input type="checkbox" name="genres" value="Graphics" />Graphics<br />
-    <input type="checkbox" name="genres" value="Other" />other<br />
+      <label for="input-email">Email
+      <input type="email" id="input-email" name="email" placeholder="Your Email" />
+      </label>
   </div>
+  <div>
+      <label for="input-password">Password
+      <input type="password" name="password" id="input-password" placeholder="A Strong Password"/>
+      </label>
+  </div>
+    <div>
+      <h3>Upload</h3>
+      <label for="image" class="custom-file-upload">Upload Image
+        <input type="file" name="picture" id="image" />
+      </label>
+    </div>
+</div>
 
-  <label for="input-location">Location:
+<div>
+  <label for="genres" class="form-label">Choose a genre</label>
+<div class="wrapper">
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Installation" {/><span>Installation</span>
+       </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Painting"/><span>Painting</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Media"/><span>Media</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Photography"/><span>Photography</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Ceramics"/><span>Ceramics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Performing Arts"/><span>Performing Arts</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Architecture"/><span>Architecture</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Graphics"/><span>Graphics</span>
+      </label>
+    </div>
+  </div>
+  <div id="ck-button">
+    <div class="single-button">
+      <label>
+        <input type="checkbox" hidden name="genres" value="Other"/><span>Other</span>
+      </label>
+    </div>
+   </div>
+</div>
+</div>
+<div class="offer-create">
+  <div>
+  <label for="input-location">Location
     <select name="location" placeholder="Choose a genre you are working in">
       <option value="Friedrichshain">Friedrichshain</option>
       <option value="Kreuzberg">Kreuzberg</option>
@@ -70,6 +123,10 @@
       <option value="Spandau">Spandau</option>
       <option value="Schöneweide">Schöneweide</option>
     </select></label>
+  </div>
+</div>
 
-  <button>Sign Up</button>
+<div class="go-button-wrapper">
+  <button class="go-button centered">Sign Up</button>
+</div>
 </form>

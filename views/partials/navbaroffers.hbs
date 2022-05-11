@@ -1,21 +1,26 @@
 <nav>
-  <a href="/" class="logo">WASTE MGMT</a>
+ 
+    <a href="/" class="logo">WASTE MGMT</a>
+  
+  <div>
+ <div class="nav-cat-search">
+      {{#if user}}
+        <a href="#" class="dropbtn category-search-button" >Categories</a>
+        <a href="#" class="dropbtn search-button">Search</a>
+        
+        </div>
+        <form action="/offer/create">
+          <button>New Offer</button>
+        </form>
 
-  {{#if user}}
-    <a href="#" class="dropbtn category-search-button" >Categories</a>
-    <a href="#" class="dropbtn search-button">Search</a>
-    {{!  <a href="/offer-create"></a> }}
-    <form action="/offer/create">
-      <button>New Offer</button>
-    </form>
+        <a href="/user/{{user.id}}">{{user.name}}’s Profile</a>
 
-    <a href="/user/{{user.id}}">{{user.name}}'s Profile</a>
-
-    <form action="/authentication/sign-out" method="POST">
-      <button>Sign Out</button>
-    </form>
-  {{else}}
-    <a href="/authentication/sign-in">Sign In</a>
-    <a href="/authentication/sign-up">Sign Up</a>
-  {{/if}}
+        <form action="/authentication/sign-out" method="POST">
+          <button>Sign Out</button>
+        </form>
+      {{else}}
+        <a href="/authentication/sign-in">Sign In</a>
+        <a href="/authentication/sign-up">Sign Up</a>
+      {{/if}}
+  </div>
 </nav>
