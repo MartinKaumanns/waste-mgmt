@@ -3,10 +3,12 @@
 {{> megamenu}} {{> megasearch}}
 
 <h1>Latest Offers</h1>
+<div class="offersWrapper"> 
 {{#each offers}}
 {{> offersCard }}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
+</div>
 
 <script>
 

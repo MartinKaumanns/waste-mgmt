@@ -1,7 +1,15 @@
 {{>navbaroffers}}
+<div>
+    <h1>Offers</h1>
 
-{{> megamenu}}{{> megasearch}}
+    <div class="filter-buttons">
+    {{> megamenu}}{{> megasearch}}
+    </div>
+</div>
 
+
+
+<div class="offersWrapper"> 
 {{#if filteredOffers}}
 {{else}}
 <h2>No offers found. Try another filter or search term!</h2>
@@ -10,6 +18,9 @@
 {{> offersCard }}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
+</div>
+
+
 <script>
     window.addEventListener('load', () => hideSearchSortingButtons())
 </script>
