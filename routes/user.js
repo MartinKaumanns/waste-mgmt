@@ -6,6 +6,7 @@ const routeGuard = require('../middleware/route-guard');
 const fileUploader = require('../cloudinary.config.js');
 const User = require('./../models/user');
 const Offer = require('./../models/offer');
+const { redirect } = require('express/lib/response');
 
 router.get('/:id', (req, res, next) => {
   let userSingle;
@@ -115,6 +116,19 @@ router.get('/:id/edit', routeGuard, (req, res, next) => {
     }
     res.render('edit-profile', { user });
   });
+});
+
+// delete route: placeholder; for now it logs out user and renders profile-deleted view
+router.get('/:id/delete', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((userDoc) => {
+      req.session.destroy();
+      res.render('profile-deleted', { userName: userDoc.name});
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 // edit profile POST
