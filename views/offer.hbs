@@ -9,17 +9,22 @@
 <img src="{{this}}" alt="photo of object" />
 {{/each}}
 
+<div class="description">
+  <h2>{{offer.description}}</h2>
+</div>
+
 <a href="/user/{{ offer.creator._id }}">
 <p>{{offer.creator.name}}</a> | {{date offer.createdAt}}</p>
 
 
-<p><strong>Genres</strong>: {{#each offer.genres}}  {{this}} {{#unless @last}},{{/unless}}</p>
+<p>Genres: {{#each offer.genres}}{{this}}{{#unless @last}}, {{/unless}}
 {{/each}}
-<p><strong>Material</strong>: {{#each offer.materials}}  {{this}} {{#unless @last}},{{/unless}}</p>
+</p>
+<p>Material: {{#each offer.materials}}{{this}}{{#unless @last}}, {{/unless}}
 {{/each}}
-<p>{{offer.description}}</p>
+</p>
 <p>
- <strong>Location</strong>: {{offer.location}}
+ Location: {{offer.location}}
 </p>
 
 {{#if offer.price}}

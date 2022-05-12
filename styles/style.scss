@@ -6,7 +6,7 @@ $second-color: #2a4022;
 $nav-font-size: 1.7rem;
 $form-font-size: 1.7rem;
 $hero-font-size: 2.4rem;
-$h1: 9rem;
+$h1: 7rem;
 $h2: 4.5rem;
 $p: 1.2rem;
 /* font-family: 'Inter', sans-serif; */
@@ -395,7 +395,7 @@ text-transform: uppercase;
     flex-wrap: wrap;
     margin: 2rem 1rem 0 0;
     h3 {
-      margin: 0 1rem 0 1rem;
+      margin: 0 1rem 0.5rem 1rem;
       font-weight: 400;
     }
     label{
@@ -426,6 +426,7 @@ text-transform: uppercase;
     input[type="file"] {
       display: none;
   }
+  
   .custom-file-upload {
     padding: 0.7rem 2rem 0.7rem 2rem;
     max-width: 40rem;
@@ -444,6 +445,11 @@ text-transform: uppercase;
     border-radius: 2rem;
     color: $first-color;
   }
+}
+
+.img-upload {
+  margin-bottom: 1rem;
+  color: green;
 }
 
 .offer-label {
@@ -536,23 +542,35 @@ h3 {
 }
 
 .offer-single {
-margin-left: 2rem;
-h1 {
-  margin: 4rem 0 2rem 0;
-}
-img {
-width: 60%;
-height: 60%;
-object-fit: cover;
-margin-bottom: 3rem;
+  margin-left: 2rem;
+margin: auto
+    h1 {
+      margin: 4rem 0 2rem 0;
+    }
+    img {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+ 
+    }
+    p,a, span {
+    font-size: $p;
+    padding: 0;
+    margin: 0.1em;
+    }
 
+    h2 {
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
 }
 
-p,a, span {
-font-size: $p;
+.description {
+  width: 60%;
 }
 
-}
+
 
 
 //sign-in
@@ -619,4 +637,4 @@ font-size: $p;
     border-radius: 2rem;
     color: $first-color;
   }
-}
+} 

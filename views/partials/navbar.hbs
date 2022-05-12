@@ -4,7 +4,6 @@
   <div>
 
   <div class="nav-cat-search">
-    {{#if user}}
 
       <a
         href="/offer/category-megamenu"
@@ -12,6 +11,7 @@
       >Categories</a>
       <a href="/offer/search-megasearch" class="dropbtn search-button">Search</a>
 
+    {{#if user}}
   </div >
       <form action="/offer/create">
         <button class="nav-btn">New Offer</button>

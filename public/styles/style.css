@@ -116,7 +116,7 @@ nav a:hover {
 
 h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 9rem;
+  font-size: 7rem;
   font-weight: 400;
   line-height: 0.9em;
   text-transform: uppercase;
@@ -395,7 +395,7 @@ hr {
 }
 
 .offer-create div h3 {
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem 0.5rem 1rem;
   font-weight: 400;
 }
 
@@ -446,6 +446,11 @@ hr {
   border: 2px solid #3c4734;
   border-radius: 2rem;
   color: #3c4734;
+}
+
+.img-upload {
+  margin-bottom: 1rem;
+  color: green;
 }
 
 .offer-label {
@@ -536,10 +541,8 @@ hr {
 
 .offer-single {
   margin-left: 2rem;
-}
-
-.offer-single h1 {
-  margin: 4rem 0 2rem 0;
+  margin: auto h1;
+  margin-margin: 4rem 0 2rem 0;
 }
 
 .offer-single img {
@@ -551,6 +554,17 @@ hr {
 
 .offer-single p, .offer-single a, .offer-single span {
   font-size: 1.2rem;
+  padding: 0;
+  margin: 0.1em;
+}
+
+.offer-single h2 {
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.description {
+  width: 60%;
 }
 
 .sign-in {
