@@ -139,7 +139,7 @@ router.post(
   (req, res, next) => {
     console.log(req.params);
     const { id } = req.params;
-    const { name, email, genres, location } = req.body;
+    const { name, email, genres, location, web, insta } = req.body;
     let picture;
     if (req.file) {
       picture = req.file.path;
@@ -148,7 +148,7 @@ router.post(
     }
     User.findByIdAndUpdate(
       { _id: id, creator: req.user._id },
-      { name, email, genres, location, picture }
+      { name, email, genres, location, picture, web, insta }
     )
 
       .then(() => {

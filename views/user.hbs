@@ -10,7 +10,10 @@
           <div>Im am working in the fields of {{#each profile.genres}}{{this}}{{#unless @last}} and {{/unless}} {{/each}}</div>
         
           <div>Right now I am based in Berlin,  {{profile.location}}</div>
-        <div>If you want to contact me, shoot me a mail: {{profile.email}}</div>
+        <div>If you want to contact me, shoot me a mail: {{profile.email}}
+          <br>{{#if profile.web}}Check out my website: <a href="http://{{profile.web}}">{{profile.web}}</a>{{/if}}
+          <br>{{#if profile.insta}}Visit my instagram: <a href="https://www.instagram.com/{{profile.insta}}">@{{profile.insta}}</a>{{/if}}
+        </div>
     </div>
     </div>
  

@@ -1,5 +1,4 @@
 {{>navbar}}
-
 <div class="project-space">
  
   {{#each project.picture}}
@@ -11,8 +10,8 @@
     <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2>
     <span>
     materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}
-      <a href="{{project.insta}}">@hauck_pluempe</a>  
-     <a href="{{project.web  }}">{{project.web }}</a>
+      <a href="https://www.instagram.com/{{project.insta}}">@hauck_pluempe</a>  
+     <a href="http://{{project.web}}">{{project.web }}</a>
    </span>
   </div>
 

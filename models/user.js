@@ -14,7 +14,15 @@ const schema = new mongoose.Schema(
       lowercase: true,
       trim: true
     },
-    passwordHashAndSalt: {
+    insta: {
+      type: String,
+      trim: true
+    },
+    web: {
+        type: String,
+        trim: true
+    },
+      passwordHashAndSalt: {
       type: String
     },
     /* April 28: New user specifications */

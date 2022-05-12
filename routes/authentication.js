@@ -13,7 +13,7 @@ router.get('/sign-up', (req, res, next) => {
 });
 
 router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
-  const { name, email, password, genres, location } = req.body;
+  const { name, email, password, genres, location, insta, web } = req.body;
   let picture;
   if (req.file) {
     picture = req.file.path;
@@ -27,6 +27,8 @@ router.post('/sign-up', fileUploader.single('picture'), (req, res, next) => {
       return User.create({
         name,
         email,
+        insta,
+        web,
         picture,
         genres,
         location,
