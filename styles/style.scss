@@ -679,11 +679,13 @@ a:hover {
 
 .offer-email {
   margin-top: 2rem;
+  
   form {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  
   }
   div {
     align-items: flex-start;
@@ -750,4 +752,6 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; 
+  }
 }
+
