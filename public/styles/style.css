@@ -130,6 +130,7 @@ textarea {
 }
 
 hr {
+  margin-top: 8rem;
   border-width: 2px;
   border-color: #3c4734;
 }
@@ -540,16 +541,16 @@ hr {
 }
 
 .offer-single {
-  margin-left: 2rem;
-  margin: auto h1;
-  margin-margin: 4rem 0 2rem 0;
+  margin: 3rem 0 4rem 0;
 }
 
 .offer-single img {
-  width: 60%;
-  height: 60%;
+  display: block;
+  width: 800px;
+  height: 600px;
   object-fit: cover;
   margin-bottom: 3rem;
+  margin: 2rem auto 0 auto;
 }
 
 .offer-single p, .offer-single a, .offer-single span {
@@ -563,8 +564,34 @@ hr {
   margin-bottom: 2rem;
 }
 
+.offer-single button {
+  margin: 10px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #3c4734;
+}
+
 .description {
+  margin: 4rem auto 0 auto;
   width: 60%;
+}
+
+.offer-details {
+  margin: auto;
+  width: 60%;
+}
+
+.h1-centered {
+  margin: auto;
+  width: 60%;
+}
+
+.preview-pic {
+  width: 300px;
+  height: 220px;
+  object-fit: cover;
 }
 
 .sign-in {
