@@ -1,31 +1,29 @@
  {{>navbar}}
 
-<div class="offerCard">
+<div class="offer-single">
+<h1>
+  {{offer.title}}
+</h1>
 
 {{#each offer.picture}}
 <img src="{{this}}" alt="photo of object" />
 {{/each}}
 
-<h1>
-  {{offer.title}}
-</h1>
 <a href="/user/{{ offer.creator._id }}">
 <p>{{offer.creator.name}}</a> | {{date offer.createdAt}}</p>
 
 
-<span><strong>Genres</strong>: {{#each offer.genres}}  {{this}} {{#unless @last}},{{/unless}}</span>
+<p><strong>Genres</strong>: {{#each offer.genres}}  {{this}} {{#unless @last}},{{/unless}}</p>
 {{/each}}
-<br />
-<span><strong>Material</strong>: {{#each offer.materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
+<p><strong>Material</strong>: {{#each offer.materials}}  {{this}} {{#unless @last}},{{/unless}}</p>
 {{/each}}
-<br />
 <p>{{offer.description}}</p>
-<span>
+<p>
  <strong>Location</strong>: {{offer.location}}
-</span>
+</p>
 
 {{#if offer.price}}
-<h3>Price: {{offer.price}} €</h3>
+<p>Price: {{offer.price}} €</p>
 
 {{else}}
 <h3>{{offer.alternativepayment}}</h3>
@@ -43,7 +41,9 @@
 {{else}}
 {{!-- <form action="/offer/{{ offer._id}}/offer-email"> --}}
 <form action="/email/{{ offer._id}}/send-email">
-  <button>Send Email</button>
+<div class="go-button-wrapper">
+  <button class="go-button centered">Send Email</button>
+</div>
 </form>
 {{/if}}
 </div>

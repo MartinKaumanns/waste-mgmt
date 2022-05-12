@@ -85,6 +85,7 @@ router.get('/offer-suggestions', (req, res, next) => {
 
 router.get('/offer-search/date', (req, res, next) => {
   const limit = 30;
+  console.log(req.query.searchfield)
   const searchTerm = req.query.searchfield;
   // writes searchObj with search "term", filters out results of user
   if (req.user) {
@@ -109,7 +110,9 @@ router.get('/offer-search/date', (req, res, next) => {
     .limit(limit)
     .populate('creator')
     .then((filteredOffers) => {
+      console.log(searchTerm)
       filteredOffers.searchTerm = searchTerm;
+      filteredOffers.sorting = 'newest';
       res.render('offer-search', { filteredOffers });
     });
 });
@@ -122,6 +125,7 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
     searchObj = {
       $and: [
         { completed: false },
+        { creator: { $ne: { _id: req.user.id } } },
         { $text: { $search: searchTerm } }
       ]
     };
@@ -140,6 +144,7 @@ router.get('/offer-search/date-oldest', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
+      filteredOffers.sorting = 'oldest';
       res.render('offer-search', { filteredOffers });
     });
 });
@@ -152,6 +157,7 @@ router.get('/offer-search/price', (req, res, next) => {
     searchObj = {
       $and: [
         { completed: false },
+        { creator: { $ne: { _id: req.user.id } } },
         { $text: { $search: searchTerm } }
       ]
     };
@@ -170,6 +176,7 @@ router.get('/offer-search/price', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
+      filteredOffers.sorting = 'lowerst price';
       res.render('offer-search', { filteredOffers });
     });
 });
@@ -201,6 +208,7 @@ router.get('/offer-search/price-descending', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
+      filteredOffers.sorting = 'highest price';
       res.render('offer-search', { filteredOffers });
     });
 });

@@ -8,7 +8,7 @@
         type="text"
         name="searchfield"
         id=""
-        {{#if filteredOffers.searchTerm }}value={{filteredOffers.searchTerm}}{{/if}}
+        {{#if filteredOffers.searchTerm}}value="{{filteredOffers.searchTerm}}"{{/if}}
         placeholder={{#if filteredOffers.searchTerm}}{{filteredOffers.searchTerm}}{{else}}"Type in anything …"{{/if}}
         />
         <button formaction="/offer/offer-search/date" class="go-button">GO!</button>

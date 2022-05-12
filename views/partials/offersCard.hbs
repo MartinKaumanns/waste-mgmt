@@ -35,13 +35,13 @@
         </a><span><a href="/user/{{ creator._id }}" class="card-text">{{creator.name}}</a> | {{date createdAt}}</span>
         <br>
         <span>{{!-- <strong>Genres</strong>:  --}}
-          {{#each genres}}  {{this}} {{#unless @last}},{{/unless}}
+          {{#each genres}}{{this}}{{#unless @last}},{{/unless}}
           {{/each}}
         </span>
         <br />
         <span>{{!-- <strong>Material</strong>:  --}}
-          {{#each materials}}  {{this}} {{#unless @last}},{{/unless}}</span>
-          {{/each}}
+          {{#each materials}}{{this}}{{#unless @last}},{{/unless}}
+          {{/each}}</span>
         <br />
 
         <span>

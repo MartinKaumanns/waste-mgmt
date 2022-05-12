@@ -53,14 +53,12 @@ function mySearchFunction() {
     megaDropdownElement.classList.remove("show");
   }
 }
- categorySearchButtonElement.addEventListener('click',() => {
-  megaMenuFunction();
-  console.log('hello cat searc btn')})
+categorySearchButtonElement.addEventListener('click',() => megaMenuFunction());
 searchButtonElement.addEventListener('click', () => mySearchFunction())
 
 function hideSearchSortingButtons() {
   if(serachSortingButtonDivElement) serachSortingButtonDivElement.classList.add('hide')
-  if(categorySortingButtonDivElement) categorySortingButtonDivElement.classList.add('show')
+  if(categorySortingButtonDivElement) categorySortingButtonDivElement.classList.remove('hide')
 }
 
 function hideCategorySortingButtons() {

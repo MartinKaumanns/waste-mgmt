@@ -1,20 +1,17 @@
 {{>navbaroffers}}
-
-{{> megamenu}} {{> megasearch}}
-
-<h1>Latest Offers</h1>
+<div>
+    <h1>Latest Offers</h1>
+    <div class="filter-buttons">
+         {{> megamenu}} {{> megasearch}}
+    </div>
+</div>
 <div class="offersWrapper"> 
-{{#each offers}}
-{{> offersCard }}
-{{#unless @last}}<br />{{/unless}}
-{{/each}}
+    {{#each offers}}
+    {{> offersCard }}
+    {{#unless @last}}<br />{{/unless}}
+    {{/each}}
 </div>
 
 <script>
-
-    
-
-    window.addEventListener('load', () => hideSearchSortingButtons())
-
-    
+window.addEventListener('load', () => hideSearchSortingButtons())
 </script>

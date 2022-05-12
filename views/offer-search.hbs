@@ -1,15 +1,21 @@
 {{>navbaroffers}}
 
-{{> megamenu}}{{> megasearch}}
-
-{{#if filteredOffers}}
-{{else}}
-<h2>No offers found. Try another filter or search term!</h2>
-{{/if}}
-{{#each filteredOffers}}
-{{> offersCard }}
-{{#unless @last}}<br />{{/unless}}
-{{/each}}
+<div>
+    <h1>Offers sorted by {{filteredOffers.sorting}}</h1>
+    <div class="filter-buttons">
+        {{> megamenu}}{{> megasearch}}
+   </div>
+</div>
+<div class="offersWrapper"> 
+    {{#if filteredOffers}}
+    {{else}}
+    <h2>No offers found. Try another filter or search term!</h2>
+    {{/if}}
+    {{#each filteredOffers}}
+    {{> offersCard }}
+    {{#unless @last}}<br />{{/unless}}
+    {{/each}}
+</div>
 
 <script>
     window.addEventListener('load', () => hideCategorySortingButtons())
