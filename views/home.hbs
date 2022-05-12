@@ -1,4 +1,5 @@
 {{>navbar}}
+
 <div class="project-space">
  
   {{#each project.picture}}
@@ -8,7 +9,7 @@
  
   <div class="project-space-info">
     <button class="go-button nav-btn"><a href="/project-space">Project space</a></button>
-    <h2><a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2> 
+    <h2><a target="_blank" href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2> 
   </div>
  
 

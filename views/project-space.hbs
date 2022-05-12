@@ -1,19 +1,23 @@
 {{>navbar}}
-
-<h1> <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021) </h1>
-<div>
-    {{#if project.picture.[0]}}<img src="{{project.picture.[0]}}" id="project-img1" alt="photo of project" />{{/if}}
-    {{#if project.picture.[1]}}<img src="{{project.picture.[1]}}" id="project-img2" alt="photo of project" />{{/if}}
-    {{#if project.picture.[2]}}<img src="{{project.picture.[2]}}" id="project-img3" alt="photo of project" />{{/if}}
-    {{#if project.picture.[3]}}<img src="{{project.picture.[3]}}" id="project-img4" alt="photo of project" />{{/if}}
-    {{#if project.picture.[4]}}<img src="{{project.picture.[4]}}" id="project-img5" alt="photo of project" />{{/if}}
+<div class="project-space-wrapper">
+    <section class="">
+        <h1>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</h1>
+    </section>
+    <section class="project-images-section">
+        {{#if project.picture.[0]}}<img src="{{project.picture.[0]}}" id="project-img1" alt="photo of project" />{{/if}}
+        {{#if project.picture.[1]}}<img src="{{project.picture.[1]}}" id="project-img2" alt="photo of project" />{{/if}}
+        {{#if project.picture.[2]}}<img src="{{project.picture.[2]}}" id="project-img3" alt="photo of project" />{{/if}}
+        {{#if project.picture.[3]}}<img src="{{project.picture.[3]}}" id="project-img4" alt="photo of project" />{{/if}}
+        {{#if project.picture.[4]}}<img src="{{project.picture.[4]}}" id="project-img5" alt="photo of project" />{{/if}}
+    </section>
+    <section>
+        <h1><a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021) </h1>
+        <h2>materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}</h2>
+        
+        <h3>About the artists and their work: {{project.description}}</h3>
+        <p>
+            <a target="_blank"  href="https://www.instagram.com/{{project.insta}}">@hauck_pluempe</a>  
+            <a target="_blank"  href="http://{{project.web}}">{{project.web }}</a>
+        </p>
+    </section>
 </div>
-<section>
-    <h2><a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021) </h2>
-    <h3>About the artists and their work: {{project.description}}</h3>
-    <p>
-    materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}
-      <a href="https://www.instagram.com/{{project.insta}}">@hauck_pluempe</a>  
-     <a href="http://{{project.web}}">{{project.web }}</a>
-    </p>
-</section>

@@ -348,6 +348,8 @@ text-transform: uppercase;
   filter: grayscale(100%)
 }
 
+////PROJECT SPACE HOME
+
 /* slide show */
 #slider {
   opacity:1;
@@ -385,6 +387,52 @@ text-transform: uppercase;
     padding:0;
     line-height: 1;
   }
+}
+
+
+////PROJECT SPACE PAGE
+
+.project-space-wrapper{
+  h1{
+    a {
+      font-size: $h1;
+    }
+  }
+}
+
+// project space page: Images
+
+.project-images-section {
+  img {
+    display: block;
+    
+  }
+}
+
+#project-img1 {
+  width: 100%;
+  margin-bottom: 3rem;
+  
+}
+
+#project-img2 {
+  width: 20em;
+  margin: 0 auto 6rem;
+}
+
+#project-img3 {
+  width: 30em;
+  margin: 0 0 3rem 3rem;
+}
+
+#project-img4 {
+  width: 10em;
+  margin: 0 auto 6rem;
+}
+
+#project-img5 {
+  width: 40em;
+  margin-bottom: 3em;
 }
 
 //// FORMS
@@ -750,4 +798,5 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none; 
+}
 }

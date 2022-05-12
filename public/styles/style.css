@@ -387,6 +387,39 @@ hr {
   line-height: 1;
 }
 
+.project-space-wrapper h1 a {
+  font-size: 7rem;
+}
+
+.project-images-section img {
+  display: block;
+}
+
+#project-img1 {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+#project-img2 {
+  width: 20em;
+  margin: 0 auto 6rem;
+}
+
+#project-img3 {
+  width: 30em;
+  margin: 0 0 3rem 3rem;
+}
+
+#project-img4 {
+  width: 10em;
+  margin: 0 auto 6rem;
+}
+
+#project-img5 {
+  width: 40em;
+  margin-bottom: 3em;
+}
+
 .offer-create {
   margin-top: 2rem;
   margin-left: 1rem;
@@ -682,6 +715,91 @@ a:hover {
   border: 2px solid #3c4734;
   border-radius: 2rem;
   color: #3c4734;
+}
+
+.offer-email {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.offer-email form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.offer-email div {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem 1rem 0 0;
+}
+
+.offer-email div h3 {
+  margin: 0 1rem 0.5rem 1rem;
+  font-weight: 400;
+}
+
+.offer-email div label {
+  font-size: 1.7rem;
+}
+
+.offer-email form {
+  font-size: 1.7rem;
+}
+
+.offer-email label {
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.offer-email input, .offer-email textarea {
+  display: block;
+  margin: auto;
+  padding: 0.7rem 0.7rem 0.7rem 2rem;
+  max-width: 40rem;
+  margin: 0 1rem 1rem 1rem;
+  border: 2px solid #3c4734;
+  border-radius: 2rem;
+  color: #3c4734;
+  overflow: hidden;
+}
+
+.offer-email input[type="file"] {
+  display: none;
+}
+
+.offer-email .custom-file-upload {
+  padding: 0.7rem 2rem 0.7rem 2rem;
+  max-width: 40rem;
+  margin: 0 1rem 1rem 0;
+  border: 2px solid #3c4734;
+  border-radius: 2rem;
+  color: #3c4734;
+  cursor: pointer;
+}
+
+.offer-email select {
+  padding: 0.7rem 0.7rem 0.7rem 2rem;
+  width: 20rem;
+  max-width: 40rem;
+  margin: 0 1rem 1rem 1rem;
+  border: 2px solid #3c4734;
+  border-radius: 2rem;
+  color: #3c4734;
+}
+
+.offer-email select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.offer-email input[type=number]::-webkit-inner-spin-button,
+.offer-email input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /*# sourceMappingURL=style.css.map */
