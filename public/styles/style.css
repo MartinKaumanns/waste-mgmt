@@ -20,6 +20,11 @@ body span {
   font-size: 1.2rem;
 }
 
+#input-name, #input-email, #input-web, #input-insta, #input-title, #description-input, #input-price {
+  margin-left: 0;
+  margin-bottom: 2rem;
+}
+
 .logo {
   padding-left: 0em;
   font-size: 1.7rem;
@@ -383,6 +388,7 @@ hr {
 }
 
 .offer-create {
+  margin-top: 2rem;
   margin-left: 1rem;
 }
 

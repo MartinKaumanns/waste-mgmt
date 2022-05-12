@@ -30,7 +30,10 @@ body {
   
 }
 
-
+#input-name, #input-email, #input-web, #input-insta, #input-title, #description-input, #input-price {
+  margin-left: 0;
+  margin-bottom: 2rem;
+}
 /// NAVBAR ///
 
 .logo {
@@ -389,7 +392,8 @@ text-transform: uppercase;
 //Create-offer
 
 .offer-create {
-  form{
+  margin-top: 2rem;
+  form {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -670,3 +674,80 @@ a:hover {
     color: $first-color;
   }
 } 
+
+/// EMAIL
+
+.offer-email {
+  margin-top: 2rem;
+  form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  }
+  div {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 2rem 1rem 0 0;
+    h3 {
+      margin: 0 1rem 0.5rem 1rem;
+      font-weight: 400;
+    }
+    label{
+      font-size: $form-font-size;
+    }
+  }
+    margin-left: 1rem;
+    
+    form {
+      font-size: $form-font-size;
+    }
+    label {
+      margin: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    input, textarea {
+      display:block;
+      margin: auto;
+      padding: 0.7rem 0.7rem 0.7rem 2rem;
+      max-width: 40rem;
+      margin: 0 1rem 1rem 1rem;
+      border: 2px solid $first-color;
+      border-radius: 2rem;
+      color: $first-color;
+      overflow: hidden;
+    }
+    input[type="file"] {
+      display: none;
+  }
+  
+  .custom-file-upload {
+    padding: 0.7rem 2rem 0.7rem 2rem;
+    max-width: 40rem;
+    margin: 0 1rem 1rem 0;
+    border: 2px solid $first-color;
+    border-radius: 2rem;
+    color: $first-color;
+    cursor: pointer;
+  }
+  select {
+    padding: 0.7rem 0.7rem 0.7rem 2rem;
+    width: 20rem;
+    max-width: 40rem;
+    margin: 0 1rem 1rem 1rem;
+    border: 2px solid $first-color;
+    border-radius: 2rem;
+    color: $first-color;
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
