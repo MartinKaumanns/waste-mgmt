@@ -114,6 +114,10 @@ nav a:hover {
   outline: none;
 }
 
+.nav-btn-actv:focus {
+  outline-color: #09ce30;
+}
+
 h1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 7rem;
@@ -220,8 +224,8 @@ hr {
 }
 
 #ck-button input:checked:hover + span {
-  background-color: #2a4022;
-  border-color: #2a4022;
+  background-color: #41c312;
+  border-color: #41c312;
   color: #fff;
 }
 
@@ -275,7 +279,7 @@ hr {
 
 .dropdown a:hover {
   color: #fff;
-  background-color: #2a4022;
+  background-color: #41c312;
   text-decoration: none;
 }
 
@@ -423,6 +427,7 @@ hr {
   border: 2px solid #3c4734;
   border-radius: 2rem;
   color: #3c4734;
+  overflow: hidden;
 }
 
 .offer-create input[type="file"] {
@@ -449,9 +454,16 @@ hr {
   color: #3c4734;
 }
 
-.img-upload {
-  margin-bottom: 1rem;
-  color: green;
+.offer-create select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.offer-create input[type=number]::-webkit-inner-spin-button,
+.offer-create input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .offer-label {

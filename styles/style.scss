@@ -2,7 +2,7 @@ $font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
 $first-color: #3c4734;
-$second-color: #2a4022;
+$second-color: #41c312;
 $nav-font-size: 1.7rem;
 $form-font-size: 1.7rem;
 $hero-font-size: 2.4rem;
@@ -29,6 +29,7 @@ body {
   }
   
 }
+
 
 /// NAVBAR ///
 
@@ -119,8 +120,11 @@ nav a:hover {
 }
 
 .nav-btn:focus { 
-    outline:none;
-  
+    outline:none; 
+}
+
+.nav-btn-actv:focus {
+  outline-color: rgb(9, 206, 48);
 }
 
 /// HERO PIC
@@ -423,6 +427,7 @@ text-transform: uppercase;
       border: 2px solid $first-color;
       border-radius: 2rem;
       color: $first-color;
+      overflow: hidden;
     }
     input[type="file"] {
       display: none;
@@ -446,13 +451,17 @@ text-transform: uppercase;
     border-radius: 2rem;
     color: $first-color;
   }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
 }
-
-.img-upload {
-  margin-bottom: 1rem;
-  color: green;
 }
-
 .offer-label {
   font-weight: 400;
   margin-left: 2rem
