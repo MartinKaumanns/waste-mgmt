@@ -78,8 +78,8 @@ nav .nav-cat-search {
 
 .dropbtn:hover {
   color: #fff;
-  background-color: #3c4734;
-  border: 3px solid #3c4734;
+  background-color: #34701e;
+  border: 3px solid #34701e;
   text-decoration: none;
 }
 
@@ -115,7 +115,7 @@ nav a:hover {
 }
 
 .nav-btn-actv:focus {
-  outline-color: #09ce30;
+  outline-color: #34701e;
 }
 
 h1 {
@@ -224,8 +224,8 @@ hr {
 }
 
 #ck-button input:checked:hover + span {
-  background-color: #41c312;
-  border-color: #41c312;
+  background-color: #34701e;
+  border-color: #34701e;
   color: #fff;
 }
 
@@ -279,7 +279,7 @@ hr {
 
 .dropdown a:hover {
   color: #fff;
-  background-color: #41c312;
+  background-color: #34701e;
   text-decoration: none;
 }
 
