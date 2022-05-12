@@ -40,16 +40,27 @@ router.get('/',  fileUploader.array('picture', 5), (req, res, next) => {
     .populate('creator')
     .then((foundOffers) => {
       offers=foundOffers;
-      return Project.find().sort({createdAt: 1}).populate('creator')
+      return Project.find().sort({createdAt: 1}).populate('creator') // for project space: fetches docs from the projects collection - oldest first (as array)
     })
     .then((projects)=> {
-      let project= projects[0]
-      console.log(project)
+      let project= projects[0] // takes oldest doc
       res.render('home', { offers, project, title: 'waste mgmt' });
     })
     .catch((error) => {
       next(error);
     });
 });
+
+router.get('/project-space', (req, res, next) => {
+   Project.find().sort({createdAt: 1}).populate('creator') // for project space: fetches docs from the projects collection - oldest first (as array)
+  .then((projects)=> {
+    let project = projects[0] // takes oldest doc
+    res.render('project-space', { project });
+  })
+  .catch((error) => {
+    next(error);
+  });
+})
+
 
 module.exports = router;

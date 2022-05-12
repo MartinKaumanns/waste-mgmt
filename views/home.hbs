@@ -7,13 +7,10 @@
   <img src="{{project.picture.[0]}}" id="slider" class="slider" alt="">
  
   <div class="project-space-info">
-    <h2>Project Space: <a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2>
-    <span>
-    materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}
-      <a href="https://www.instagram.com/{{project.insta}}">@hauck_pluempe</a>  
-     <a href="http://{{project.web}}">{{project.web }}</a>
-   </span>
+    <button class="go-button nav-btn"><a href="/project-space">Project space</a></button>
+    <h2><a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2> 
   </div>
+ 
 
 </div>
 
