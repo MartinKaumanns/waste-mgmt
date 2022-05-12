@@ -16,9 +16,9 @@
   </div>
 
         <div class="search-sorting-button-div">
-        <button formaction="/offer/offer-search/price" class="button-sorting" class="hide">€</button>
-        <button formaction="/offer/offer-search/price-descending" class="button-sorting" class="hide">€€€</button>
-        <button formaction="/offer/offer-search/date" class="button-sorting" class="hide">Newest</button>
-        <button formaction="/offer/offer-search/date-oldest" class="button-sorting" class="hide">Oldest</button>
+        {{#if filteredOffers.searchTerm}}<button formaction="/offer/offer-search/price" class="button-sorting" >€</button>{{/if}}
+        {{#if filteredOffers.searchTerm}}<button formaction="/offer/offer-search/price-descending" class="button-sorting" >€€€</button>{{/if}}
+        {{#if filteredOffers.searchTerm}}<button formaction="/offer/offer-search/date" class="button-sorting" >Newest</button>{{/if}}
+        {{#if filteredOffers.searchTerm}}<button formaction="/offer/offer-search/date-oldest" class="button-sorting" >Oldest</button>{{/if}}
         </div>
       </form>

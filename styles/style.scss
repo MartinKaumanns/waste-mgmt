@@ -2,7 +2,9 @@ $font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
 $first-color: #3c4734;
-$second-color: #34701e;
+$second-color:#262b22;
+$third-color: rgb(146, 162, 140);
+
 $nav-font-size: 1.7rem;
 $form-font-size: 1.7rem;
 $hero-font-size: 2.4rem;
@@ -26,6 +28,9 @@ body {
   }
   span {
     font-size: $p;
+  }
+  a { 
+    padding: 0;
   }
   
 }
@@ -73,6 +78,19 @@ margin-right: 1em;
   }
 }
 
+.dark-bg {
+  width: 100%;
+  height: 100%;
+  background-color: $first-color;
+  h1 {
+    color: white;
+    margin: auto;
+    padding: 5rem 0 2rem 2rem;
+    width: 60%;
+  }
+}
+
+
 .dropbtn {
   color: white;
   background-color:$first-color;
@@ -96,6 +114,7 @@ margin-right: 1em;
 }
 
 .dropdown {
+
   position: relative;
   display: inline-block;
 }
@@ -139,7 +158,7 @@ h1 {
   line-height: 0.9em;
   text-transform: uppercase;
   /* text-align: center; */
-  margin: 5rem 0 2rem 2rem;
+  margin: 3rem 0 2rem 3rem;
 }
 
 textarea {
@@ -152,6 +171,8 @@ hr {
 border-width: 2px;
 border-color: $first-color;
 }
+
+
 
 // OFFER CARDS
 .offersWrapper {
@@ -253,6 +274,7 @@ text-transform: uppercase;
 .dropdown-content {
   display: none;
   position: absolute;
+
   background-color: #ffffff;
   width: 90vw;
   height: 90vh;
@@ -280,7 +302,7 @@ text-transform: uppercase;
 }
 
 .dropdown-content a {
-  color: black;
+  color: $second-color;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -321,24 +343,24 @@ text-transform: uppercase;
 }
 
 .go-button:hover {
-  background-color: #000000;
-  border: 2px solid #000;
+  background-color: $second-color;
+  border: 2px solid $second-color;
   color: #fff;
   text-decoration: none;
 }
 
 .button-sorting {
-  color: #000000;
+  color: $second-color;
   font-size: $p;
   padding: 0.1em 1.2em;
   margin: 1rem 0.6rem 0 0;
-  border: 2px solid #000000;
+  border: 2px solid $second-color;
   border-radius: 2em;
   cursor: pointer;
 }
 
 .button-sorting:hover {
-  background-color: #000000;
+  background-color: $second-color;
   color: #fff;
 }
 

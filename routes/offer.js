@@ -176,7 +176,7 @@ router.get('/offer-search/price', (req, res, next) => {
     .populate('creator')
     .then((filteredOffers) => {
       filteredOffers.searchTerm = searchTerm;
-      filteredOffers.sorting = 'lowerst price';
+      filteredOffers.sorting = 'lowest price';
       res.render('offer-search', { filteredOffers });
     });
 });

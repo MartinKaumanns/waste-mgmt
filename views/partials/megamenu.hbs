@@ -1,12 +1,10 @@
+
 <form action="/offer/offer-filtered/">
 
 <div class="dropdown">
-  {{!-- <a href="#" class="dropbtn category-search-button">Categories</a> --}}
-  <div id="myDropdown" class="dropdown-content">
-    <div class="wrapper" >
-     {{!--  <a href="#" class="closing-Button"><span class="material-symbols-outlined">
-close
-</span></a> closing button --}}
+
+  <div id="myDropdown" class="dropdown-content dark-bg">
+    <div class="wrapper " >
       <div id="ck-button">
         <div class="single-button">
           <label>
@@ -166,35 +164,13 @@ close
       </div>
     </div>
     <div class="go-button-wrapper">
-  <button formaction="/offer/offer-filtered/date" class="go-button">GO!</button>
-    </div>
-  
+  <button formaction="/offer/offer-filtered/date" class="go-button nav-btn">GO!</button>
+    </div> 
 </div>
-
 <div class="category-sorting-button-div">
-<button formaction="/offer/offer-filtered/price" class="button-sorting" class="hide">€</button>
-<button formaction="/offer/offer-filtered/price-descending" class="button-sorting" class="hide">€€€</button>
-<button formaction="/offer/offer-filtered/date" class="button-sorting" class="hide">Newest</button>
-<button formaction="/offer/offer-filtered/date-oldest" class="button-sorting" class="hide">Oldest</button>
+{{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price" class="button-sorting" >€</button>{{/if}}
+{{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price-descending" class="button-sorting" >€€€</button>{{/if}}
+{{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/date" class="button-sorting" >Newest</button>{{/if}}
+{{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/date-oldest" class="button-sorting" >Oldest</button>{{/if}}
 </div>
 </form>
-
-<script>
-
-/*
-// Close the dropdown if the user clicks outside of it
-
-// window.onclick = function (event) {
-//   if ((!event.target.matches(['.dropbtn', ".wrapper", ".dropdown-item"]))) {
-//     var dropdowns = document.getElementsByClassName('dropdown-content');
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }; */
-
-</script>
