@@ -473,7 +473,7 @@ text-transform: uppercase;
   margin-bottom: 2em;
   font-size: $form-font-size;
   img {
-    width: 100vw;
+    width: 100%;
     max-height: 92vh;
     object-fit: cover;
 
@@ -514,7 +514,7 @@ text-transform: uppercase;
 
 ////PROJECT SPACE PAGE
 
-.project-space-wrapper{
+.project-space-wrapper {
   h1{
     margin-left: 2rem;
     a {
@@ -574,7 +574,7 @@ text-transform: uppercase;
   div {
     align-items: flex-start;
     flex-wrap: wrap;
-    margin: 2rem 1rem 0 0;
+    margin: 2rem 1rem 0 1rem;
     h3 {
       margin: 0 1rem 0.5rem 1rem;
       font-weight: 400;
@@ -583,7 +583,7 @@ text-transform: uppercase;
       font-size: $form-font-size;
     }
   }
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
     
     form {
       font-size: $form-font-size;

@@ -457,7 +457,7 @@ hr {
 }
 
 .project-space img {
-  width: 100vw;
+  width: 100%;
   max-height: 92vh;
   object-fit: cover;
 }
@@ -535,7 +535,7 @@ hr {
 
 .offer-create {
   margin-top: 2rem;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 
 .offer-create form {
@@ -548,7 +548,7 @@ hr {
 .offer-create div {
   align-items: flex-start;
   flex-wrap: wrap;
-  margin: 2rem 1rem 0 0;
+  margin: 2rem 1rem 0 1rem;
 }
 
 .offer-create div h3 {
