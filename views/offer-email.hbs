@@ -1,19 +1,17 @@
  {{>navbar}}
-<div class="offer-email">
-
-<form action="/email/{{offerId}}/send-email" method="POST">
-<div class="offer-details">
-
-  <h3>It seems that you are interested in
-   <em>{{offer.title}}</em>. Get in contact with  
-    <em>{{offer.creator.name}}!</em></h3>
-
-  <textarea name="text" id="description-input" rows="8" cols="200" ></textarea>
+<div class="offer-email background-color">
+  <form action="/email/{{offerId}}/send-email" method="POST">
+    <div class="offer-details">
+      <h3>It seems that you are interested in
+        <em>{{offer.title}}</em>. Get in contact with  
+          <em>{{offer.creator.name}}!</em>
+      </h3>
+      <textarea name="text" id="description-input" rows="8" cols="200" ></textarea>
+    </div>
+    <div class="go-button-wrapper">
+      <button class="go-button centered nav-btn">Send</button>
+    </div>
+  </form>
 </div>
-</div>
-<div class="go-button-wrapper">
-  <button class="go-button centered nav-btn">Send</button>
-</div>
-</form>
 
 {{> footer}}
