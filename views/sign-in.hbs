@@ -1,5 +1,7 @@
  {{>navbar}}
 <div class="sign-in">
+  <div>
+
   <form action="/authentication/sign-in" method="POST">
     <label for="input-email">Email
 
@@ -9,9 +11,11 @@
 
     <input type="password" name="password" id="input-password" placeholder="A Strong Password" class="nav-btn-actv"/>
     </label>
-</div>
+  </div>
 <div class="go-button-wrapper">
   <button class="go-button centered nav-btn">Sign In</button>
+</div>
 </form>
 </div>
+
 {{> footer}}

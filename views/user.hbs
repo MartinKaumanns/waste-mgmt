@@ -4,32 +4,34 @@
       <img src="{{profile.picture}}" alt="Profile Picture" />
     </div> 
     <div class="profile-details">
-      <div>
-        <h3>Hi, I’m {{profile.name}}</h3>
-        {{!-- <div><strong>Name</strong>: {{profile.name}}</div> --}}
-          <div>Im am working in the fields of {{#each profile.genres}}{{this}}{{#unless @last}} and {{/unless}} {{/each}}</div>
-        
-          <div>Right now I am based in Berlin,  {{profile.location}}</div>
-          <div>If you want to contact me, shoot me a mail: {{profile.email}}
-            <br>{{#if profile.web}}Check out my website: <a target="_blank" href="http://{{profile.web}}">{{profile.web}}</a>{{/if}}
-            <br>{{#if profile.insta}}Visit my instagram: <a target="_blank" href="https://www.instagram.com/{{profile.insta}}">@{{profile.insta}}</a>{{/if}}
-          </div>
+        <div>
+          <h3>Hi, I’m {{profile.name}}</h3>
+        <div>Im am working in the fields of {{#each profile.genres}}{{this}}{{#unless @last}} and {{/unless}} {{/each}}</div>
+        <div>
+          Right now I am based in Berlin,  {{profile.location}}
+        </div>
+        <div>If you want to contact me, shoot me a mail: {{profile.email}}
+              <br>{{#if profile.web}}Check out my website: <a target="_blank" href="http://{{profile.web}}" class="link">{{profile.web}}</a>{{/if}}
+              <br>{{#if profile.insta}}Visit my instagram: <a target="_blank" href="https://www.instagram.com/{{profile.insta}}" class="link">@{{profile.insta}}</a>{{/if}}
+        </div>
     </div>
-    </div>
+</div>
  
-{{#if userIsOwner}}
-<form action="/user/{{profile._id}}/edit" >
-  <button class="profile-btn nav-btn">Edit profile</button>
-</form>
+  {{#if userIsOwner}}
+  <form action="/user/{{profile._id}}/edit" >
+    <button class="profile-btn nav-btn">Edit profile</button>
+  </form>
 
-<form action="/user/{{ profile._id}}/delete">
-  <button class="erase-btn nav-btn">Delete profile</button>
-</form>
-{{/if}}
+  <form action="/user/{{ profile._id}}/delete">
+    <button class="erase-btn nav-btn">Delete profile</button>
+  </form>
+  {{/if}}
 </div>
 
+<div id="profile-head">
+  <h1>{{ profile.name }}’s Offers:</h1>
+</div>
 
-<h1>{{ profile.name }}’s Offers:</h1>
 <div class="offersWrapper">
 
 {{#if userOffers}}

@@ -652,32 +652,40 @@ input[type=number]::-webkit-outer-spin-button {
 // PROFILE SITE
 
 #profile-head {
-display: flex;
-justify-content: flex-start;
-flex-wrap: wrap;
-margin: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 4rem 2rem 2rem 2rem ;
 
-img {
-  width: 600px;
-  height: 600px;
-  object-fit:cover;
-  margin-bottom: 2rem;
-}
 
-h3 {
-  font-size: $h2;
-  line-height: 4.2rem;
-  text-transform: uppercase;
-  font-weight: 400;
-  max-width: 600px;
-  padding-bottom: 3rem;
-}
-.profile-details {
-  font-size: $form-font-size;
-  line-height: 2rem;
-  margin-left: 2rem;
-  max-width: 600px
-}
+    img {
+      width: 600px;
+      height: 600px;
+      object-fit:cover;
+      margin: 0 0 2rem 0;
+      border-radius: 90%  30% / 50% 40%;
+    }
+
+    h3 {
+      font-size: $h2;
+      line-height: 4.2rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      max-width: 600px;
+      padding-bottom: 3rem;
+    }
+
+    .profile-details {
+      font-size: $form-font-size;
+      line-height: 2rem;
+      margin-left: 2rem;
+      max-width: 40%;
+
+      .link {
+        font-size: $h3;
+        text-decoration: underline;
+      }
+    }
 }
 
 .profile-btn {
@@ -789,7 +797,7 @@ a:hover {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  height: 30vh;
+  height: 38.5%;
   margin-top: 200px;
   }
   div {
@@ -877,10 +885,11 @@ a:hover {
 }
 
 input:-internal-autofill-selected {
-  border: 1px solid $first-color;
+  border: 2px solid $first-color;
   -webkit-text-fill-color: $first-color;
+  -webkit-text-size-adjust:$form-font-size;
   -webkit-box-shadow: 0 0 0px 1000px white inset;
-  transition: background-color 5000s ease-in-out 0s;
+  
 }
 
 /// footer
@@ -891,7 +900,7 @@ input:-internal-autofill-selected {
   height: 11%;
   width: 100%;
   background-color: $first-color;
-  right: 0;bottom:0;left:0;
+  bottom:0;
   color:$fourth-color;
   ul {
     padding: 0 10%;
