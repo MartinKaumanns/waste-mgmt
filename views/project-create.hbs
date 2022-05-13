@@ -1,0 +1,260 @@
+{{>navbar}}
+
+<h1>Apply for waste-mgmt project space</h1>
+<h3>
+As a platform for creatives, we are not only a social network, but also a virtual exhibition space. Every week we introduce you to an up-and-coming Berlin based artist who uses waste-mgmt for his or her work. Apply here to be one of them. Our curatorial team will get in touch with you soon!
+</h3>
+
+<div class="offer-create">
+    <form action="/project-space/create" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="input-title" >Title
+      <input type="text" id="input-title" name="title" placeholder="Your Title" class="nav-btn"/></label>
+    </div>
+    <div>
+      <label for="description-input" >Description
+        <textarea id="description-input" name="description" class="nav-btn-actv"></textarea>
+      </label>
+    </div>
+    <div>
+        <h3>Upload </h3>
+        <label for="input-image" class="custom-file-upload">Images (max. 5) 
+          <input type="file" name="picture" id="input-image" multiple />
+        </label>
+    </div>
+</div>
+
+<h3 class="offer-label" >Choose a genre</h3>
+  <div class="wrapper">
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="genres"
+            value="Installation"
+          /><span>Installation</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="genres" value="Painting" /><span
+          >Painting</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="genres" value="Media" /><span
+          >Media</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="genres"
+            value="Photography"
+          /><span>Photography</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="genres" value="Ceramics" /><span
+          >Ceramics</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="genres"
+            value="Performing Arts"
+          /><span>Performing Arts</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="genres"
+            value="Architecture"
+          /><span>Architecture</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="genres" value="Graphics" /><span
+          >Graphics</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="genres" value="Other" /><span
+          >Other</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <br>
+
+<h3 class="offer-label">Choose materials that you used from our waste-mgmt plattform </h3>
+  <div class="wrapper">
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="wood" /><span
+          >wood</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="metal" /><span
+          >metal</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="plastic" /><span
+          >Plastic</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="paper / cardboard"
+          /><span>paper / cardboard</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="pens / brushes"
+          /><span>pens / brushes</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="paints" /><span
+          >paints</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="textile" /><span
+          >textile</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="stone / building materials"
+          /><span>stone / building materials</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="moulding / casting"
+          /><span>moulding / casting</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="tools" /><span
+          >tools</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="technical equipment"
+          /><span>technical equipment</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input
+            type="checkbox"
+            hidden
+            name="materials"
+            value="studio furniture"
+          /><span>studio furniture</span>
+        </label>
+      </div>
+    </div>
+    <div id="ck-button">
+      <div class="single-button">
+        <label>
+          <input type="checkbox" hidden name="materials" value="other" /><span
+          >other</span>
+        </label>
+      </div>
+    </div>
+  </div>
+<div class="offer-create">
+
+
+<div class="go-button-wrapper">
+  <button class="go-button centered nav-btn">Apply</button>
+</div>
+
+</form>
+
+{{> footer}}
