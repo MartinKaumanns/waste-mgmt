@@ -1,29 +1,21 @@
 <nav>
       <a href="/" class="logo">WASTE MGMT</a>
-  
   <div>
-
-  <div class="nav-cat-search">
-
-      <a
-        href="/offer/category-megamenu"
-        class="dropbtn category-search-button"
-      >Categories</a>
-      <a href="/offer/search-megasearch" class="dropbtn search-button">Search</a>
-
-    {{#if user}}
-  </div >
-      <form action="/offer/create">
-        <button class="nav-btn">New Offer</button>
-      </form>
-      <a href="/user/{{user.id}}">{{user.name}}’s Profile</a>
-
-      <form action="/authentication/sign-out" method="POST">
-        <button class="nav-btn">Sign Out</button>
-      </form>
-    {{else}}
-      <a href="/authentication/sign-in">Sign In</a>
-      <a href="/authentication/sign-up">Sign Up</a>
-    {{/if}}
+    <div class="nav-cat-search">
+      <a href="/offer/category-megamenu" class="dropbtn category-search-button">Categories</a>
+      <a href="/offer/search-megasearch" class="dropbtn search-button nav-button-right">Search</a>
+      {{#if user}}
+     </div >
+  <form action="/offer/create">
+      <button class="nav-btn button-hover">New Offer</button>
+  </form>
+      <a href="/user/{{user.id}}" class="nav-btn button-hover">{{user.name}}’s Profile</a>
+  <form action="/authentication/sign-out" method="POST">
+        <button class="nav-btn button-hover">Sign Out</button>
+  </form>
+      {{else}}
+        <a href="/authentication/sign-in" class="nav-btn button-hover">Sign In</a>
+        <a href="/authentication/sign-up" class="nav-btn button-hover">Sign Up</a>
+      {{/if}}
   </div>
 </nav>

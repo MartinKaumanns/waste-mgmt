@@ -10,15 +10,18 @@
         {{#if project.picture.[3]}}<img src="{{project.picture.[3]}}" id="project-img4" alt="photo of project" />{{/if}}
         {{#if project.picture.[4]}}<img src="{{project.picture.[4]}}" id="project-img5" alt="photo of project" />{{/if}}
     </section>
-    <section>
+    <section class="about-text">
         <h1><a href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021) </h1>
-        <h2>materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}</h2>
+        <hr>
+        <h3>materials used from waste-mgmt: {{#each project.materials}}{{this}}{{#unless @last}},{{/unless}} {{/each}}</h3>
         
         <h3>About the artists and their work: {{project.description}}</h3>
-        <p>
+        <h3>
             <a target="_blank"  href="https://www.instagram.com/{{project.insta}}">@hauck_pluempe</a>  
             <a target="_blank"  href="http://{{project.web}}">{{project.web }}</a>
-        </p>
-        <h3>Every week we introduce you to an up-and-coming Berlin based artist who uses waste-mgmt for his or her work. <a href="#">Apply here</a> to be one of them.</h3>
+        </h3>
+        <h3>Every week we introduce you to an up-and-coming Berlin based artist who uses waste-mgmt for his or her work. <a href="#" class="link">Apply here</a> to be one of them.</h3>
     </section>
 </div>
+
+{{> footer}}

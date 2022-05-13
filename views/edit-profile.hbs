@@ -7,22 +7,22 @@
 >
   <div>
     <label for="input-name">Name
-    <input type="text" id="input-name" name="name" placeholder="Your Name" value="{{user.name}}"/>
+    <input type="text" id="input-name" name="name" placeholder="Your Name" value="{{user.name}}" class="nav-btn"/>
     </label>
   </div>
   <div>
     <label for="input-email">Email
-    <input type="email" id="input-email" name="email" placeholder="Your Email" value="{{user.email}}"/>
+    <input type="email" id="input-email" name="email" placeholder="Your Email" value="{{user.email}}"class="nav-btn"/>
     </label>
   </div>  
   <div>
       <label for="input-web">Website
-      <input type="text" id="input-web" name="web" placeholder="Your Website" value="{{user.web}}"/>
+      <input type="text" id="input-web" name="web" placeholder="Your Website" value="{{user.web}}"class="nav-btn"/>
       </label>
   </div>
   <div>
       <label for="input-insta">Instagram @
-      <input type="text" id="input-insta" name="insta" placeholder="Your Instagram" value="{{user.insta}}"/>
+      <input type="text" id="input-insta" name="insta" placeholder="Your Instagram" value="{{user.insta}}"class="nav-btn"/>
       </label>
   </div>
     {{#if user.picture}}
@@ -105,7 +105,8 @@
   <h3>
   Location
   </h3>
-    <select name="location" value="Choose a genre you are working in">
+  <label for="input-location" >
+    <select name="location" value="Choose a genre you are working in" class="nav-btn">
       <option value="Friedrichshain"{{#if user.Friedrichshain}}selected{{/if}}>Friedrichshain</option>
       <option value="Kreuzberg"{{#if user.Kreuzberg}}selected{{/if}}>Kreuzberg</option>
       <option value="Neukölln" {{#if user.Neukoelln}}selected{{/if}}>Neukölln</option>
@@ -132,6 +133,7 @@
       <option value="Spandau"{{#if user.Spandau}}selected{{/if}}>Spandau</option>
       <option value="Schöneweide"{{#if user.Schoeneweide}}selected{{/if}}>Schöneweide</option>
     </select>
+    </label>
     </div>
     </div>
 
@@ -139,3 +141,4 @@
   <button class="go-button centered nav-btn">Update Profile</button>
   </div>
 </form>
+{{> footer}}

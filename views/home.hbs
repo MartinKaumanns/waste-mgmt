@@ -8,25 +8,26 @@
   <img src="{{project.picture.[0]}}" id="slider" class="slider" alt="">
  
   <div class="project-space-info">
-    <button class="go-button nav-btn"><a href="/project-space">Project space</a></button>
     <h2><a target="_blank" href="/user/{{project.creator.id}}">{{project.creator.name}}</a>: <em>{{project.title}}</em> (2021)</h2> 
+    <a href="/project-space" class="project-spc-btn nav-btn">Project space</a>
   </div>
  
 
 </div>
 
-<div>
+<div class="about-text">
   <h1>About waste-mgmt</h1>
   <hr>
-  <p>
-    For artists, the desire to reduce their negative impact on the planet is increasing rapidly. Art isn’t just an expression of an individual. Furthermore, it also serves as a means of educating the society. Recycling along with upcycling is one of the most important solutions for pollution. Berlin is no longer the 'poor but sexy' capital of Germany, as now the city is home to the world's fastest-rising rents. This concerns studio rents, too. Every square meter has to be used wisely - storage space is rare. We suggest that materials are solidarily exchanged locally between artists so that Berlin remains a hotspot for creatives and support a careful and sustainable approach to our planet.
-    <br>with waste-mgmt you can find bargains, get good deals and save the world at the same time. <a href="/authentication/sign-up">Sign up</a> today!
-    <br>As a platform for creatives, we are not only a social network, but also a virtual exhibition space. Every week we introduce you to an up-and-coming Berlin based artist who uses waste-mgmt for his or her work. <a href="#">Apply here</a> to be one of them.
-  </p>
+  <h3>
+    For artists, the desire to reduce their negative impact on the planet is increasing rapidly. Art isn’t just an expression of an individual. Furthermore, it also serves as a means of educating the society. Recycling along with upcycling is one of the most important solutions for pollution. Berlin is no longer the 'poor but sexy' capital of Germany, as now the city is home to the world's fastest-rising rents. This concerns studio rents, too. Every square meter has to be used wisely—storage space is rare. We suggest that materials are solidarily exchanged locally between artists so that Berlin remains a hotspot for creatives and support a careful and sustainable approach to our planet.
+    <br>with waste-mgmt you can find bargains, get good deals and save the world at the same time. <a href="/authentication/sign-up" class="link">Sign up</a> today!
+    <br>As a platform for creatives, we are not only a social network, but also a virtual exhibition space. Every week we introduce you to an up-and-coming Berlin based artist who uses waste-mgmt for his or her work. <a href="#" class="link">Apply here</a> to be one of them.
+  </h3>
 </div>
-
-<h1>Latest offers</h1>
-<hr>
+<div class="about-text">
+  <h1>Latest offers</h1>
+  <hr>
+</div>
 <div class="offersWrapper">
   {{#each offers}}
     {{>offersCard}}
@@ -35,8 +36,10 @@
 </div>
 
 <div class="go-button-wrapper">
-<a href="/offer/offer-suggestions" class="go-button centered">See all offers</a></span>
+  <a href="/offer/offer-suggestions" class="go-button centered">See all offers</a></span>
 </div>
+
+{{> footer}}
 
 <script>
 

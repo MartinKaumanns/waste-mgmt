@@ -1,14 +1,18 @@
 {{>navbaroffers}}
 <div>
+    <div class="filter-buttons offers-flex">
     <h1 >Offers</h1>
-    <div class="filter-buttons">
     {{> megamenu}}{{> megasearch}}
+    </div>
+    <div>
+
     </div>
 </div>
 
 
 
 <div class="offersWrapper"> 
+
 {{#if filteredOffers}}
 {{else}}
 <h2>No offers found. Try another filter or search term!</h2>
@@ -17,4 +21,7 @@
 {{> offersCard }}
 {{#unless @last}}<br />{{/unless}}
 {{/each}}
+    
 </div>
+
+{{> footer}}

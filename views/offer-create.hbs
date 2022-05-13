@@ -3,8 +3,8 @@
 <form action="/offer/create" method="POST" enctype="multipart/form-data">
 <div>
 
-  <label for="input-title">Title
-  <input type="text" id="input-title" name="title" placeholder="Your Title" /></label>
+  <label for="input-title" >Title
+  <input type="text" id="input-title" name="title" placeholder="Your Title" class="nav-btn"/></label>
 </div>
 <div>
   <label for="description-input" >Description
@@ -246,8 +246,8 @@
   </div>
 <div class="offer-create">
 <div>
-  <label for="input-location">Location
-    <select name="location">
+  Location
+    <select name="location" class="nav-btn">
       <option value="Friedrichshain">Friedrichshain</option>
       <option value="Kreuzberg">Kreuzberg</option>
       <option value="Neukölln">Neukölln</option>
@@ -276,8 +276,9 @@
     </select></label>
     </div>
     <div>
-  <label for="input-price">Price
+  <label for="input-price" >Price
     <input
+    class="nav-btn"
       type="number"
       id="input-price"
       name="price"
@@ -294,9 +295,11 @@
 </div> --}}
 
 <div class="go-button-wrapper">
-  <button class="go-button centered">Create Offer</button>
+  <button class="go-button centered nav-btn">Create Offer</button>
 </div>
 
 </form>
+
+{{> footer}}
 
 
