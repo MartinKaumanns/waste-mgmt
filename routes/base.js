@@ -62,5 +62,54 @@ router.get('/project-space', (req, res, next) => {
   });
 })
 
+router.get('/project-space/create', (req, res) => {
+  if(req.user) {
+    res.render('project-create')
+  } else {
+    res.redirect('/authentication/sign-in')
+  }
+})
+
+router.post('/project-space/create', routeGuard, fileUploader.array('picture', 5), (req, res, next) => {
+  const {
+    title,
+    description,
+    picture,
+    genres,
+    materials,
+  } = req.body;
+
+  let files = req.files;
+  let paths = []
+
+  /* set default image in case user did not select a file and trims array to max. 5 elements*/
+  if (files.length === 0) {
+    paths = [
+      'https://res.cloudinary.com/dnfnzba4r/image/upload/v1652187504/waste-mgmt/cz5btg6wm6whle7llbfm.png'
+    ];
+  } else if (files.length > 5) {
+    paths = files.map((eachFile) => eachFile.path);
+    paths = paths.slice(0, 6);
+  } else {
+    paths = files.map((eachFile) => eachFile.path);
+  }
+
+  Project.create({
+    title,
+    creator: req.user._id,
+    web: req.user.web,
+    insta: req.user.insta,
+    description,
+    picture: paths,
+    genres,
+    materials,
+  })
+    .then((project) => {
+      res.render('project-feedback', { project })
+    })
+    .catch((error) => {
+      next(error);
+    });
+})
 
 module.exports = router;
