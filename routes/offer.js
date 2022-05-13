@@ -47,6 +47,7 @@ router.get('/offer-suggestions', (req, res, next) => {
           // filters out own offers {creator : { $ne : ObjectId('626d4f0ff3c3d119acbf7425')}}
           Offer.find({
             $and: [
+              { completed: false },
               { genres: { $nin: req.user.genres } },
               { creator: { $ne: { _id: req.user.id } } }
             ]
@@ -71,7 +72,7 @@ router.get('/offer-suggestions', (req, res, next) => {
   } else {
     // if user is not logged in find the 30(limit) latest offers
     // should filter out own offers
-    Offer.find()
+    Offer.find({ completed: false })
       .sort({ createdAt: -1 })
       .limit(limit)
       .populate('creator')
