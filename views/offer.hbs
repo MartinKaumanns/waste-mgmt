@@ -17,46 +17,46 @@
 
   <div class="offer-details">
 
-  <p><a href="/user/{{ offer.creator._id }}">
-    {{offer.creator.name}}</a> | {{date offer.createdAt}}</p>
-  <p>Genres: {{#each offer.genres}}{{this}}{{#unless @last}}, {{/unless}}
-    {{/each}}
-  </p>
+      <p><a href="/user/{{ offer.creator._id }}">
+        {{offer.creator.name}}</a> | {{date offer.createdAt}}</p>
+      <p>Genres: {{#each offer.genres}}{{this}}{{#unless @last}}, {{/unless}}
+        {{/each}}
+      </p>
 
-  <p>Material: {{#each offer.materials}}{{this}}{{#unless @last}}, {{/unless}}
-    {{/each}}
-  </p>
+      <p>Material: {{#each offer.materials}}{{this}}{{#unless @last}}, {{/unless}}
+        {{/each}}
+      </p>
 
-  <p>
-    Location: {{offer.location}}
-  </p>
+      <p>
+        Location: {{offer.location}}
+      </p>
 
-  {{#if offer.price}}
-    <p>Price: {{offer.price}} €</p>
-  {{/if}}
+      {{#if offer.price}}
+        <p>Price: {{offer.price}} €</p>
+      {{/if}}
 
-{{#if userIsOwner}}
-  <form action="/offer/{{offer._id}}/edit" >
-    <div class="go-button-wrapper">
-      <button class="go-button centered nav-btn">Edit offer</button>
-    </div>
-  </form>
+    {{#if userIsOwner}}
+      <form action="/offer/{{offer._id}}/edit" >
+        <div class="go-button-wrapper">
+          <button class="go-button centered nav-btn">Edit offer</button>
+        </div>
+      </form>
 
-  <form action="/offer/{{ offer._id}}/delete" method="POST">
-    <div class="go-button-wrapper">
-      <button class="go-button centered nav-btn">Deactivate offer</button>
-    </div>
-  </form>
+      <form action="/offer/{{ offer._id}}/delete" method="POST">
+        <div class="go-button-wrapper">
+          <button class="go-button centered nav-btn">Deactivate offer</button>
+        </div>
+      </form>
 
-{{else}}
-{{!-- <form action="/offer/{{ offer._id}}/offer-email"> --}}
-  <form action="/email/{{ offer._id}}/send-email">
-    <div class="go-button-wrapper">
-      <button class="go-button centered nav-btn">Send Email</button>
-    </div>
-  </form>
-{{/if}}
-
+    {{else}}
+    {{!-- <form action="/offer/{{ offer._id}}/offer-email"> --}}
+      <form action="/email/{{ offer._id}}/send-email">
+        <div class="go-button-wrapper">
+          <button class="go-button centered nav-btn">Send Email</button>
+        </div>
+      </form>
+    {{/if}}
+  </div>
 </div>
 
 {{> footer}}
