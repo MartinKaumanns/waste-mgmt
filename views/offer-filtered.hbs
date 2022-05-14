@@ -10,17 +10,20 @@
 </div>
 
 
+    {{#if filteredOffers}}
+    {{else}}
+        <div class="no-offers">
+            <h2>No offers found. Try another filter or search term!</h2>
+        </div>
+    {{/if}}
 
 <div class="offersWrapper"> 
 
-{{#if filteredOffers}}
-{{else}}
-<h2>No offers found. Try another filter or search term!</h2>
-{{/if}}
-{{#each filteredOffers}}
-{{> offersCard }}
-{{#unless @last}}<br />{{/unless}}
-{{/each}}
+
+    {{#each filteredOffers}}
+        {{> offersCard }}
+        {{#unless @last}}<br />{{/unless}}
+    {{/each}}
     
 </div>
 
