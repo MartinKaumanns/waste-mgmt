@@ -167,10 +167,12 @@
   <button formaction="/offer/offer-filtered/date" class="go-button nav-btn">GO!</button>
     </div> 
 </div>
-<div class="category-sorting-button-div">
+{{#if filteredOffers}}
+<div class="category-sorting-button-div einzug-links">
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price" class="button-sorting nav-btn" >€</button>{{/if}}
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price-descending" class="button-sorting nav-btn" >€€€</button>{{/if}}
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/date" class="button-sorting nav-btn" >Newest</button>{{/if}}
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/date-oldest" class="button-sorting nav-btn" >Oldest</button>{{/if}}
 </div>
+{{/if}}
 </form>

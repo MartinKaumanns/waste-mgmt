@@ -23,6 +23,9 @@ $p: 1.2rem;
   }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   /* max-width: 52em */
   color:$first-color;
   button {
@@ -331,6 +334,7 @@ text-transform: uppercase;
 }
 .dropdown-content {
   padding-top: 5rem;
+  padding-left: 3rem;
   display: none;
   position: absolute;
 
@@ -890,16 +894,25 @@ input:-internal-autofill-selected {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
   
 }
+/// body wrapper
 
+#body-wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+#content-wrapper {
+  padding-bottom:100px;
+}
 /// footer
 
 #footer {
   padding: 2rem 3rem 0 3rem;
-  height: 10%;
+  height: 100px;
   width: 100%;
   background-color: $first-color;
-  position: relative;
-  bottom:0;
+  position: absolute;
+  left:0;bottom:0;
   color:$fourth-color;
   ul {
     padding: 0 10%;

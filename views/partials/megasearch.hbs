@@ -15,8 +15,8 @@
         <button formaction="/offer/offer-search/date" class="go-button nav-btn">GO!</button>
     </div>
   </div>
-
-        <div class="search-sorting-button-div">
+    {{#if filteredOffers}}
+        <div class="search-sorting-button-div einzug-links">
         {{#if filteredOffers.searchTerm}}
         <button formaction="/offer/offer-search/price" class="button-sorting nav-btn ">€</button>
         <button formaction="/offer/offer-search/price-descending" class="button-sorting nav-btn" >€€€</button>
@@ -24,6 +24,7 @@
         <button formaction="/offer/offer-search/date-oldest" class="button-sorting nav-btn" >Oldest</button>
         {{/if}}
         </div>
+        {{/if}}
       </form>
 
 
