@@ -100,7 +100,7 @@ nav .nav-cat-search {
 }
 
 .einzug-links {
-  margin-left: 2rem;
+  padding-left: 2rem;
 }
 
 .dropbtn {
@@ -306,7 +306,7 @@ hr {
 
 /* OPENED DROPDOWN */
 .wrapper {
-  padding: 1rem 0  1.8rem 2rem;
+  padding: 1rem 0  1.8rem 0rem;
 }
 
 .dropdown-content {
@@ -393,6 +393,10 @@ hr {
   border: 2px solid #262b22;
   color: #fff;
   text-decoration: none;
+}
+
+.padding-left {
+  padding-left: 2rem;
 }
 
 .button-sorting {
@@ -714,7 +718,7 @@ hr {
 }
 
 .filter-buttons {
-  margin-left: 3rem;
+  /* padding-left: 3rem; */
 }
 
 .offer-single {
@@ -860,6 +864,7 @@ input:-internal-autofill-selected {
   height: 10%;
   width: 100%;
   background-color: #3c4734;
+  position: relative;
   bottom: 0;
   color: #d9f2d5;
 }

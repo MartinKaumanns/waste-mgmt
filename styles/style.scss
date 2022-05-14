@@ -108,7 +108,7 @@ margin-right: 1.6rem;
 }
 
 .einzug-links {
-  margin-left: 2rem;
+  padding-left: 2rem;
 }
 
 .dropbtn {
@@ -323,7 +323,7 @@ text-transform: uppercase;
 /* OPENED DROPDOWN */
 
 .wrapper {
-  padding: 1rem 0  1.8rem 2rem;
+  padding: 1rem 0  1.8rem 0rem;
 }
 .dropdown-content {
   padding-top: 5rem;
@@ -409,6 +409,10 @@ text-transform: uppercase;
   border: 2px solid $second-color;
   color: #fff;
   text-decoration: none;
+}
+
+.padding-left {
+  padding-left: 2rem
 }
 
 .button-sorting {
@@ -570,6 +574,7 @@ text-transform: uppercase;
 .offer-create {
   background-color: white;
   padding-top: 2rem;
+
   form {
   display: flex;
   justify-content: flex-start;
@@ -737,7 +742,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .filter-buttons {
-  margin-left: 3rem;
+  /* padding-left: 3rem; */
 }
 
 .offer-single {
@@ -889,6 +894,7 @@ input:-internal-autofill-selected {
   height: 10%;
   width: 100%;
   background-color: $first-color;
+  position: relative;
   bottom:0;
   color:$fourth-color;
   ul {
