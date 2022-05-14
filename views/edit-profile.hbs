@@ -1,9 +1,9 @@
  {{>navbar}}
 <div class="offer-create">
-<form
-  method="POST"
-  enctype="multipart/form-data"
->
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+  >
   <div>
     <label for="input-name">Name
     <input type="text" id="input-name" name="name" placeholder="Your Name" value="{{user.name}}" class="nav-btn"/>
@@ -24,6 +24,7 @@
       <input type="text" id="input-insta" name="insta" placeholder="Your Instagram" value="{{user.insta}}"class="nav-btn"/>
       </label>
   </div>
+  <div>
     {{#if user.picture}}
     <img src="{{user.picture}}" alt="Existing picture" class="preview-pic">
     {{/if}}

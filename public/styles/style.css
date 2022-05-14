@@ -92,6 +92,7 @@ nav .nav-cat-search {
 .dark-bg {
   width: 100%;
   height: 100%;
+  margin-bottom: -40px;
   background-color: #3c4734;
 }
 
@@ -534,13 +535,13 @@ hr {
 }
 
 #project-img4 {
-  width: 10em;
+  width: 17em;
   margin: 0 auto 6rem;
 }
 
 #project-img5 {
   width: 40em;
-  margin-bottom: 3em;
+  margin: auto;
 }
 
 .background-color {
@@ -781,6 +782,7 @@ a:hover {
 
 .sign-in {
   background: #d9f2d5;
+  margin-bottom: -40px;
   padding: 15rem 0;
   display: flex;
   flex-direction: column;
@@ -869,7 +871,7 @@ input:-internal-autofill-selected {
 }
 
 #content-wrapper {
-  padding-bottom: 100px;
+  padding-bottom: 140px;
 }
 
 #footer {

@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-router.get('/:id/send-email/', (req, res, next) => {
+router.get('/:id/send-email/', routeGuard, (req, res, next) => {
   const offerId = req.params.id;
   Offer.findById(offerId)
     .populate('creator')
