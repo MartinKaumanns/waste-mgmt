@@ -1,31 +1,34 @@
+ 
   <div class="dropdown ">
-
     <div id="mySearchDropdown" class="dropdown-content background-color">
       <form action="/offer/offer-search">
+       
   
         <label for="search-field"></label>
         <input
-        type="text"
-        name="searchfield"
-        id=""
-        class="nav-btn-actv"
-        {{#if filteredOffers.searchTerm}}value="{{filteredOffers.searchTerm}}"{{/if}}
-        placeholder={{#if filteredOffers.searchTerm}}{{filteredOffers.searchTerm}}{{else}}"Type in anything …"{{/if}}
+          type="text"
+          name="searchfield"
+          id=""
+          class="nav-btn-actv"
+          {{#if filteredOffers.searchTerm}}value="{{filteredOffers.searchTerm}}"{{/if}}
+          placeholder={{#if filteredOffers.searchTerm}}{{filteredOffers.searchTerm}}{{else}}"Type in anything …"{{/if}}
         />
         <button formaction="/offer/offer-search/date" class="go-button nav-btn">GO!</button>
     </div>
   </div>
+ 
     {{#if filteredOffers}}
+  
         <div class="search-sorting-button-div einzug-links">
         {{#if filteredOffers.searchTerm}}
-        <button formaction="/offer/offer-search/price" class="button-sorting nav-btn ">€</button>
-        <button formaction="/offer/offer-search/price-descending" class="button-sorting nav-btn" >€€€</button>
-        <button formaction="/offer/offer-search/date" class="button-sorting nav-btn" >Newest</button>
-        <button formaction="/offer/offer-search/date-oldest" class="button-sorting nav-btn" >Oldest</button>
+        <button formaction="/offer/offer-search/price" class="button-sorting nav-btn ">S€</button>
+        <button formaction="/offer/offer-search/price-descending" class="button-sorting nav-btn" >S€€€</button>
+        <button formaction="/offer/offer-search/date" class="button-sorting nav-btn" >SNewest</button>
+        <button formaction="/offer/offer-search/date-oldest" class="button-sorting nav-btn" >SOldest</button>
         {{/if}}
         </div>
-        {{/if}}
-      </form>
+    {{/if}}
+  </form>
 
 
 {{!-- 

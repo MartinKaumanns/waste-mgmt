@@ -1,8 +1,6 @@
 
-<form action="/offer/offer-filtered/">
-
 <div class="dropdown">
-
+  <form action="/offer/offer-filtered/">
   <div id="myDropdown" class="dropdown-content">
     <div class="wrapper " >
       <div id="ck-button">
@@ -168,6 +166,9 @@
     </div> 
 </div>
 {{#if filteredOffers}}
+  
+    <h1 class="einzug-links">Offers</h1>
+
 <div class="category-sorting-button-div einzug-links">
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price" class="button-sorting nav-btn" >€</button>{{/if}}
 {{#if filteredOffers.searchTerm}}{{else}}<button formaction="/offer/offer-filtered/price-descending" class="button-sorting nav-btn" >€€€</button>{{/if}}

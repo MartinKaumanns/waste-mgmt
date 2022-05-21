@@ -61,6 +61,7 @@ h3 {
 }
 
 nav {
+  position: relative;
   height: 80.86px;
   display: flex;
   align-items: center;
@@ -133,12 +134,10 @@ nav .nav-cat-search {
 }
 
 .dropdown {
-  position: relative;
   display: inline-block;
 }
 
 .closeMegamenu {
-  position: relative;
   display: inline-block;
 }
 
@@ -284,7 +283,6 @@ hr {
 }
 
 #ck-button label input {
-  position: absolute;
   /* top: -20px; */
 }
 
@@ -317,7 +315,6 @@ hr {
   padding-top: 5rem;
   padding-left: 3rem;
   display: none;
-  position: absolute;
   background-color: #ffffff;
   width: 100vw;
   height: 90vh;
@@ -326,7 +323,6 @@ hr {
 }
 
 .dropdown-content form {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -354,6 +350,14 @@ hr {
   justify-content: space-between;
   align-items: baseline;
 } */
+#mySearchDropdown {
+  position: absolute;
+}
+
+#myDropdown {
+  position: absolute;
+}
+
 .dropdown-content a {
   color: #262b22;
   padding: 12px 16px;

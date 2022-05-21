@@ -28,6 +28,30 @@
   <body>
     <div id="body-wrapper">
       <div id="content-wrapper">
+        <nav>
+      <a href="/" class="logo">WASTE MGMT</a>
+  <div>
+    <div class="nav-cat-search">
+      <button class="dropbtn category-search-button">Categories</button>
+      <button class="dropbtn search-button nav-button-right">Search</button>
+      {{#if user}}
+     </div >
+  <form action="/offer/create">
+      <button class="nav-btn button-hover">New Offer</button>
+  </form>
+      <a href="/user/{{user.id}}" class="nav-btn button-hover">{{user.name}}’s Profile</a>
+  <form action="/authentication/sign-out" method="POST">
+        <button class="nav-btn button-hover">Sign Out</button>
+  </form>
+      {{else}}
+        <a href="/authentication/sign-in" class="nav-btn button-hover">Sign In</a>
+        <a href="/authentication/sign-up" class="nav-btn button-hover">Sign Up</a>
+      {{/if}}
+  </div>
+</nav>
+
+{{> megamenu}}
+{{> megasearch}}
     {{{body}}}
       </div>
     {{>footer}}
@@ -56,6 +80,7 @@ function megaMenuFunction() {
 toggle between hiding and showing the dropdown content */
 function mySearchFunction() {
   searchDropdownElement.classList.toggle("show");
+  
   if (megaDropdownElement.classList.contains('show')) {
     megaDropdownElement.classList.remove("show");
   }
@@ -64,7 +89,7 @@ categorySearchButtonElement.addEventListener('click',() => megaMenuFunction());
 searchButtonElement.addEventListener('click', () => mySearchFunction())
 
 function hideSearchSortingButtons() {
-  if(serachSortingButtonDivElement) serachSortingButtonDivElement.classList.add('hide')
+  if(serachSortingButtonDivElement) serachSortingButtonDivElement.classList.add('show')
   if(categorySortingButtonDivElement) categorySortingButtonDivElement.classList.remove('hide')
 }
 
