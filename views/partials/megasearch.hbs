@@ -1,16 +1,6 @@
 <div class="dropdown ">
   <div id="mySearchDropdown" class="dropdown-content background-color">
     <form action="/offer/offer-search">
-      <label for="search-field"></label>
-      <input
-        type="text"
-        name="searchfield"
-        id=""
-        class="nav-btn-actv"
-        {{#if searchTerm}}value="{{searchTerm}}"{{/if}}
-        placeholder={{#if searchTerm}}{{searchTerm}}{{else}}"Type in anything …"{{/if}}
-      />
-      <button formaction="/offer/offer-search?sort=date" class="go-button nav-btn">GO!</button>
       {{#if filteredOffers}}
       <div class="search-sorting-button-div einzug-links">
         {{#if searchTerm}}
@@ -21,6 +11,16 @@
         {{/if}}
       </div>
       {{/if}}
+      <label for="search-field"></label>
+      <input
+        type="text"
+        name="searchfield"
+        id=""
+        class="nav-btn-actv"
+        {{#if searchTerm}}value="{{searchTerm}}"{{/if}}
+        placeholder={{#if searchTerm}}{{searchTerm}}{{else}}"Type in anything …"{{/if}}
+      />
+      <button formaction="/offer/offer-search?sort=date" class="go-button nav-btn">GO!</button>
     </form>
   </div>
 </div>
