@@ -2,15 +2,10 @@
 
 const { Router } = require('express');
 const routeGuard = require('../middleware/route-guard');
-const bcryptjs = require('bcryptjs');
 const Offer = require('./../models/offer');
 const fileUploader = require('../cloudinary.config.js');
-const { render } = require('../app');
 
 const router = new Router();
-
-let queryObj;
-let searchObj;
 
 const GenresMap = {
   Installation: 'installation',
@@ -131,10 +126,11 @@ router.get('/offer-suggestions', (req, res, next) => {
 
 /// SEARCH FILTER: SORTING
 
-router.get('/offer-search/date', (req, res, next) => {
+router.get('/offer-search', (req, res, next) => {
   const limit = 30;
-  console.log(req.query.searchfield);
   const searchTerm = req.query.searchfield;
+  const { sort } = req.query;
+  let searchObj;
   // writes searchObj with search "term", filters out results of user
   if (req.user) {
     searchObj = {
@@ -149,90 +145,24 @@ router.get('/offer-search/date', (req, res, next) => {
       $and: [{ completed: false }, { $text: { $search: searchTerm } }]
     };
   }
-  // performs query with searchObj
-  Offer.find(searchObj)
-    .sort({ createdAt: -1 })
-    .limit(limit)
-    .populate('creator')
-    .then((filteredOffers) => {
-      res.render('offer-search', { filteredOffers, searchTerm });
-    });
-});
-
-router.get('/offer-search/date-oldest', (req, res, next) => {
-  const limit = 30;
-  const searchTerm = req.query.searchfield;
-  // writes searchObj with search "term", filters out results of user
-  if (req.user) {
-    searchObj = {
-      $and: [
-        { completed: false },
-        { creator: { $ne: { _id: req.user.id } } },
-        { $text: { $search: searchTerm } }
-      ]
-    };
-  } else {
-    searchObj = {
-      $and: [{ completed: false }, { $text: { $search: searchTerm } }]
-    };
+  const searchSorting = {};
+  switch (sort) {
+    case 'price':
+      searchSorting.price = 1;
+      break;
+    case 'price-descending':
+      searchSorting.price = -1;
+      break;
+    case 'date':
+      searchSorting.createdAt = 1;
+      break;
+    case 'date-oldest':
+      searchSorting.createdAt = -1;
+      break;
   }
   // performs query with searchObj
   Offer.find(searchObj)
-    .sort({ createdAt: 1 })
-    .limit(limit)
-    .populate('creator')
-    .then((filteredOffers) => {
-      res.render('offer-search', { filteredOffers, searchTerm });
-    });
-});
-
-router.get('/offer-search/price', (req, res, next) => {
-  const limit = 30;
-  const searchTerm = req.query.searchfield;
-  // writes searchObj with search "term", filters out results of user
-  if (req.user) {
-    searchObj = {
-      $and: [
-        { completed: false },
-        { creator: { $ne: { _id: req.user.id } } },
-        { $text: { $search: searchTerm } }
-      ]
-    };
-  } else {
-    searchObj = {
-      $and: [{ completed: false }, { $text: { $search: searchTerm } }]
-    };
-  }
-  // performs query with searchObj
-  Offer.find(searchObj)
-    .sort({ price: 1 })
-    .limit(limit)
-    .populate('creator')
-    .then((filteredOffers) => {
-      res.render('offer-search', { filteredOffers, searchTerm });
-    });
-});
-
-router.get('/offer-search/price-descending', (req, res, next) => {
-  const limit = 30;
-  const searchTerm = req.query.searchfield;
-  // writes searchObj with search "term", filters out results of user
-  if (req.user) {
-    searchObj = {
-      $and: [
-        { completed: false },
-        { creator: { $ne: { _id: req.user.id } } },
-        { $text: { $search: searchTerm } }
-      ]
-    };
-  } else {
-    searchObj = {
-      $and: [{ completed: false }, { $text: { $search: searchTerm } }]
-    };
-  }
-  // performs query with searchObj
-  Offer.find(searchObj)
-    .sort({ price: -1 })
+    .sort(searchSorting)
     .limit(limit)
     .populate('creator')
     .then((filteredOffers) => {
@@ -247,7 +177,7 @@ router.get(
   filterGathererMiddleware,
   (req, res, next) => {
     let limit = 30;
-    searchObj = {};
+    let queryObj;
     //checks if user is loged in, if yes: filters out user's results
     if (req.user) {
       if (!req.query.genres && !req.query.materials) {
@@ -320,7 +250,7 @@ router.get(
       .limit(limit)
       .populate('creator')
       .then((filteredOffers) => {
-        if (!filteredOffers || filteredOffers.length === 0) {
+        if (filteredOffers.length === 0) {
           res.render('offer-filtered');
         } else {
           res.render('offer-filtered', { filteredOffers });
@@ -337,7 +267,7 @@ router.get(
   filterGathererMiddleware,
   (req, res, next) => {
     let limit = 30;
-    searchObj = {};
+    let queryObj;
     //checks if user is loged in, if yes: filters out user's results
     if (req.user) {
       if (!req.query.genres && !req.query.materials) {
@@ -411,7 +341,7 @@ router.get(
       .limit(limit)
       .populate('creator')
       .then((filteredOffers) => {
-        if (!filteredOffers || filteredOffers.length === 0) {
+        if (filteredOffers.length === 0) {
           res.render('offer-filtered');
         } else {
           res.render('offer-filtered', { filteredOffers });
@@ -425,7 +355,7 @@ router.get(
 
 router.get('/offer-filtered/date-oldest', (req, res, next) => {
   let limit = 30;
-  searchObj = {};
+  let queryObj;
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
@@ -496,7 +426,7 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
     .limit(limit)
     .populate('creator')
     .then((filteredOffers) => {
-      if (!filteredOffers || filteredOffers.length === 0) {
+      if (filteredOffers.length === 0) {
         res.render('offer-filtered');
       } else {
         res.render('offer-filtered', { filteredOffers });
@@ -507,6 +437,7 @@ router.get('/offer-filtered/date-oldest', (req, res, next) => {
     });
 });
 
+/*
 router.get('/offer-sorted-price', (req, res, next) => {
   const limit = 30;
   // checks if a category query (queryObj) or a search with an input (searchObj) was performed before
@@ -534,6 +465,7 @@ router.get('/offer-sorted-price', (req, res, next) => {
       });
   }
 });
+*/
 
 // router.get('/offer-sorted-descending-price', (req, res, next) => {
 //   const limit = 30;
@@ -607,7 +539,7 @@ router.get('/offer-sorted-price', (req, res, next) => {
 
 router.get('/offer-filtered/date', (req, res, next) => {
   let limit = 30;
-  searchObj = {};
+  let queryObj;
   //checks if user is loged in, if yes: filters out user's results
   if (req.user) {
     if (!req.query.genres && !req.query.materials) {
@@ -678,7 +610,7 @@ router.get('/offer-filtered/date', (req, res, next) => {
     .limit(limit)
     .populate('creator')
     .then((filteredOffers) => {
-      if (!filteredOffers || filteredOffers.length === 0) {
+      if (filteredOffers.length === 0) {
         res.render('offer-filtered');
       } else {
         const filters = {};

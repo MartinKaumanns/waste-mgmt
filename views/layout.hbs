@@ -29,26 +29,27 @@
     <div id="body-wrapper">
       <div id="content-wrapper">
         <nav>
-      <a href="/" class="logo">WASTE MGMT</a>
-  <div>
-    <div class="nav-cat-search">
-      <button class="dropbtn category-search-button">Categories</button>
-      <button class="dropbtn search-button nav-button-right">Search</button>
-      {{#if user}}
-     </div >
-  <form action="/offer/create">
-      <button class="nav-btn button-hover">New Offer</button>
-  </form>
-      <a href="/user/{{user.id}}" class="nav-btn button-hover">{{user.name}}’s Profile</a>
-  <form action="/authentication/sign-out" method="POST">
-        <button class="nav-btn button-hover">Sign Out</button>
-  </form>
-      {{else}}
-        <a href="/authentication/sign-in" class="nav-btn button-hover">Sign In</a>
-        <a href="/authentication/sign-up" class="nav-btn button-hover">Sign Up</a>
-      {{/if}}
-  </div>
-</nav>
+          <a href="/" class="logo">WASTE MGMT</a>
+          <div class="nav-content">
+            <div class="nav-cat-search">
+              <button class="dropbtn category-search-button">Categories</button>
+              <button class="dropbtn search-button nav-button-right">Search</button>
+              {{#if user}}
+            </div >
+            <form action="/offer/create">
+              <button class="nav-btn button-hover">New Offer</button>
+            </form>
+            <a href="/user/{{user.id}}" class="nav-btn button-hover">{{user.name}}’s Profile</a>
+            <form action="/authentication/sign-out" method="POST">
+              <button class="nav-btn button-hover">Sign Out</button>
+            </form>
+              {{else}}
+                <a href="/authentication/sign-in" class="nav-btn button-hover">Sign In</a>
+                <a href="/authentication/sign-up" class="nav-btn button-hover">Sign Up</a>
+              {{/if}}
+          </div>
+          <button id="nav-mobile-trigger">Toggle</button>
+        </nav>
 
 {{> megamenu}}
 {{> megasearch}}
@@ -66,25 +67,31 @@ const megaDropdownElement = document.getElementById('myDropdown')
 const categorySearchButtonElement = document.querySelector('.category-search-button')
 const serachSortingButtonDivElement = document.querySelector(".search-sorting-button-div")
 const categorySortingButtonDivElement = document.querySelector(".category-sorting-button-div")
+const navigationMobileTriggerButtonElement = document.getElementById("nav-mobile-trigger");
+const navigationContentElement =  document.querySelector(".nav-content");
+
+navigationMobileTriggerButtonElement.addEventListener('click', () => {
+  megaDropdownElement.classList.remove('show');
+  searchDropdownElement.classList.remove("show");
+  navigationContentElement.classList.toggle("nav-mobile-show");
+})
 
  /* When the user clicks on the button, toggle between hiding and showing
 the dropdown content */
 function megaMenuFunction() {
   megaDropdownElement.classList.toggle('show');
-  if (searchDropdownElement.classList.contains('show')) {
-    searchDropdownElement.classList.remove("show");
-  }
+  searchDropdownElement.classList.remove("show");
+  navigationContentElement.classList.remove("nav-mobile-show");
 }
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function mySearchFunction() {
-  searchDropdownElement.classList.toggle("show");
-  
-  if (megaDropdownElement.classList.contains('show')) {
-    megaDropdownElement.classList.remove("show");
-  }
+  searchDropdownElement.classList.toggle("show");  
+  megaDropdownElement.classList.remove("show");
+  navigationContentElement.classList.remove("nav-mobile-show");
 }
+
 categorySearchButtonElement.addEventListener('click',() => megaMenuFunction());
 searchButtonElement.addEventListener('click', () => mySearchFunction())
 
@@ -97,9 +104,9 @@ function hideCategorySortingButtons() {
   if(serachSortingButtonDivElement) serachSortingButtonDivElement.classList.add('show')
   if(categorySortingButtonDivElement) categorySortingButtonDivElement.classList.add('hide')
 }
-
 </script>
     <script src="/scripts/script.js"></script>
+    <!--
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -115,5 +122,6 @@ function hideCategorySortingButtons() {
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"
     ></script>
+    -->
   </body>
 </html>

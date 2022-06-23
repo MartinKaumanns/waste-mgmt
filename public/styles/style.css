@@ -375,6 +375,30 @@ hr {
   display: block;
 }
 
+.nav-content {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .nav-content {
+    display: flex;
+  }
+}
+
+.nav-content.nav-mobile-show {
+  display: block;
+}
+
+#nav-mobile-trigger {
+  display: block;
+}
+
+@media (min-width: 800px) {
+  #nav-mobile-trigger {
+    display: none;
+  }
+}
+
 .hide {
   display: none;
 }
