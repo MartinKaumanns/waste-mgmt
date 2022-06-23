@@ -27,7 +27,14 @@ body a {
   padding: 0;
 }
 
-#input-name, #input-email, #input-password, #input-web, #input-insta, #input-title, #description-input, #input-price {
+#input-name,
+#input-email,
+#input-password,
+#input-web,
+#input-insta,
+#input-title,
+#description-input,
+#input-price {
   margin-left: 0;
   margin: 1.2rem 0 2rem 0;
 }
@@ -62,9 +69,9 @@ h3 {
 
 nav {
   position: relative;
-  height: 80.86px;
+  min-height: 80.86px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -72,7 +79,9 @@ nav .logo {
   margin-left: 1em;
 }
 
-nav a, nav button, nav form {
+nav a,
+nav button,
+nav form {
   padding: 0;
 }
 
@@ -82,7 +91,8 @@ nav div {
   margin-right: 1.2em;
 }
 
-nav div a, nav div button {
+nav div a,
+nav div button {
   margin: 0 0 0 1.4em;
 }
 
@@ -308,7 +318,7 @@ hr {
 
 /* OPENED DROPDOWN */
 .wrapper {
-  padding: 1rem 0  1.8rem 0rem;
+  padding: 1rem 0 1.8rem 0rem;
 }
 
 .dropdown-content {
@@ -379,6 +389,7 @@ hr {
 
 .nav-content {
   display: none;
+  z-index: 4;
 }
 
 @media (min-width: 800px) {
@@ -388,11 +399,17 @@ hr {
 }
 
 .nav-content.nav-mobile-show {
+  position: absolute;
   display: block;
+  margin-top: 2rem;
+  background-color: #d9f2d5;
+  width: 100%;
+  height: 100%;
 }
 
 #nav-mobile-trigger {
   display: block;
+  margin-right: 1.2rem;
 }
 
 @media (min-width: 800px) {
@@ -503,7 +520,8 @@ hr {
   object-fit: cover;
 }
 
-.project-space h2, .project-space span {
+.project-space h2,
+.project-space span {
   font-size: 2.4rem;
   padding: 0;
   margin-bottom: 2rem;
@@ -616,7 +634,8 @@ hr {
   padding-right: 1rem;
 }
 
-.offer-create input, .offer-create textarea {
+.offer-create input,
+.offer-create textarea {
   display: block;
   margin: auto;
   padding: 0.7rem 0.7rem 0.7rem 2rem;
@@ -628,7 +647,7 @@ hr {
   overflow: hidden;
 }
 
-.offer-create input[type="file"] {
+.offer-create input[type='file'] {
   display: none;
 }
 
@@ -657,8 +676,8 @@ hr {
   -moz-appearance: none;
 }
 
-.offer-create input[type=number]::-webkit-inner-spin-button,
-.offer-create input[type=number]::-webkit-outer-spin-button {
+.offer-create input[type='number']::-webkit-inner-spin-button,
+.offer-create input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -686,7 +705,7 @@ hr {
   height: 600px;
   object-fit: cover;
   margin: 0 0 2rem 0;
-  border-radius: 90%  30% / 50% 40%;
+  border-radius: 90% 30% / 50% 40%;
 }
 
 #profile-head h3 {
@@ -769,7 +788,9 @@ hr {
   margin: 2rem auto 0 auto;
 }
 
-.offer-single p, .offer-single a, .offer-single span {
+.offer-single p,
+.offer-single a,
+.offer-single span {
   font-size: 1.2rem;
   padding: 0;
   margin: 0.1em;
@@ -839,7 +860,8 @@ a:hover {
   padding-right: 1rem;
 }
 
-.sign-in input, .sign-in textarea {
+.sign-in input,
+.sign-in textarea {
   display: block;
   margin: auto;
   padding: 0.7rem 0.7rem 0.7rem 2rem;
@@ -877,7 +899,8 @@ a:hover {
   margin-bottom: 1.8rem;
 }
 
-.offer-email input, .offer-email textarea {
+.offer-email input,
+.offer-email textarea {
   display: block;
   padding: 0.7rem 0.7rem 0.7rem 2rem;
   max-width: 40rem;
