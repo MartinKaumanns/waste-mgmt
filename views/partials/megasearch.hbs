@@ -1,16 +1,6 @@
-<div class="dropdown ">
-  <div id="mySearchDropdown" class="dropdown-content background-color">
+<div>
+  <div  id="mySearchDropdown" class="dropdown-content background-color">
     <form action="/offer/offer-search">
-      {{#if filteredOffers}}
-      <div class="search-sorting-button-div einzug-links">
-        {{#if searchTerm}}
-        <button formaction="/offer/offer-search?sort=price" class="button-sorting nav-btn ">S€</button>
-        <button formaction="/offer/offer-search?sort=price-descending" class="button-sorting nav-btn" >S€€€</button>
-        <button formaction="/offer/offer-search?sort=date" class="button-sorting nav-btn" >SNewest</button>
-        <button formaction="/offer/offer-search?sort=date-oldest" class="button-sorting nav-btn" >SOldest</button>
-        {{/if}}
-      </div>
-      {{/if}}
       <label for="search-field"></label>
       <input
         type="text"
@@ -23,16 +13,15 @@
       <button formaction="/offer/offer-search?sort=date" class="go-button nav-btn">GO!</button>
     </form>
   </div>
+   {{#if filteredOffers}}
+      <div style="position: static" class="search-sorting-button-div einzug-links">
+        {{#if searchTerm}}
+        <button formaction="/offer/offer-search?sort=price" class="button-sorting nav-btn ">S€</button>
+        <button formaction="/offer/offer-search?sort=price-descending" class="button-sorting nav-btn" >S€€€</button>
+        <button formaction="/offer/offer-search?sort=date" class="button-sorting nav-btn" >SNewest</button>
+        <button formaction="/offer/offer-search?sort=date-oldest" class="button-sorting nav-btn" >SOldest</button>
+        {{/if}}
+
+      </div>
+      {{/if}}
 </div>
-
-
-{{!-- 
-{{#if filteredOffers.sorting}}button-sorting-actv{{/if}}
-{{#if filteredOffers.sorting}}button-sorting-actv{{/if}}
-{{#if filteredOffers.sorting}}button-sorting-actv{{/if}}
-{{#if filteredOffers.sorting}}button-sorting-actv{{/if}}
---}}
-      {{!--  {{#if searchTerm}}<button formaction="/offer/offer-search/price" class="button-sorting nav-btn">€</button>{{/if}}
-      {{#if searchTerm}}<button formaction="/offer/offer-search/price-descending" class="button-sorting nav-btn" >€€€</button>{{/if}}
-      {{#if searchTerm}}<button formaction="/offer/offer-search/date" class="button-sorting nav-btn" >Newest</button>{{/if}}
-      {{#if searchTerm}}<button formaction="/offer/offer-search/date-oldest" class="button-sorting nav-btn" >Oldest</button>{{/if}} --}} 

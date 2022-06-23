@@ -162,6 +162,8 @@ router.get('/offer-search', (req, res, next) => {
       searchSorting.createdAt = -1;
       break;
   }
+  console.log(searchSorting);
+
   // performs query with searchObj
   Offer.find(searchObj)
     .sort(searchSorting)

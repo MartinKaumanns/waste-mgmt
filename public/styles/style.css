@@ -352,10 +352,12 @@ hr {
 } */
 #mySearchDropdown {
   position: absolute;
+  top: 4rem;
 }
 
 #myDropdown {
   position: absolute;
+  top: 4rem;
 }
 
 .dropdown-content a {
