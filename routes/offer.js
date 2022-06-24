@@ -50,7 +50,6 @@ const filterGathererMiddleware = (req, res, next) => {
       filters[value] = materials.includes(key);
     }
   }
-  console.log(filters);
   res.locals.filters = filters;
   next();
 };
@@ -60,7 +59,6 @@ router.get('/create', (req, res) => {
 });
 
 router.get('/category-megamenu', (req, res) => {
-  console.log('hello');
   res.render('category-megamenu');
 });
 
@@ -128,10 +126,11 @@ router.get('/offer-suggestions', (req, res, next) => {
 
 /// SEARCH FILTER: SORTING
 
-router.get('/offer-search', (req, res, next) => {
+router.get('/offer-search/:sort', (req, res, next) => {
   const limit = 30;
   const searchTerm = req.query.searchfield;
-  const { sort } = req.query;
+  const { sort } = req.params;
+
   let searchObj;
   // writes searchObj with search "term", filters out results of user
   if (req.user) {
@@ -148,6 +147,7 @@ router.get('/offer-search', (req, res, next) => {
     };
   }
   const searchSorting = {};
+
   switch (sort) {
     case 'price':
       searchSorting.price = 1;
@@ -162,7 +162,6 @@ router.get('/offer-search', (req, res, next) => {
       searchSorting.createdAt = -1;
       break;
   }
-  console.log(searchSorting);
 
   // performs query with searchObj
   Offer.find(searchObj)
@@ -177,11 +176,13 @@ router.get('/offer-search', (req, res, next) => {
 /// CATEGORY FILTER: SORTING
 
 router.get(
-  '/offer-filtered/price',
+  '/offer-filtered/:sort',
   filterGathererMiddleware,
   (req, res, next) => {
     let limit = 30;
     let queryObj;
+    const { sort } = req.params;
+
     //checks if user is loged in, if yes: filters out user's results
     if (req.user) {
       if (!req.query.genres && !req.query.materials) {
@@ -249,8 +250,25 @@ router.get(
       }
     }
 
+    const searchSorting = {};
+
+    switch (sort) {
+      case 'price':
+        searchSorting.price = 1;
+        break;
+      case 'price-descending':
+        searchSorting.price = -1;
+        break;
+      case 'date':
+        searchSorting.createdAt = 1;
+        break;
+      case 'date-oldest':
+        searchSorting.createdAt = -1;
+        break;
+    }
+
     Offer.find(queryObj)
-      .sort({ price: 1 })
+      .sort(searchSorting)
       .limit(limit)
       .populate('creator')
       .then((filteredOffers) => {
@@ -258,350 +276,6 @@ router.get(
           res.render('offer-filtered');
         } else {
           res.render('offer-filtered', { filteredOffers });
-        }
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
-);
-
-router.get(
-  '/offer-filtered/price-descending',
-  filterGathererMiddleware,
-  (req, res, next) => {
-    let limit = 30;
-    let queryObj;
-    //checks if user is loged in, if yes: filters out user's results
-    if (req.user) {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } }
-          ]
-        };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { materials: { $in: req.query.materials } }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { genres: { $in: req.query.genres } }
-          ]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { creator: { $ne: { _id: req.user.id } } },
-            { completed: false },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    } else {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = { completed: false };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { materials: { $in: req.query.materials } },
-            { completed: false }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [{ genres: { $in: req.query.genres } }, { completed: false }]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { completed: false },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    }
-
-    Offer.find(queryObj)
-      .sort({ price: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        if (filteredOffers.length === 0) {
-          res.render('offer-filtered');
-        } else {
-          res.render('offer-filtered', { filteredOffers });
-        }
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
-);
-
-router.get(
-  '/offer-filtered/date-oldest',
-  filterGathererMiddleware,
-  (req, res, next) => {
-    let limit = 30;
-    let queryObj;
-    //checks if user is loged in, if yes: filters out user's results
-    if (req.user) {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } }
-          ]
-        };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { materials: { $in: req.query.materials } }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { genres: { $in: req.query.genres } }
-          ]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    } else {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = { completed: false };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { materials: { $in: req.query.materials } },
-            { completed: false }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [{ genres: { $in: req.query.genres } }, { completed: false }]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { completed: false },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    }
-
-    Offer.find(queryObj)
-      .sort({ createdAt: 1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        if (filteredOffers.length === 0) {
-          res.render('offer-filtered');
-        } else {
-          res.render('offer-filtered', { filteredOffers });
-        }
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
-);
-
-router.get(
-  '/offer-filtered/date',
-  filterGathererMiddleware,
-  (req, res, next) => {
-    let limit = 30;
-    let queryObj;
-    //checks if user is loged in, if yes: filters out user's results
-    if (req.user) {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } }
-          ]
-        };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { materials: { $in: req.query.materials } }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            { genres: { $in: req.query.genres } }
-          ]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { creator: { $ne: { _id: req.user.id } } },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    } else {
-      if (!req.query.genres && !req.query.materials) {
-        queryObj = { completed: false };
-      } else if (!req.query.genres) {
-        queryObj = {
-          $and: [
-            { completed: false },
-            { materials: { $in: req.query.materials } }
-          ]
-        };
-      } else if (!req.query.materials) {
-        queryObj = {
-          $and: [{ completed: false }, { genres: { $in: req.query.genres } }]
-        };
-      } else {
-        queryObj = {
-          $and: [
-            { completed: false },
-            {
-              $or: [
-                { genres: { $in: req.query.genres } },
-                { materials: { $in: req.query.materials } }
-              ]
-            }
-          ]
-        };
-      }
-    }
-
-    Offer.find(queryObj)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .populate('creator')
-      .then((filteredOffers) => {
-        if (filteredOffers.length === 0) {
-          res.render('offer-filtered');
-        } else {
-          const filters = {};
-          if (req.query.genres) {
-            if (req.query.genres.includes('Installation')) {
-              filters.installation = true;
-            }
-            if (req.query.genres.includes('Painting')) {
-              filters.painting = true;
-            }
-            if (req.query.genres.includes('Media')) {
-              filters.media = true;
-            }
-            if (req.query.genres.includes('Photography')) {
-              filters.photography = true;
-            }
-            if (req.query.genres.includes('Ceramics')) {
-              filters.ceramics = true;
-            }
-            if (req.query.genres.includes('Performing Arts')) {
-              filters.performingArts = true;
-            }
-            if (req.query.genres.includes('Architecture')) {
-              filters.architecture = true;
-            }
-            if (req.query.genres.includes('Graphics')) {
-              filters.graphics = true;
-            }
-            if (req.query.genres.includes('Other')) {
-              filters.Other = true;
-            }
-          }
-          if (req.query.materials) {
-            if (req.query.materials.includes('wood')) {
-              filters.wood = true;
-            }
-            if (req.query.materials.includes('metal')) {
-              filters.metal = true;
-            }
-            if (req.query.materials.includes('plastic')) {
-              filters.plastic = true;
-            }
-            if (req.query.materials.includes('paper / cardboard')) {
-              filters.paper = true;
-            }
-            if (req.query.materials.includes('pens / brushes')) {
-              filters.pens = true;
-            }
-            if (req.query.materials.includes('paints')) {
-              filters.paints = true;
-            }
-            if (req.query.materials.includes('textile')) {
-              filters.textile = true;
-            }
-            if (req.query.materials.includes('stone / building materials')) {
-              filters.stone = true;
-            }
-            if (req.query.materials.includes('moulding / casting')) {
-              filters.moulding = true;
-            }
-            if (req.query.materials.includes('tools')) {
-              filters.tools = true;
-            }
-            if (req.query.materials.includes('technical equipment')) {
-              filters.technicalEquipment = true;
-            }
-            if (req.query.materials.includes('studio furniture')) {
-              filters.studioFurniture = true;
-            }
-            if (req.query.materials.includes('other')) {
-              filters.other = true;
-            }
-          }
-          res.render('offer-filtered', { filteredOffers, filters });
         }
       })
       .catch((error) => {

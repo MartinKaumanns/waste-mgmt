@@ -10,18 +10,19 @@
         {{#if searchTerm}}value="{{searchTerm}}"{{/if}}
         placeholder={{#if searchTerm}}{{searchTerm}}{{else}}"Type in anything …"{{/if}}
       />
-      <button formaction="/offer/offer-search?sort=date" class="go-button nav-btn">GO!</button>
-    </form>
+      <button formaction="/offer/offer-search/date" class="go-button nav-btn">GO!</button>
+    
+
   </div>
    {{#if filteredOffers}}
       <div style="position: static" class="search-sorting-button-div einzug-links">
         {{#if searchTerm}}
-        <button formaction="/offer/offer-search?sort=price" class="button-sorting nav-btn ">S€</button>
-        <button formaction="/offer/offer-search?sort=price-descending" class="button-sorting nav-btn" >S€€€</button>
-        <button formaction="/offer/offer-search?sort=date" class="button-sorting nav-btn" >SNewest</button>
-        <button formaction="/offer/offer-search?sort=date-oldest" class="button-sorting nav-btn" >SOldest</button>
+          <button formaction="/offer/offer-search/price" class="button-sorting nav-btn ">€</button>
+          <button formaction="/offer/offer-search/price-descending" class="button-sorting nav-btn" >€€€</button>
+          <button formaction="/offer/offer-search/date" class="button-sorting nav-btn" >Newest</button>
+          <button formaction="/offer/offer-search/date-oldest" class="button-sorting nav-btn" >Oldest</button>
         {{/if}}
-
-      </div>
-      {{/if}}
+      </div> 
+    {{/if}}
+    </form>
 </div>
