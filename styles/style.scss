@@ -394,10 +394,11 @@ hr {
 }
 
 .nav-content {
-  display: none;
-  @media (min-width: 800px) {
-    display: flex;
-  }
+  display: flex;
+  // display: none; // this is for mobile version
+  // @media (min-width: 800px) {
+  //   display: flex;
+  // }
   z-index: 4;
 }
 
@@ -411,11 +412,12 @@ hr {
 }
 
 #nav-mobile-trigger {
-  display: block;
-  margin-right: 1.2rem;
-  @media (min-width: 800px) {
-    display: none;
-  }
+  display: none;
+  // display: block;  // this is for mobile version
+  // margin-right: 1.2rem;
+  // @media (min-width: 800px) {
+  //   display: none;
+  // }
 }
 
 .hide {
@@ -951,4 +953,27 @@ input:-internal-autofill-selected {
 }
 li:hover {
   color: white;
+}
+
+// dev: as long as mobile version is under construction: warning div
+
+#mobile-warning {
+  h1 {
+    font-size: 3rem;
+  }
+  width: 100vw;
+  height: 100vh;
+  background-color: #d9f2d5;
+  display: flex;
+  @media (min-width: 800px) {
+    display: none;
+  }
+  z-index: 4;
+}
+
+#body-wrapper {
+  display: none;
+  @media (min-width: 800px) {
+    display: flex;
+  }
 }
