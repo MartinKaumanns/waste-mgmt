@@ -71,7 +71,7 @@ nav {
   position: relative;
   min-height: 80.86px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -819,8 +819,8 @@ a:hover {
 }
 
 .sign-in {
-  background: #d9f2d5;
-  margin-bottom: -40px;
+  background-color: #d9f2d5;
+  height: 100%;
   padding: 15rem 0;
   display: flex;
   flex-direction: column;
@@ -828,6 +828,7 @@ a:hover {
 }
 
 .sign-in form {
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
