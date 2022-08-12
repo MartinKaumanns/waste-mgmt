@@ -913,6 +913,7 @@ input:-internal-autofill-selected {
 
 #content-wrapper {
   padding-bottom: 140px;
+  width: 100vw;
 }
 
 #footer {
